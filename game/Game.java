@@ -30,6 +30,12 @@ public class Game {
 
 		public void piecePlayed(Piece p, int x, int y) {
 			iface.piecePlayed(p, x, y);
+			// Handle onPlay of a piece if effect supports
+			if (p.getCardBase().getEffect().hasOnPlay()
+					&& p.getCardBase().getEffect().conditionOnPlay(game, p)) {
+				iface.pieceEffectActivated(p);
+				p.getCardBase().getEffect().effectOnPlay(game, p);
+			}
 			game.applyAuras();
 		}
 
@@ -59,7 +65,7 @@ public class Game {
 		drawHand(players[0]);
 		drawHand(players[1]);
 	}
-	
+
 	public void startNewGameDebug() {
 		turn = -1;
 		drawHand(players[0]);
@@ -170,12 +176,6 @@ public class Game {
 			Piece newPiece = new Piece(c, this);
 			board.playNewPiece(newPiece, location.x, location.y);
 			turnPlayer().decrPiecePlays();
-			// Handle onPlay of a piece if effect supports
-			if (newPiece.getCardBase().getEffect().hasOnPlay()
-					&& newPiece.getCardBase().getEffect().conditionOnPlay(this, newPiece)) {
-				iface.pieceEffectActivated(newPiece);
-				newPiece.getCardBase().getEffect().effectOnPlay(this, newPiece);
-			}
 			board.calculateAllAllowedActions(turnPlayer());
 			return true;
 		} else if (c.getCardBase() instanceof HexCardBase) {

@@ -8,51 +8,45 @@ import org.junit.Test;
 import tests.cardtests.BasicCardTest;
 import card.CardBase;
 import card.PieceCardBase;
-import card.hexes.cardeffects.ReappropriationHexEffect;
 import card.pieces.pieceeffects.AncientPillarPieceEffect;
 
-public class ReappropriationCardTest extends BasicCardTest {
-
+public class AncientPillarCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {
-		setDeck(players[0], new int[] { ReappropriationHexEffect.ID, 3,
-				AncientPillarPieceEffect.ID, 21 });
-		setDeck(players[1], new int[] { ReappropriationHexEffect.ID, 3,
-				AncientPillarPieceEffect.ID, 21 });
+		setDeck(players[0], new int[] { AncientPillarPieceEffect.ID, 24 });
+		setDeck(players[1], new int[] { AncientPillarPieceEffect.ID, 24 });
 	}
 
 	@Test
 	public void test() {
-		game.beginTurn();
-		actionPlay(3, 4, 0);
 		PieceCardBase b = ((PieceCardBase) CardBase
 				.getCard(AncientPillarPieceEffect.ID));
+		game.beginTurn();
+		actionPlay(3, 4, 0);
+		assertEquals(game.getBoard().getPiece(4, 0).getDefense(),
+				b.getDefense() + 2);
 		actionCycleTurn();
 		actionPlay(3, 4, 8);
+		assertEquals(game.getBoard().getPiece(4, 0).getDefense(),
+				b.getDefense() + 2);
+		assertEquals(game.getBoard().getPiece(4, 8).getDefense(),
+				b.getDefense() + 2);
 		actionCycleTurn();
 		actionPlay(3, 5, 0);
-		// Player 1's pillar pair buffs each other
 		assertEquals(game.getBoard().getPiece(4, 0).getDefense(),
 				b.getDefense() + 4);
 		assertEquals(game.getBoard().getPiece(5, 0).getDefense(),
 				b.getDefense() + 4);
 		assertEquals(game.getBoard().getPiece(4, 8).getDefense(),
 				b.getDefense() + 2);
-		actionPlay(0);
-		// Buffs negated
-		assertEquals(game.getBoard().getPiece(4, 0).getDefense(),
-				b.getDefense() - 4);
-		assertEquals(game.getBoard().getPiece(5, 0).getDefense(),
-				b.getDefense() - 4);
-		assertEquals(game.getBoard().getPiece(4, 8).getDefense(),
-				b.getDefense() - 2);
 		actionCycleTurn();
-		// Ensure Reappropriation was undone
+		actionPlay(3, 5, 8);
 		assertEquals(game.getBoard().getPiece(4, 0).getDefense(),
 				b.getDefense() + 4);
 		assertEquals(game.getBoard().getPiece(5, 0).getDefense(),
 				b.getDefense() + 4);
 		assertEquals(game.getBoard().getPiece(4, 8).getDefense(),
-				b.getDefense() + 2);
+				b.getDefense() + 4);
+		assertEquals(game.getBoard().getPiece(5, 8).getDefense(),
+				b.getDefense() + 4);
 	}
-
 }
