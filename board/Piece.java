@@ -181,11 +181,11 @@ public class Piece extends GridMapEntity {
 			}
 		}
 		if (hasReappropriation) {
-			attack = Math.max(0, attack - additionalAttack);
+			attack -= additionalAttack;
 		} else {
 			attack += additionalAttack;
 		}
-		return attack;
+		return Math.max(0, attack);
 	}
 
 	public int getDefense() {
@@ -204,11 +204,11 @@ public class Piece extends GridMapEntity {
 			}
 		}
 		if (hasReappropriation) {
-			defense = Math.max(0, defense - additionalDefense);
+			defense -= additionalDefense;
 		} else {
 			defense += additionalDefense;
 		}
-		return defense;
+		return Math.max(0, defense);
 	}
 
 	public Player getOwner() {
