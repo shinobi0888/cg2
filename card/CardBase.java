@@ -39,6 +39,10 @@ public class CardBase {
 		return name;
 	}
 
+	public int getId() {
+		return cardId;
+	}
+
 	public String getDetails() {
 		return name;
 	}

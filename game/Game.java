@@ -59,6 +59,12 @@ public class Game {
 		drawHand(players[0]);
 		drawHand(players[1]);
 	}
+	
+	public void startNewGameDebug() {
+		turn = -1;
+		drawHand(players[0]);
+		drawHand(players[1]);
+	}
 
 	public Player getEnemy(Player p) {
 		if (p.equals(players[0])) {

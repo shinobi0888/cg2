@@ -110,6 +110,25 @@ public class Player {
 		shuffleDeck();
 	}
 
+	public void cardsToTopOfDeck(int id, int quantity) {
+		ArrayList<Card> cards = new ArrayList<Card>();
+		for (Card c : deck) {
+			if (c.getCardBase().getId() == id) {
+				cards.add(c);
+			}
+			if (cards.size() >= quantity) {
+				break;
+			}
+		}
+		for (int i = 0; i < quantity; i++) {
+			if (cards.size() == 0) {
+				break;
+			}
+			deck.remove(cards.get(i));
+			deck.add(0, cards.get(i));
+		}
+	}
+
 	public void shuffleDeck() {
 		Collections.shuffle(deck);
 	}
