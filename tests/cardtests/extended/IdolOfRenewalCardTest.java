@@ -10,8 +10,8 @@ import card.pieces.pieceeffects.IdolOfRenewalPieceEffect;
 
 public class IdolOfRenewalCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {
-		setDeck(players[0], new int[] { IdolOfRenewalPieceEffect.ID, 1, 1001, 9,
-				91, 14 });
+		setDeck(players[0], new int[] { IdolOfRenewalPieceEffect.ID, 2, 1001, 8,
+				91, 1, 1001, 13 });
 		setDeck(players[1], new int[] { IdolOfRenewalPieceEffect.ID, 1, 1001, 23 });
 	}
 
@@ -19,7 +19,7 @@ public class IdolOfRenewalCardTest extends BasicCardTest {
 	public void test() {
 		// Test by playing an idol and then observing draw phase
 		game.beginTurn();
-		actionPlay(1, 4, 0);
+		actionPlay(2, 4, 0);
 		actionCycleTurn();
 		// Ensure card counts for player 2 don't get affected
 		assertEquals(game.turnPlayer().getHandCount(), 7);
@@ -36,5 +36,14 @@ public class IdolOfRenewalCardTest extends BasicCardTest {
 		actionCycleTurn();
 		// Draws a protector, getting 1 draw
 		assertEquals(game.turnPlayer().getHandCount(), 9);
+		// Play a pawn, then an idol
+		actionPlay(1, 5, 0);
+		actionCycleTurn();
+		actionCycleTurn();
+		actionPlay(0, new int[] { 5, 0, 5, 0 });
+		actionCycleTurn();
+		actionCycleTurn();
+		// Draws 2 for double idol
+		assertEquals(game.turnPlayer().getHandCount(), 12);
 	}
 }
