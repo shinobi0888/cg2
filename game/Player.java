@@ -94,7 +94,6 @@ public class Player {
 	}
 
 	public void resetCards() {
-		resetHealth();
 		for (Card c : played) {
 			deck.add(c);
 		}

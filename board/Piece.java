@@ -118,7 +118,7 @@ public class Piece extends GridMapEntity {
 
 	public PieceBuff findBuff(Aura a) {
 		for (PieceBuff b : buffs) {
-			if (b.getSourceAura().equals(a)) {
+			if (b.getSourceAura() != null && b.getSourceAura().equals(a)) {
 				return b;
 			}
 		}

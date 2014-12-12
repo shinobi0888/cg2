@@ -46,6 +46,9 @@ public class Game {
 
 		public void pieceRemoved(Piece p, int oldX, int oldY) {
 			iface.pieceRemoved(p, oldX, oldY);
+			if(p.getAura() != null && p.getAura().isRemoveOnLeaveField()) {
+				removePieceAuras(p);
+			}
 			game.applyAuras();
 		}
 	}
@@ -60,6 +63,8 @@ public class Game {
 
 	public void startNewGame() {
 		turn = -1;
+		players[0].resetHealth();
+		players[1].resetHealth();
 		players[0].resetCards();
 		players[1].resetCards();
 		drawHand(players[0]);
@@ -68,6 +73,8 @@ public class Game {
 
 	public void startNewGameDebug() {
 		turn = -1;
+		players[0].resetHealth();
+		players[1].resetHealth();
 		drawHand(players[0]);
 		drawHand(players[1]);
 	}
@@ -344,6 +351,15 @@ public class Game {
 		for (Piece p : board.getAllPieces()) {
 			if (p.getAura() != null) {
 				p.getAura().applyBuffs(this);
+			}
+		}
+	}
+
+	public void removePieceAuras(Piece piece) {
+		for (Piece p : board.getAllPieces()) {
+			PieceBuff b = p.findBuff(piece.getSourceCard());
+			if (b != null) {
+				p.removeBuff(b);
 			}
 		}
 	}

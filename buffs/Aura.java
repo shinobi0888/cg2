@@ -9,6 +9,11 @@ public abstract class Aura {
 	 * removed from field Piece changes position
 	 */
 	protected Piece source;
+	protected boolean removeOnLeaveField = true;
+	
+	public boolean isRemoveOnLeaveField() {
+		return removeOnLeaveField;
+	}
 
 	public abstract boolean shouldApplyAura(Game g, Piece p);
 

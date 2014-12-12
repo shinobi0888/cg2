@@ -1,6 +1,5 @@
 package tests.cardtests;
 
-import static org.junit.Assert.fail;
 import game.Game;
 import game.Player;
 
@@ -35,9 +34,7 @@ public abstract class BasicCardTest {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
+	public abstract void test();
 
 	protected void setDeck(Player p, int[] deck) {
 		String result = "";
@@ -64,11 +61,25 @@ public abstract class BasicCardTest {
 		game.playIndex(index);
 	}
 
-	protected void actionPlay(int index, int x, int y) {		
+	protected void actionPlay(int index, int x, int y) {
 		instructionQueue.add(x + "," + y);
 		game.playIndex(index);
 	}
-	
+
+	protected void actionPlay(int index, ArrayList<Point> points) {
+		for (int i = points.size() - 1; i >= 0; i--) {
+			instructionQueue.add(points.get(i).x + "," + points.get(i).y);
+		}
+		game.playIndex(index);
+	}
+
+	protected void actionPlay(int index, int[] points) {
+		for (int i = points.length - 1; i >= 0; i -= 2) {
+			instructionQueue.add(points[i - 1] + "," + points[i]);
+		}
+		game.playIndex(index);
+	}
+
 	protected void actionCycleTurn() {
 		game.endTurn();
 		game.beginTurn();
@@ -143,8 +154,10 @@ public abstract class BasicCardTest {
 			String[] pieces = top.split(",");
 			if (pieces.length == 2) {
 				try {
-					return new Point(Integer.parseInt(pieces[0].trim()),
+					Point p = new Point(Integer.parseInt(pieces[0].trim()),
 							Integer.parseInt(pieces[1].trim()));
+					test.instructionQueue.remove(test.instructionQueue.size() - 1);
+					return p;
 				} catch (Exception e) {
 					return null;
 				}
@@ -153,7 +166,23 @@ public abstract class BasicCardTest {
 		}
 
 		public Piece requestBoardPiece(String prompt, ArrayList<Piece> valid) {
-
+			String top = test.instructionQueue.get(test.instructionQueue.size() - 1)
+					.trim();
+			String[] pieces = top.split(",");
+			if (pieces.length == 2) {
+				try {
+					Point p = new Point(Integer.parseInt(pieces[0].trim()),
+							Integer.parseInt(pieces[1].trim()));
+					for (Piece piece : valid) {
+						if (piece.getX() == p.x && piece.getY() == p.y) {
+							test.instructionQueue.remove(test.instructionQueue.size() - 1); 
+							return piece;
+						}
+					}
+				} catch (Exception e) {
+					return null;
+				}
+			}
 			return null;
 		}
 
