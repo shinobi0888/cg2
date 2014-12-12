@@ -20,7 +20,7 @@ public class PillarTransfigurationCardTest extends BasicCardTest {
 	@Test
 	public void test() {
 		// Player 1 plays a pawn, allowing player 2 to transfigure it
-		// No pillars exist so the secondary effect is not procced.
+		// No pillars exist so the secondary effect is not proceed.
 		game.beginTurn();
 		actionPlay(0, 4, 0);
 		actionCycleTurn();

@@ -22,6 +22,7 @@ public class InheritanceOfWillHexEffect implements HexEffect {
 		public InheritanceOfWillBuff(Card source) {
 			super(source);
 			isRemoveAtEndOfTurn = true;
+			hasOnPieceDestroyed = true;
 		}
 
 		public boolean conditionOnPieceDestroyed(Game g, Player player,

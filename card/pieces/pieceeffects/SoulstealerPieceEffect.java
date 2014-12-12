@@ -9,7 +9,7 @@ import card.Card;
 import card.pieces.effects.EmptyPieceEffect;
 
 public class SoulstealerPieceEffect extends EmptyPieceEffect {
-	public static final int ID = 11;
+	public static final int ID = 12;
 
 	public SoulstealerPieceEffect() {
 		this.hasOnPlay = true;

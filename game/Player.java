@@ -180,7 +180,7 @@ public class Player {
 		}
 	}
 
-	public int deckCount() {
+	public int getDeckCount() {
 		return deck.size();
 	}
 

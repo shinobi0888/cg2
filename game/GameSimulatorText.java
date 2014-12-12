@@ -103,7 +103,7 @@ public class GameSimulatorText {
 					System.out.println(fieldOutput);
 				} else if (cmd.equals("deck")) {
 					System.out.println(game.turnPlayer().getName() + "'s deck has "
-							+ game.turnPlayer().deckCount() + " cards.");
+							+ game.turnPlayer().getDeckCount() + " cards.");
 				} else if (cmd.equals("grave")) {
 					String graveOutput = "";
 					if (game.turnPlayer().getGraveCount() == 0) {
