@@ -21,19 +21,19 @@ public class InheritanceOfWillCardTest extends BasicCardTest {
 		game.beginTurn();
 		actionPlay(0);
 		actionPlay(0, 4, 0);
-		assertEquals(game.turnPlayer().piecePlays(), 0);
+		assertEquals(game.turnPlayer().getPiecePlays(), 0);
 		actionPlay(2, new int[] { 4, 0 });
-		assertEquals(game.turnPlayer().piecePlays(), 1);
+		assertEquals(game.turnPlayer().getPiecePlays(), 1);
 		actionPlay(0, 4, 0);
-		assertEquals(game.turnPlayer().piecePlays(), 0);
+		assertEquals(game.turnPlayer().getPiecePlays(), 0);
 		actionPlay(1, new int[] { 4, 0 });
-		assertEquals(game.turnPlayer().piecePlays(), 1);
+		assertEquals(game.turnPlayer().getPiecePlays(), 1);
 		actionCycleTurn();
 		actionCycleTurn();
 		// Make sure effect doesn't carry over
 		actionPlay(0, 4, 0);
-		assertEquals(game.turnPlayer().piecePlays(), 0);
+		assertEquals(game.turnPlayer().getPiecePlays(), 0);
 		actionPlay(0, new int[] { 4, 0 });
-		assertEquals(game.turnPlayer().piecePlays(), 0);
+		assertEquals(game.turnPlayer().getPiecePlays(), 0);
 	}
 }

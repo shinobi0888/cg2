@@ -21,7 +21,7 @@ public class OberonPieceEffect extends EmptyPieceEffect {
 				"Would you like to add 1 \"Titania, Queen of Fairies\" to the hand?",
 				false)) {
 			playedPiece.getOwner().addFromDeckToHand(TitaniaPieceEffect.ID);
-			g.simulateHexDamage(playedPiece.getOwner(), BURN_DAMAGE);
+			g.simulateEffectDamage(playedPiece.getOwner(), BURN_DAMAGE);
 		}
 	}
 }

@@ -134,7 +134,7 @@ public class Game {
 		Card c = turnPlayer().getHandCard(index);
 		if (c.getCardBase() instanceof PieceCardBase) {
 			PieceCardBase cardBase = (PieceCardBase) c.getCardBase();
-			return turnPlayer().piecePlays() > 0
+			return turnPlayer().getPiecePlays() > 0
 					&& board.getOpenEndZones(turnPlayer()).size() > 0
 					&& (cardBase.getRelease() == null || cardBase.getRelease()
 							.canRelease(this, turnPlayer()));

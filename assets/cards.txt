@@ -15,6 +15,7 @@ Inheritance of Will::11::Until the end of your turn, when an ally piece with les
 Soulstealer::12::On play: gain 1 Attack and Defense for each other ally piece on the board.::Piece||0::0::0::::1::1::1::1
 Oberon, King of Fairies::13::On play: You may add 1 "Titania, Queen of Fairies" to the hand from the deck, if possible. If you do, deal 2 damage to the player’s health.::Piece||4::3::0::Fairy::1::1::1::1
 Titania, Queen of Fairies::14::On play: You may add 1 "Oberon, King of Fairies" to the hand from the deck, if possible. If you do, deal 2 damage to the player’s health.::Piece||3::4::0::Fairy::1::1::1::1
+Wingless Fairy::15::On play: Deal 4 damage to the player’s health. If you control "Oberon, King of Fairies" or "Titania, Queen of Fairies": increase the player’s play count by 1 and draw 1 card.::Piece||3::3::0::Fairy::1::1::1::1
 // TODO: write cards 1-90
 Rogue Knight::89::::Piece||4::4::0::::1::1::1::1
 Obsidian Golem::90::::Piece||3::5::0::::1::1::1::1

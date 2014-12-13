@@ -146,6 +146,17 @@ public class Board {
 		return result;
 	}
 
+	public ArrayList<Piece> find(Player owner, int cardId) {
+		ArrayList<Piece> result = new ArrayList<Piece>();
+		for (Piece piece : board.getAll()) {
+			if ((owner == null || piece.getOwner().equals(owner))
+					&& piece.getCardBase().getId() == cardId) {
+				result.add(piece);
+			}
+		}
+		return result;
+	}
+
 	public ArrayList<Piece> getPlayersPieces(Player p) {
 		ArrayList<Piece> result = new ArrayList<Piece>();
 		for (Piece piece : board.getAll()) {

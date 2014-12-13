@@ -13,6 +13,7 @@ import card.pieces.pieceeffects.IdolOfRenewalPieceEffect;
 import card.pieces.pieceeffects.OberonPieceEffect;
 import card.pieces.pieceeffects.SoulstealerPieceEffect;
 import card.pieces.pieceeffects.TitaniaPieceEffect;
+import card.pieces.pieceeffects.WinglessFairyPieceEffect;
 
 /*
  * Adding a new card:
@@ -123,6 +124,8 @@ public class PieceCardBase extends CardBase {
 			return new OberonPieceEffect();
 		case TitaniaPieceEffect.ID:
 			return new TitaniaPieceEffect();
+		case WinglessFairyPieceEffect.ID:
+			return new WinglessFairyPieceEffect();
 		default:
 			return new EmptyPieceEffect();
 		}
