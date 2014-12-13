@@ -46,7 +46,7 @@ public class Game {
 
 		public void pieceRemoved(Piece p, int oldX, int oldY) {
 			iface.pieceRemoved(p, oldX, oldY);
-			if(p.getAura() != null && p.getAura().isRemoveOnLeaveField()) {
+			if (p.getAura() != null && p.getAura().isRemoveOnLeaveField()) {
 				removePieceAuras(p);
 			}
 			game.applyAuras();
@@ -303,6 +303,7 @@ public class Game {
 	public void simulateDestroy(Piece target) {
 		PieceSnapshot snap = new PieceSnapshot(target);
 		simulateRemove(target);
+		simulateOnPieceSelfDestroyedEffects(snap);
 		simulateOnPieceDestroyedEffects(snap);
 	}
 
@@ -401,6 +402,14 @@ public class Game {
 		}
 	}
 
+	public void simulateOnPieceSelfDestroyedEffects(PieceSnapshot snap) {
+		PieceEffect e = snap.getPiece().getCardBase().getEffect();
+		if (e != null && e.hasOnSelfDestroyed()
+				&& e.conditionOnSelfDestroyed(this, snap.getPiece())) {
+			e.effectOnSelfDestroyed(this, snap.getPiece());
+		}
+	}
+
 	public ArrayList<Piece> getAllPieces() {
 		return board.getAllPieces();
 	}
@@ -424,7 +433,7 @@ public class Game {
 		public Point requestBoardPos(String prompt, ArrayList<Point> valid);
 
 		public Piece requestBoardPiece(String prompt, ArrayList<Piece> valid);
-		
+
 		public boolean requestYesNo(String prompt, boolean defaultAnswer);
 
 		public void revealCard(Player p, Card c);

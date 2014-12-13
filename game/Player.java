@@ -6,6 +6,8 @@ import java.util.Collections;
 import buffs.PlayerBuff;
 import card.Card;
 import card.CardBase;
+import card.PieceCardBase;
+import card.PieceCardBase.CardClass;
 
 public class Player {
 	public static final int MAX_HEALTH = 50;
@@ -133,6 +135,18 @@ public class Player {
 		for (Card c : deck) {
 			if (c.getCardBase().getId() == id) {
 				result += 1;
+			}
+		}
+		return result;
+	}
+
+	public ArrayList<Integer> getCardsInDeckOfClass(CardClass cardClass) {
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		for (Card c : deck) {
+			if (c.getCardBase() instanceof PieceCardBase
+					&& ((PieceCardBase) c.getCardBase()).getCardClass().equals(cardClass)
+					&& !result.contains(c.getCardBase().getId())) {
+				result.add(c.getCardBase().getId());
 			}
 		}
 		return result;
@@ -289,9 +303,9 @@ public class Player {
 		public void onDamageFromNoDraw();
 
 		public void onPlayToField(Card card);
-		
+
 		public void onAddFromDeckToHand(Card card);
-		
+
 		public void onShuffle();
 
 		// For hexes and stuff

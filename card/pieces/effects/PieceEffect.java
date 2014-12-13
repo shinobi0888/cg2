@@ -60,4 +60,16 @@ public abstract class PieceEffect {
 	public abstract boolean conditionAfterMainDraw(Game g, Piece p, Card drawn);
 
 	public abstract void effectAfterMainDraw(Game g, Piece p, Card drawn);
+
+	// On Self Destroyed
+
+	protected boolean hasOnSelfDestroyed;
+
+	public boolean hasOnSelfDestroyed() {
+		return hasOnSelfDestroyed;
+	}
+
+	public abstract boolean conditionOnSelfDestroyed(Game g, Piece p);
+
+	public abstract void effectOnSelfDestroyed(Game g, Piece p);
 }

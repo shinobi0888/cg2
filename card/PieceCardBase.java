@@ -7,6 +7,7 @@ import card.pieces.effects.PieceEffect;
 import card.pieces.pieceeffects.AccursedPillarPieceEffect;
 import card.pieces.pieceeffects.AncientArchitectPieceEffect;
 import card.pieces.pieceeffects.AncientPillarPieceEffect;
+import card.pieces.pieceeffects.BrillianceFairyPieceEffect;
 import card.pieces.pieceeffects.CelebrationalPillarPieceEffect;
 import card.pieces.pieceeffects.CorruptPillarPieceEffect;
 import card.pieces.pieceeffects.IdolOfRenewalPieceEffect;
@@ -126,13 +127,15 @@ public class PieceCardBase extends CardBase {
 			return new TitaniaPieceEffect();
 		case WinglessFairyPieceEffect.ID:
 			return new WinglessFairyPieceEffect();
+		case BrillianceFairyPieceEffect.ID:
+			return new BrillianceFairyPieceEffect();
 		default:
 			return new EmptyPieceEffect();
 		}
 	}
 
 	public enum CardClass {
-		NONE("None"), PILLAR("Pillar");
+		NONE("None"), PILLAR("Pillar"), FAIRY("Fairy");
 
 		private final String name;
 
