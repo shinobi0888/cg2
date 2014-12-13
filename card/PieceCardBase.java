@@ -5,6 +5,7 @@ import release.ReleaseSingleCenter;
 import card.pieces.effects.EmptyPieceEffect;
 import card.pieces.effects.PieceEffect;
 import card.pieces.pieceeffects.AccursedPillarPieceEffect;
+import card.pieces.pieceeffects.AgileFairyPieceEffect;
 import card.pieces.pieceeffects.AncientArchitectPieceEffect;
 import card.pieces.pieceeffects.AncientPillarPieceEffect;
 import card.pieces.pieceeffects.BrillianceFairyPieceEffect;
@@ -129,6 +130,8 @@ public class PieceCardBase extends CardBase {
 			return new WinglessFairyPieceEffect();
 		case BrillianceFairyPieceEffect.ID:
 			return new BrillianceFairyPieceEffect();
+		case AgileFairyPieceEffect.ID:
+			return new AgileFairyPieceEffect();
 		default:
 			return new EmptyPieceEffect();
 		}
