@@ -80,6 +80,10 @@ public abstract class BasicCardTest {
 		game.playIndex(index);
 	}
 
+	protected void actionYesNo(boolean isYes) {
+		instructionQueue.add(isYes ? "yes" : "no");
+	}
+
 	protected void actionCycleTurn() {
 		game.endTurn();
 		game.beginTurn();
@@ -121,6 +125,14 @@ public abstract class BasicCardTest {
 		}
 
 		public void cardSentToGrave(Card card) {
+
+		}
+
+		public void onAddFromDeckToHand(Card card) {
+
+		}
+
+		public void onShuffle() {
 
 		}
 
@@ -175,7 +187,7 @@ public abstract class BasicCardTest {
 							Integer.parseInt(pieces[1].trim()));
 					for (Piece piece : valid) {
 						if (piece.getX() == p.x && piece.getY() == p.y) {
-							test.instructionQueue.remove(test.instructionQueue.size() - 1); 
+							test.instructionQueue.remove(test.instructionQueue.size() - 1);
 							return piece;
 						}
 					}
@@ -248,6 +260,13 @@ public abstract class BasicCardTest {
 
 		public void pieceLostBuff(Piece p, PieceBuff b) {
 
+		}
+
+		public boolean requestYesNo(String prompt, boolean defaultAnswer) {
+			String top = test.instructionQueue.get(test.instructionQueue.size() - 1)
+					.trim();
+			test.instructionQueue.remove(test.instructionQueue.size() - 1);
+			return (top.equals("yes") || top.equals("y"));
 		}
 
 	}

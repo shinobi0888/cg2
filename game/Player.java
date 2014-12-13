@@ -128,8 +128,36 @@ public class Player {
 		}
 	}
 
+	public int getCardInDeckCount(int id) {
+		int result = 0;
+		for (Card c : deck) {
+			if (c.getCardBase().getId() == id) {
+				result += 1;
+			}
+		}
+		return result;
+	}
+
+	public void addFromDeckToHand(int id) {
+		for (int i = 0; i < deck.size(); i++) {
+			Card c = deck.get(i);
+			if (c.getCardBase().getId() == id) {
+				deck.remove(c);
+				hand.add(c);
+				for (PlayerListener listener : listeners) {
+					listener.onAddFromDeckToHand(c);
+				}
+				shuffleDeck();
+				return;
+			}
+		}
+	}
+
 	public void shuffleDeck() {
 		Collections.shuffle(deck);
+		for (PlayerListener listener : listeners) {
+			listener.onShuffle();
+		}
 	}
 
 	public Card drawCard() {
@@ -261,6 +289,10 @@ public class Player {
 		public void onDamageFromNoDraw();
 
 		public void onPlayToField(Card card);
+		
+		public void onAddFromDeckToHand(Card card);
+		
+		public void onShuffle();
 
 		// For hexes and stuff
 		public void cardSentToGrave(Card card);

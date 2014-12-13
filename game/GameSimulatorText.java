@@ -210,6 +210,15 @@ class PlayerReporter implements Player.PlayerListener {
 		System.out.println(player.getName() + " played "
 				+ card.getCardBase().getName() + ".");
 	}
+
+	public void onAddFromDeckToHand(Card card) {
+		System.out.println(player.getName() + " added card "
+				+ card.getCardBase().getName() + " from the deck to the hand.");
+	}
+
+	public void onShuffle() {
+		System.out.println(player.getName() + "'s deck was shuffled.");
+	}
 }
 
 class GameReporter implements Game.GameInterface {
@@ -367,5 +376,18 @@ class GameReporter implements Game.GameInterface {
 	public void pieceLostBuff(Piece p, PieceBuff b) {
 		System.out.println(p.getName() + " lost buff "
 				+ b.getClass().getSimpleName() + ".");
+	}
+
+	public boolean requestYesNo(String prompt, boolean defaultAnswer) {
+		try {
+			System.out.println(prompt);
+			String response = in.readLine();
+			return (response.equals("yes") || response.equals("y")) ? true
+					: ((response.equals("no") || response.equals("n")) ? false
+							: defaultAnswer);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return defaultAnswer;
+		}
 	}
 }

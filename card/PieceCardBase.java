@@ -10,7 +10,9 @@ import card.pieces.pieceeffects.AncientPillarPieceEffect;
 import card.pieces.pieceeffects.CelebrationalPillarPieceEffect;
 import card.pieces.pieceeffects.CorruptPillarPieceEffect;
 import card.pieces.pieceeffects.IdolOfRenewalPieceEffect;
+import card.pieces.pieceeffects.OberonPieceEffect;
 import card.pieces.pieceeffects.SoulstealerPieceEffect;
+import card.pieces.pieceeffects.TitaniaPieceEffect;
 
 /*
  * Adding a new card:
@@ -117,6 +119,10 @@ public class PieceCardBase extends CardBase {
 			return new IdolOfRenewalPieceEffect();
 		case SoulstealerPieceEffect.ID:
 			return new SoulstealerPieceEffect();
+		case OberonPieceEffect.ID:
+			return new OberonPieceEffect();
+		case TitaniaPieceEffect.ID:
+			return new TitaniaPieceEffect();
 		default:
 			return new EmptyPieceEffect();
 		}

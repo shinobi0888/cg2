@@ -424,6 +424,8 @@ public class Game {
 		public Point requestBoardPos(String prompt, ArrayList<Point> valid);
 
 		public Piece requestBoardPiece(String prompt, ArrayList<Piece> valid);
+		
+		public boolean requestYesNo(String prompt, boolean defaultAnswer);
 
 		public void revealCard(Player p, Card c);
 
