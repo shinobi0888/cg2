@@ -285,6 +285,22 @@ public class Game {
 		}
 	}
 
+	public void simulateHexHeal(Player p, int amount) {
+		simulateAnyHeal(p, amount);
+	}
+
+	public void simulateEffectHeal(Player p, int amount) {
+		simulateAnyHeal(p, amount);
+	}
+
+	private void simulateAnyHeal(Player p, int amount) {
+		p.raiseHealth(amount);
+		// Check loss condition
+		if (p.lost()) {
+			iface.playerLost(p);
+		}
+	}
+
 	public void simulateAttack(Piece attacker, Piece target) {
 		iface.pieceAttacked(attacker, target);
 		if (attacker.getAttack() >= target.getDefense()) {

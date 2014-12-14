@@ -136,6 +136,10 @@ public abstract class BasicCardTest {
 
 		}
 
+		public void onHeal(int amount) {
+			
+		}
+
 	}
 
 	protected class CardTestGameInterface implements Game.GameInterface {

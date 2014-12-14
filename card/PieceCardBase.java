@@ -1,6 +1,7 @@
 package card;
 
 import release.Release;
+import release.ReleaseDiagonalLine;
 import release.ReleaseSingleCenter;
 import card.pieces.effects.EmptyPieceEffect;
 import card.pieces.effects.PieceEffect;
@@ -10,6 +11,7 @@ import card.pieces.pieceeffects.AncientArchitectPieceEffect;
 import card.pieces.pieceeffects.AncientPillarPieceEffect;
 import card.pieces.pieceeffects.BrillianceFairyPieceEffect;
 import card.pieces.pieceeffects.CelebrationalPillarPieceEffect;
+import card.pieces.pieceeffects.ChampionGerynPieceEffect;
 import card.pieces.pieceeffects.CorruptPillarPieceEffect;
 import card.pieces.pieceeffects.IdolOfRenewalPieceEffect;
 import card.pieces.pieceeffects.OberonPieceEffect;
@@ -101,6 +103,8 @@ public class PieceCardBase extends CardBase {
 		switch (id) {
 		case ReleaseSingleCenter.ID:
 			return new ReleaseSingleCenter();
+		case ReleaseDiagonalLine.ID:
+			return new ReleaseDiagonalLine();
 		default:
 			return null;
 		}
@@ -132,6 +136,8 @@ public class PieceCardBase extends CardBase {
 			return new BrillianceFairyPieceEffect();
 		case AgileFairyPieceEffect.ID:
 			return new AgileFairyPieceEffect();
+		case ChampionGerynPieceEffect.ID:
+			return new ChampionGerynPieceEffect();
 		default:
 			return new EmptyPieceEffect();
 		}

@@ -18,6 +18,7 @@ Titania, Queen of Fairies::14::On play: You may add 1 "Oberon, King of Fairies" 
 Wingless Fairy::15::On play: Deal 4 damage to the player’s health. If you control "Oberon, King of Fairies" or "Titania, Queen of Fairies": increase the player’s play count by 1 and draw 1 card.::Piece||3::3::0::Fairy::1::1::1::1
 Brilliance Fairy::16::When this piece is destroyed: deal 2 damage to the owner’s health and add a random [Fairy] to the hand, if possible.::Piece||3::3::0::Fairy::1::1::1::1
 Agile Fairy::17::On play: increase the player’s play count by 1.::Piece||0::0::0::Fairy::1::1::1::1
+Champion Geryn::18::On play: for each ally [Fairy] on the board: heal the player's health by 2.::Piece||8::10::2::Fairy::1::1::1::1
 // TODO: write cards 1-90
 Rogue Knight::89::::Piece||4::4::0::::1::1::1::1
 Obsidian Golem::90::::Piece||3::5::0::::1::1::1::1

@@ -84,6 +84,16 @@ public class Player {
 		}
 	}
 
+	public void raiseHealth(int amount) {
+		int oldHealth = health;
+		amount = Math.min(amount, MAX_HEALTH - health);
+		health += amount;
+		for (PlayerListener listener : listeners) {
+			listener.onHeal(amount);
+			listener.health(oldHealth, health);
+		}
+	}
+
 	public int getHealth() {
 		return health;
 	}
@@ -295,6 +305,8 @@ public class Player {
 		public void health(int oldHealth, int newHealth);
 
 		public void onDamage(int amount);
+
+		public void onHeal(int amount);
 
 		public void cardRemovedFromPlayed(Card card);
 

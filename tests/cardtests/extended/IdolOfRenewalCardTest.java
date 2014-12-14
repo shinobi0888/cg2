@@ -24,7 +24,7 @@ public class IdolOfRenewalCardTest extends BasicCardTest {
 		// Ensure card counts for player 2 don't get affected
 		assertEquals(game.turnPlayer().getHandCount(), 7);
 		actionCycleTurn();
-		actionPlay(0, new int[] { 4, 0, 4, 0 });
+		actionPlay(0, new int[] { 4, 0 });
 		assertEquals(game.turnPlayer().getHandCount(), 6);
 		actionCycleTurn();
 		// Ensure card counts for player 2 don't get affected
@@ -40,7 +40,7 @@ public class IdolOfRenewalCardTest extends BasicCardTest {
 		actionPlay(1, 5, 0);
 		actionCycleTurn();
 		actionCycleTurn();
-		actionPlay(0, new int[] { 5, 0, 5, 0 });
+		actionPlay(0, new int[] { 5, 0 });
 		actionCycleTurn();
 		actionCycleTurn();
 		// Draws 2 for double idol
