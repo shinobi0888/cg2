@@ -20,6 +20,13 @@ Brilliance Fairy::16::When this piece is destroyed: deal 2 damage to the owner’s
 Agile Fairy::17::On play: increase the player’s play count by 1.::Piece||0::0::0::Fairy::1::1::1::1
 Champion Geryn::18::On play: for each ally [Fairy] on the board: heal the player's health by 2.::Piece||8::10::2::Fairy::1::1::1::1
 Fairy Ring::19::Add 1 random [Fairy] to the hand from the deck, if possible.::Hex
+Red Tiger::20::While this piece is on the board: All other ally [Spirit]s in a 1-Radius gain 2 Attack.::Piece||3::2::0::Spirit::1::1::1::1
+Green Wolf::21::While this piece is on the board: All other ally [Spirit]s in a 1-Radius gain 2 Defense.::Piece||2::3::0::Spirit::1::1::1::1
+Blue Heron::22::If there is an ally piece adjacent to this piece: this piece cannot be attacked.::Piece||4::0::0::Spirit::1::1::1::1
+Crimson Phoenix::23::While this piece is on the board: All ally pieces on the board gain 2 Attack.::Piece||5::3::3::Spirit::1::1::1::1
+Emerald Serpent::24::While this piece is on the board: All ally pieces on the board gain 2 Defense.::Piece||3::5::3::Spirit::1::1::1::1
+Grey Kirin::25::This piece gains 1 Attack and Defense for each other ally [Spirit] in a 1-Radius.::Piece||2::2::0::Spirit::1::1::1::1
+White Chimaera::26::When an ally [Spirit] is played within a 1-Radius of this piece: increase the owner's play count by 1.::Piece||1::1::0::Spirit::1::1::1::1
 // TODO: write cards 1-90
 Rogue Knight::89::::Piece||4::4::0::::1::1::1::1
 Obsidian Golem::90::::Piece||3::5::0::::1::1::1::1

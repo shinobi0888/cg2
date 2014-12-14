@@ -9,12 +9,15 @@ import card.pieces.pieceeffects.AccursedPillarPieceEffect;
 import card.pieces.pieceeffects.AgileFairyPieceEffect;
 import card.pieces.pieceeffects.AncientArchitectPieceEffect;
 import card.pieces.pieceeffects.AncientPillarPieceEffect;
+import card.pieces.pieceeffects.BlueHeronPieceEffect;
 import card.pieces.pieceeffects.BrillianceFairyPieceEffect;
 import card.pieces.pieceeffects.CelebrationalPillarPieceEffect;
 import card.pieces.pieceeffects.ChampionGerynPieceEffect;
 import card.pieces.pieceeffects.CorruptPillarPieceEffect;
+import card.pieces.pieceeffects.GreenWolfPieceEffect;
 import card.pieces.pieceeffects.IdolOfRenewalPieceEffect;
 import card.pieces.pieceeffects.OberonPieceEffect;
+import card.pieces.pieceeffects.RedTigerPieceEffect;
 import card.pieces.pieceeffects.SoulstealerPieceEffect;
 import card.pieces.pieceeffects.TitaniaPieceEffect;
 import card.pieces.pieceeffects.WinglessFairyPieceEffect;
@@ -138,13 +141,19 @@ public class PieceCardBase extends CardBase {
 			return new AgileFairyPieceEffect();
 		case ChampionGerynPieceEffect.ID:
 			return new ChampionGerynPieceEffect();
+		case RedTigerPieceEffect.ID:
+			return new RedTigerPieceEffect();
+		case GreenWolfPieceEffect.ID:
+			return new GreenWolfPieceEffect();
+		case BlueHeronPieceEffect.ID:
+			return new BlueHeronPieceEffect();
 		default:
 			return new EmptyPieceEffect();
 		}
 	}
 
 	public enum CardClass {
-		NONE("None"), PILLAR("Pillar"), FAIRY("Fairy");
+		NONE("None"), PILLAR("Pillar"), FAIRY("Fairy"), SPIRIT("Spirit");
 
 		private final String name;
 

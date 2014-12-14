@@ -41,7 +41,8 @@ public class Piece extends GridMapEntity {
 		if (this.getAttacks() > 0) {
 			for (Point p : b.getSquaresInPattern(x, y, source.getAttackPattern())) {
 				Piece target = b.getPiece(p.x, p.y);
-				if (target != null && !target.getOwner().equals(owner)) {
+				if (target != null && !target.getOwner().equals(owner)
+						&& target.canBeAttacked()) {
 					attackable.add(p);
 				}
 			}
@@ -209,6 +210,15 @@ public class Piece extends GridMapEntity {
 			defense += additionalDefense;
 		}
 		return Math.max(0, defense);
+	}
+
+	public boolean canBeAttacked() {
+		for (PieceBuff b : buffs) {
+			if (!b.canBeAttacked(g)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public Player getOwner() {

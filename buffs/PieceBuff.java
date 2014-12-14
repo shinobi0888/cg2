@@ -18,6 +18,10 @@ public class PieceBuff {
 	public int getDefenseBuff(Game g) {
 		return 0;
 	}
+	
+	public boolean canBeAttacked(Game g) {
+		return true;
+	}
 
 	public Piece getTarget() {
 		return target;
