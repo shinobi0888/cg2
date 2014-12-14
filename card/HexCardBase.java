@@ -2,6 +2,7 @@ package card;
 
 import game.Game;
 import game.Player;
+import card.hexes.cardeffects.FairyRingHexEffect;
 import card.hexes.cardeffects.InheritanceOfWillHexEffect;
 import card.hexes.cardeffects.LivingWallsHexEffect;
 import card.hexes.cardeffects.PillarTransfigurationHexEffect;
@@ -30,6 +31,8 @@ public class HexCardBase extends CardBase {
 			return new LivingWallsHexEffect();
 		case InheritanceOfWillHexEffect.ID:
 			return new InheritanceOfWillHexEffect();
+		case FairyRingHexEffect.ID:
+			return new FairyRingHexEffect();
 		}
 		// Debug cards
 		switch (id) {
