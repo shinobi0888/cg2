@@ -144,6 +144,10 @@ public abstract class BasicCardTest {
 
 		}
 
+		public void onMillFromHand(Card card) {
+			
+		}
+
 	}
 
 	protected class CardTestGameInterface implements Game.GameInterface {

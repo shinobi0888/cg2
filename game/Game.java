@@ -115,11 +115,11 @@ public class Game {
 
 	public void beginTurn() {
 		turn++;
+		turnPlayer().resetPiecePlays();
 		// Start of turn effects
 		simulateOnTurnStartEffects();
 		board.initNewTurnMovesAndAttacks(turnPlayer());
 		board.calculateAllAllowedActions(turnPlayer());
-		turnPlayer().resetPiecePlays();
 		Card c = turnPlayer().drawCard();
 		if (c != null) {
 			simulateAfterDrawEffects(c);
@@ -127,7 +127,9 @@ public class Game {
 	}
 
 	public void endTurn() {
-		// Currently the only actions taken are to ascend any forced ascends
+		// First simulate the end of turn events
+		simulateOnTurnEndEffects();
+		// Then ascend everything
 		Piece needAscend = board.getPiece(Board.WIDTH / 2,
 				turnPlayer().equals(players[1]) ? 0 : Board.HEIGHT);
 		if (needAscend != null && needAscend.getOwner().equals(turnPlayer())) {
@@ -144,6 +146,7 @@ public class Game {
 		if (c.getCardBase() instanceof PieceCardBase) {
 			PieceCardBase cardBase = (PieceCardBase) c.getCardBase();
 			return turnPlayer().getPiecePlays() > 0
+					&& !turnPlayer().isUnableToPlayPieces()
 					&& board.getOpenEndZones(turnPlayer()).size() > 0
 					&& (cardBase.getRelease() == null || cardBase.getRelease()
 							.canRelease(this, turnPlayer()));
@@ -265,6 +268,7 @@ public class Game {
 	}
 
 	public void removeEndOfTurnBuffs() {
+		turnPlayer().removeEndOfOwnTurnBuffs();
 		turnPlayer().removeEndOfTurnBuffs();
 		offTurnPlayer().removeEndOfTurnBuffs();
 		for (Piece p : board.getAllPieces()) {
@@ -378,6 +382,10 @@ public class Game {
 		}
 	}
 
+	public void simulateMillPlayerHand(Player p, int index) {
+		p.millCardFromHand(index);
+	}
+
 	// Applies auras globally, removing unfit auras
 
 	public void applyAuras() {
@@ -400,11 +408,36 @@ public class Game {
 	// Simulate on turn start effects
 
 	public void simulateOnTurnStartEffects() {
+		// Player buff turn starts have precedence, starting from turn player
+		for (PlayerBuff b : turnPlayer().getBuffs()) {
+			if (b.hasOnTurnStart() && b.conditionOnTurnStart(this, turnPlayer())) {
+				b.effectOnTurnStart(this, turnPlayer());
+			}
+		}
+		for (PlayerBuff b : offTurnPlayer().getBuffs()) {
+			if (b.hasOnTurnStart() && b.conditionOnTurnStart(this, offTurnPlayer())) {
+				b.effectOnTurnStart(this, offTurnPlayer());
+			}
+		}
 		for (Piece p : board.getAllPiecesInPlayerOrder(turnPlayer())) {
 			PieceEffect e = p.getCardBase().getEffect();
 			if (e.hasOnTurnStart() && e.conditionOnTurnStart(this, p)) {
 				iface.pieceEffectActivated(p);
 				e.effectOnTurnStart(this, p);
+			}
+		}
+	}
+
+	public void simulateOnTurnEndEffects() {
+		// Player buff turn starts have precedence, starting from turn player
+		for (PlayerBuff b : turnPlayer().getBuffs()) {
+			if (b.hasOnTurnEnd() && b.conditionOnTurnEnd(this, turnPlayer())) {
+				b.effectOnTurnEnd(this, turnPlayer());
+			}
+		}
+		for (PlayerBuff b : offTurnPlayer().getBuffs()) {
+			if (b.hasOnTurnEnd() && b.conditionOnTurnEnd(this, offTurnPlayer())) {
+				b.effectOnTurnEnd(this, offTurnPlayer());
 			}
 		}
 	}

@@ -189,6 +189,15 @@ public class Player {
 		}
 	}
 
+	public void millCardFromHand(int index) {
+		Card c = hand.get(index);
+		hand.remove(index);
+		grave.add(c);
+		for (PlayerListener listener : listeners) {
+			listener.onMillFromHand(c);
+		}
+	}
+
 	public void shuffleDeck() {
 		Collections.shuffle(deck);
 		for (PlayerListener listener : listeners) {
@@ -331,6 +340,24 @@ public class Player {
 		}
 	}
 
+	public void removeEndOfOwnTurnBuffs() {
+		for (int i = 0; i < buffs.size(); i++) {
+			if (buffs.get(i).isRemoveAtEndOfOwnTurn()) {
+				buffs.remove(i);
+				i--;
+			}
+		}
+	}
+
+	public boolean isUnableToPlayPieces() {
+		for (PlayerBuff b : buffs) {
+			if (b.isPreventFromPlayingPieces()) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public interface PlayerListener {
 		public void cardDrawn(Card card);
 
@@ -341,6 +368,8 @@ public class Player {
 		public void onHeal(int amount);
 
 		public void cardRemovedFromPlayed(Card card);
+		
+		public void onMillFromHand(Card card);
 
 		public void overturned(int numCards);
 

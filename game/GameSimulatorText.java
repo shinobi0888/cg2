@@ -228,6 +228,11 @@ class PlayerReporter implements Player.PlayerListener {
 		System.out.println(player.getName() + "'s " + card.getCardBase().getName()
 				+ " was added back to the deck.");
 	}
+
+	public void onMillFromHand(Card card) {
+		System.out.println(player.getName() + "'s " + card.getCardBase().getName()
+				+ " was sent to the grave.");
+	}
 }
 
 class GameReporter implements Game.GameInterface {

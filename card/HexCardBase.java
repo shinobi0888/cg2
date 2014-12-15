@@ -3,9 +3,11 @@ package card;
 import game.Game;
 import game.Player;
 import card.hexes.cardeffects.FairyRingHexEffect;
+import card.hexes.cardeffects.ForcefulExchangeHexEffect;
 import card.hexes.cardeffects.InheritanceOfWillHexEffect;
 import card.hexes.cardeffects.LivingWallsHexEffect;
 import card.hexes.cardeffects.PillarTransfigurationHexEffect;
+import card.hexes.cardeffects.PlagueOfThePiperHexEffect;
 import card.hexes.cardeffects.PrismaticPromotionHexEffect;
 import card.hexes.cardeffects.ReappropriationHexEffect;
 import card.hexes.cardeffects.TitheOfProtectionHexEffect;
@@ -39,6 +41,10 @@ public class HexCardBase extends CardBase {
 			return new PrismaticPromotionHexEffect();
 		case TitheOfProtectionHexEffect.ID:
 			return new TitheOfProtectionHexEffect();
+		case ForcefulExchangeHexEffect.ID:
+			return new ForcefulExchangeHexEffect();
+		case PlagueOfThePiperHexEffect.ID:
+			return new PlagueOfThePiperHexEffect();
 		}
 		// Debug cards
 		switch (id) {

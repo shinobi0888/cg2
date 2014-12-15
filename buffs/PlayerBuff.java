@@ -23,6 +23,12 @@ public class PlayerBuff {
 		return isRemoveAtEndOfTurn;
 	}
 
+	protected boolean isRemoveAtEndOfOwnTurn = false;
+
+	public boolean isRemoveAtEndOfOwnTurn() {
+		return isRemoveAtEndOfOwnTurn;
+	}
+
 	protected boolean hasOnPieceDestroyed = false;
 
 	public boolean hasOnPieceDestroyed() {
@@ -36,5 +42,39 @@ public class PlayerBuff {
 
 	public void effectOnPieceDestroyed(Game g, Player player, PieceSnapshot p) {
 
+	}
+
+	// Effects on turn start and turn end (of either player)
+	protected boolean hasOnTurnStart = false;
+
+	public boolean hasOnTurnStart() {
+		return hasOnTurnStart;
+	}
+	
+	public boolean conditionOnTurnStart(Game g, Player player) {
+		return false;
+	}
+	
+	public void effectOnTurnStart(Game g, Player player) {
+	}
+	
+	protected boolean hasOnTurnEnd = false;
+
+	public boolean hasOnTurnEnd() {
+		return hasOnTurnStart;
+	}
+	
+	public boolean conditionOnTurnEnd(Game g, Player player) {
+		return false;
+	}
+	
+	public void effectOnTurnEnd(Game g, Player player) {
+	}
+
+	// Prevent playing pieces
+	protected boolean isPreventFromPlayingPieces = false;
+
+	public boolean isPreventFromPlayingPieces() {
+		return isPreventFromPlayingPieces;
 	}
 }
