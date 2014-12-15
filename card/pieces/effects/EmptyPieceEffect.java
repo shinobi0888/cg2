@@ -12,6 +12,7 @@ public class EmptyPieceEffect extends PieceEffect {
 		this.hasOnTurnStart = false;
 		this.hasAfterMainDraw = false;
 		this.hasOnSelfDestroyed = false;
+		this.hasOnPiecePlayed = false;
 	}
 
 	public boolean conditionActive(Game g, Piece p) {
@@ -60,5 +61,13 @@ public class EmptyPieceEffect extends PieceEffect {
 
 	public void effectOnSelfDestroyed(Game g, Piece p) {
 
+	}
+
+	public boolean conditionOnPiecePlayed(Game g, Piece played, Piece source) {
+		return false;
+	}
+
+	public void effectOnPiecePlayed(Game g, Piece played, Piece source) {
+		
 	}
 }

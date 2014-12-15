@@ -13,6 +13,7 @@ public class Board {
 	public static final int NO_LOC_PATTERN = 0;
 	public static final int REG_PATTERN = 1;
 	public static final int ADJACENT_2_PATTERN = 2;
+	public static final int RADIUS_1_PATTERN = 3;
 
 	public static final int WIDTH = 9;
 	public static final int HEIGHT = 9;
@@ -118,6 +119,15 @@ public class Board {
 				tryAddSquareToPattern(x, y - 2, result);
 				tryAddSquareToPattern(x, y + 2, result);
 				break;
+			case RADIUS_1_PATTERN:
+				tryAddSquareToPattern(x-1, y-1, result);
+				tryAddSquareToPattern(x-1, y, result);
+				tryAddSquareToPattern(x-1, y+1, result);
+				tryAddSquareToPattern(x, y-1, result);
+				tryAddSquareToPattern(x, y+1, result);
+				tryAddSquareToPattern(x+1, y-1, result);
+				tryAddSquareToPattern(x+1, y, result);
+				tryAddSquareToPattern(x+1, y+1, result);
 			}
 		}
 		return result;

@@ -17,11 +17,13 @@ import card.pieces.pieceeffects.CorruptPillarPieceEffect;
 import card.pieces.pieceeffects.CrimsonPhoenixPieceEffect;
 import card.pieces.pieceeffects.EmeraldSerpentPieceEffect;
 import card.pieces.pieceeffects.GreenWolfPieceEffect;
+import card.pieces.pieceeffects.GreyKirinPieceEffect;
 import card.pieces.pieceeffects.IdolOfRenewalPieceEffect;
 import card.pieces.pieceeffects.OberonPieceEffect;
 import card.pieces.pieceeffects.RedTigerPieceEffect;
 import card.pieces.pieceeffects.SoulstealerPieceEffect;
 import card.pieces.pieceeffects.TitaniaPieceEffect;
+import card.pieces.pieceeffects.WhiteChimaeraPieceEffect;
 import card.pieces.pieceeffects.WinglessFairyPieceEffect;
 
 /*
@@ -153,6 +155,10 @@ public class PieceCardBase extends CardBase {
 			return new CrimsonPhoenixPieceEffect();
 		case EmeraldSerpentPieceEffect.ID:
 			return new EmeraldSerpentPieceEffect();
+		case GreyKirinPieceEffect.ID:
+			return new GreyKirinPieceEffect();
+		case WhiteChimaeraPieceEffect.ID:
+			return new WhiteChimaeraPieceEffect();
 		default:
 			return new EmptyPieceEffect();
 		}

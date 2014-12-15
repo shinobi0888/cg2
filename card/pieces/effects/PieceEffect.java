@@ -72,4 +72,16 @@ public abstract class PieceEffect {
 	public abstract boolean conditionOnSelfDestroyed(Game g, Piece p);
 
 	public abstract void effectOnSelfDestroyed(Game g, Piece p);
+
+	// On Piece Played (any piece)
+
+	protected boolean hasOnPiecePlayed;
+
+	public boolean hasOnPiecePlayed() {
+		return hasOnPiecePlayed;
+	}
+
+	public abstract boolean conditionOnPiecePlayed(Game g, Piece played, Piece source);
+
+	public abstract void effectOnPiecePlayed(Game g, Piece played, Piece source);
 }

@@ -36,6 +36,14 @@ public class Game {
 				iface.pieceEffectActivated(p);
 				p.getCardBase().getEffect().effectOnPlay(game, p);
 			}
+			// Handle onPiecePlayed of all pieces on the board
+			for (Piece piece : board.getAllPiecesInPlayerOrder(turnPlayer())) {
+				if (!piece.equals(p)
+						&& piece.getCardBase().getEffect().hasOnPiecePlayed()
+						&& piece.getCardBase().getEffect().conditionOnPiecePlayed(game, p, piece)) {
+					piece.getCardBase().getEffect().effectOnPiecePlayed(game, p, piece);
+				}
+			}
 			game.applyAuras();
 		}
 
