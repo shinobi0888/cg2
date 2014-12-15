@@ -289,6 +289,10 @@ public abstract class BasicCardTest {
 			return (top.equals("yes") || top.equals("y"));
 		}
 
+		public void playerPreventedFromDrawing(Player p, Card source) {
+
+		}
+
 	}
 
 }

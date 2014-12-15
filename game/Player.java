@@ -327,6 +327,15 @@ public class Player {
 			listener.onCardReturnedToDeckFromHand(c);
 		}
 	}
+	
+	public void sendFromHandToBottomOfDeck(int index) {
+		Card c = hand.get(index);
+		hand.remove(index);
+		deck.add(c);
+		for (PlayerListener listener : listeners) {
+			listener.onCardReturnedToDeckFromHand(c);
+		}
+	}
 
 	public void addBuff(PlayerBuff b) {
 		buffs.add(b);

@@ -84,7 +84,7 @@ public class Piece extends GridMapEntity {
 	public boolean canAscend() {
 		return ascendable;
 	}
-	
+
 	public PieceEffect getEffect() {
 		return source.getEffect();
 	}
@@ -172,6 +172,21 @@ public class Piece extends GridMapEntity {
 	// Stats
 
 	public int getAttack() {
+		boolean needSwap = false;
+		for (PieceBuff b : buffs) {
+			if (b.isSwapStats()) {
+				needSwap = true;
+				break;
+			}
+		}
+		if (needSwap) {
+			return getUnswappedDefense();
+		} else {
+			return getUnswappedAttack();
+		}
+	}
+
+	private int getUnswappedAttack() {
 		int attack = source.getAttack();
 		int additionalAttack = 0;
 		// TODO: implement all the attack increase decrease buffs
@@ -195,6 +210,21 @@ public class Piece extends GridMapEntity {
 	}
 
 	public int getDefense() {
+		boolean needSwap = false;
+		for (PieceBuff b : buffs) {
+			if (b.isSwapStats()) {
+				needSwap = true;
+				break;
+			}
+		}
+		if (needSwap) {
+			return getUnswappedAttack();
+		} else {
+			return getUnswappedDefense();
+		}
+	}
+
+	private int getUnswappedDefense() {
 		int defense = source.getDefense();
 		int additionalDefense = 0;
 		// TODO: implement all the defense increase decrease buffs

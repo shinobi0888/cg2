@@ -415,4 +415,10 @@ class GameReporter implements Game.GameInterface {
 			return defaultAnswer;
 		}
 	}
+
+	public void playerPreventedFromDrawing(Player p, Card source) {
+		System.out.println(p.getName()
+				+ " was prevented from drawing due to the effect of "
+				+ source.getCardBase().getName() + ".");
+	}
 }

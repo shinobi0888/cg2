@@ -54,4 +54,9 @@ public class PieceBuff {
 	public void decrStacks(int amount) {
 		stacks -= amount;
 	}
+	
+	protected boolean isSwapStats;
+	public boolean isSwapStats() {
+		return isSwapStats;
+	}
 }

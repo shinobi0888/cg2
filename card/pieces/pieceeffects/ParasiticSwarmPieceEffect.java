@@ -5,7 +5,7 @@ import board.Piece;
 import card.pieces.effects.EmptyPieceEffect;
 
 public class ParasiticSwarmPieceEffect extends EmptyPieceEffect {
-	public static final int ID = 32;
+	public static final int ID = 33;
 
 	public ParasiticSwarmPieceEffect() {
 		this.hasOnPlay = true;

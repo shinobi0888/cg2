@@ -2,6 +2,7 @@ package card.pieces.effects;
 
 import card.Card;
 import game.Game;
+import game.Player;
 import board.Piece;
 
 public class EmptyPieceEffect extends PieceEffect {
@@ -14,6 +15,7 @@ public class EmptyPieceEffect extends PieceEffect {
 		this.hasOnSelfDestroyed = false;
 		this.hasOnPiecePlayed = false;
 		this.isPreventOverturn = false;
+		this.hasPreventStartOfTurnDraw = false;
 	}
 
 	public boolean conditionActive(Game g, Piece p) {
@@ -69,6 +71,10 @@ public class EmptyPieceEffect extends PieceEffect {
 	}
 
 	public void effectOnPiecePlayed(Game g, Piece played, Piece source) {
-		
+
+	}
+
+	public boolean conditionPreventStartOfTurnDraw(Game g, Player drawing) {
+		return false;
 	}
 }

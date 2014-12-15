@@ -16,12 +16,16 @@ import card.pieces.pieceeffects.ChampionGerynPieceEffect;
 import card.pieces.pieceeffects.CorruptPillarPieceEffect;
 import card.pieces.pieceeffects.CrimsonPhoenixPieceEffect;
 import card.pieces.pieceeffects.EmeraldSerpentPieceEffect;
+import card.pieces.pieceeffects.EnergyLeechPieceEffect;
 import card.pieces.pieceeffects.GreenWolfPieceEffect;
 import card.pieces.pieceeffects.GreyKirinPieceEffect;
 import card.pieces.pieceeffects.IdolOfRenewalPieceEffect;
 import card.pieces.pieceeffects.MokshaPriestPieceEffect;
 import card.pieces.pieceeffects.OberonPieceEffect;
+import card.pieces.pieceeffects.OverweightToadPieceEffect;
+import card.pieces.pieceeffects.ParasiticSwarmPieceEffect;
 import card.pieces.pieceeffects.RedTigerPieceEffect;
+import card.pieces.pieceeffects.SealOfEqualityPieceEffect;
 import card.pieces.pieceeffects.SoulstealerPieceEffect;
 import card.pieces.pieceeffects.TitaniaPieceEffect;
 import card.pieces.pieceeffects.WhiteChimaeraPieceEffect;
@@ -162,6 +166,14 @@ public class PieceCardBase extends CardBase {
 			return new WhiteChimaeraPieceEffect();
 		case MokshaPriestPieceEffect.ID:
 			return new MokshaPriestPieceEffect();
+		case EnergyLeechPieceEffect.ID:
+			return new EnergyLeechPieceEffect();
+		case ParasiticSwarmPieceEffect.ID:
+			return new ParasiticSwarmPieceEffect();
+		case OverweightToadPieceEffect.ID:
+			return new OverweightToadPieceEffect();
+		case SealOfEqualityPieceEffect.ID:
+			return new SealOfEqualityPieceEffect();
 		default:
 			return new EmptyPieceEffect();
 		}

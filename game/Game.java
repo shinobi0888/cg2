@@ -120,9 +120,22 @@ public class Game {
 		simulateOnTurnStartEffects();
 		board.initNewTurnMovesAndAttacks(turnPlayer());
 		board.calculateAllAllowedActions(turnPlayer());
-		Card c = turnPlayer().drawCard(this);
-		if (c != null) {
-			simulateAfterDrawEffects(c);
+		// Check for any preventative effects on drawing
+		boolean canDraw = true;
+		for (Piece p : board.getAllPieces()) {
+			PieceEffect e = p.getEffect();
+			if (e != null && e.hasPreventStartOfTurnDraw()
+					&& e.conditionPreventStartOfTurnDraw(this, turnPlayer())) {
+				iface.playerPreventedFromDrawing(turnPlayer(), p.getSourceCard());
+				canDraw = false;
+				break;
+			}
+		}
+		if (canDraw) {
+			Card c = turnPlayer().drawCard(this);
+			if (c != null) {
+				simulateAfterDrawEffects(c);
+			}
 		}
 	}
 
@@ -382,6 +395,14 @@ public class Game {
 		}
 	}
 
+	public void simulateSendFromHandToTopOfDeck(Player p, int index) {
+		p.sendFromHandToTopOfDeck(index);
+	}
+
+	public void simulateSendFromHandToBottomOfDeck(Player p, int index) {
+		p.sendFromHandToBottomOfDeck(index);
+	}
+
 	public void simulateDiscardFromHand(Player p, int index) {
 		p.discardFromHand(index);
 	}
@@ -537,5 +558,7 @@ public class Game {
 		public void pieceGainedBuff(Piece p, PieceBuff b);
 
 		public void pieceLostBuff(Piece p, PieceBuff b);
+
+		public void playerPreventedFromDrawing(Player p, Card source);
 	}
 }

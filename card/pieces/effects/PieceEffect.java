@@ -1,6 +1,7 @@
 package card.pieces.effects;
 
 import game.Game;
+import game.Player;
 import board.Piece;
 import card.Card;
 
@@ -92,4 +93,13 @@ public abstract class PieceEffect {
 	public boolean isPreventOverturn() {
 		return isPreventOverturn;
 	}
+
+	// Prevent Start of Turn Draw
+	protected boolean hasPreventStartOfTurnDraw;
+
+	public boolean hasPreventStartOfTurnDraw() {
+		return hasPreventStartOfTurnDraw;
+	}
+
+	public abstract boolean conditionPreventStartOfTurnDraw(Game g, Player drawing);
 }
