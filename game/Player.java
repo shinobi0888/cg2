@@ -150,7 +150,19 @@ public class Player {
 		return result;
 	}
 
-	public ArrayList<Integer> getCardsInDeckOfClass(CardClass cardClass) {
+	public ArrayList<Card> getCardsInDeckOfClass(CardClass cardClass) {
+		ArrayList<Card> result = new ArrayList<Card>();
+		for (Card c : deck) {
+			if (c.getCardBase() instanceof PieceCardBase
+					&& ((PieceCardBase) c.getCardBase()).getCardClass().equals(cardClass)
+					&& !result.contains(c.getCardBase().getId())) {
+				result.add(c);
+			}
+		}
+		return result;
+	}
+
+	public ArrayList<Integer> getCardsIdsInDeckOfClass(CardClass cardClass) {
 		ArrayList<Integer> result = new ArrayList<Integer>();
 		for (Card c : deck) {
 			if (c.getCardBase() instanceof PieceCardBase
@@ -269,6 +281,26 @@ public class Player {
 		}
 	}
 
+	public void playFromDeckToField(Card c) {
+		if (!deck.contains(c)) {
+			throw new IllegalArgumentException();
+		}
+		deck.remove(c);
+		played.add(c);
+		for (PlayerListener listener : listeners) {
+			listener.onPlayToField(c);
+		}
+	}
+
+	public void sendFromHandToTopOfDeck(int index) {
+		Card c = hand.get(index);
+		hand.remove(index);
+		deck.add(0, c);
+		for (PlayerListener listener : listeners) {
+			listener.onCardReturnedToDeckFromHand(c);
+		}
+	}
+
 	public void addBuff(PlayerBuff b) {
 		buffs.add(b);
 	}
@@ -319,6 +351,8 @@ public class Player {
 		public void onAddFromDeckToHand(Card card);
 
 		public void onShuffle();
+
+		public void onCardReturnedToDeckFromHand(Card card);
 
 		// For hexes and stuff
 		public void cardSentToGrave(Card card);

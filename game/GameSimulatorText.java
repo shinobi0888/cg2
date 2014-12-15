@@ -143,7 +143,7 @@ public class GameSimulatorText {
 	}
 
 	private static String dummyLoadFakeDeck() {
-		int[] cards = { 89, 12, 91, 12};
+		int[] cards = { 89, 12, 91, 12 };
 		String result = "";
 		for (int i = 0; i < cards.length; i += 2) {
 			for (int j = 0; j < cards[i + 1]; j++) {
@@ -222,6 +222,11 @@ class PlayerReporter implements Player.PlayerListener {
 
 	public void onHeal(int amount) {
 		System.out.println(player.getName() + " was healed for " + amount + ".");
+	}
+
+	public void onCardReturnedToDeckFromHand(Card card) {
+		System.out.println(player.getName() + "'s " + card.getCardBase().getName()
+				+ " was added back to the deck.");
 	}
 }
 

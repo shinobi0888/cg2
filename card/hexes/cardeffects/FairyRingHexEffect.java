@@ -14,7 +14,7 @@ public class FairyRingHexEffect implements HexEffect {
 
 	public void simulateEffect(Game g, Player owningPlayer, Card source) {
 		ArrayList<Integer> fairyIds = owningPlayer
-				.getCardsInDeckOfClass(CardClass.FAIRY);
+				.getCardsIdsInDeckOfClass(CardClass.FAIRY);
 		if (fairyIds.size() > 0) {
 			int chosenId = fairyIds.get((int) (Math.random() * fairyIds.size()));
 			owningPlayer.addFromDeckToHand(chosenId);

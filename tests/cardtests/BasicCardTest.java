@@ -137,7 +137,11 @@ public abstract class BasicCardTest {
 		}
 
 		public void onHeal(int amount) {
-			
+
+		}
+
+		public void onCardReturnedToDeckFromHand(Card card) {
+
 		}
 
 	}

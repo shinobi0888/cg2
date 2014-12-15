@@ -27,6 +27,10 @@ Crimson Phoenix::23::While this piece is on the board: All ally pieces on the bo
 Emerald Serpent::24::While this piece is on the board: All ally pieces on the board gain 2 Defense.::Piece||3::5::3::Spirit::1::1::1::1
 Grey Kirin::25::This piece gains 1 Attack and Defense for each other ally [Spirit] in a 1-Radius.::Piece||2::2::0::Spirit::1::1::1::1
 White Chimaera::26::When an ally [Spirit] is played within a 1-Radius of this piece: increase the owner's play count by 1.::Piece||1::1::0::Spirit::1::1::1::1
+Prismatic Promotion::27::Play only when you control at least 1 [Spirit]. Select and destroy 1 ally [Spirit]. Then place 1 random [Spirit] from the deck, if any, in the location of the destroyed [Spirit].::Hex
+Tithe of Protection::28::Deal 8 damage to the player's health. Then send 2 random cards from the enemy’s hand to the top of the deck, if possible.::Hex
+Forceful Exchange::29::The enemy draws 2 cards. Until the end of the enemy's next turn: the enemy cannot play pieces from the hand, regardless of play count.::Hex
+Plague of the Piper::30::At the start of the enemy's next turn: Increase the enemy's play count by 2. At the end of the enemy's next turn: discard all cards in the enemy's hand and deal 2 damage to the enemy's health for each card discarded.::Hex
 // TODO: write cards 1-90
 Rogue Knight::89::::Piece||4::4::0::::1::1::1::1
 Obsidian Golem::90::::Piece||3::5::0::::1::1::1::1

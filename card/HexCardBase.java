@@ -6,7 +6,9 @@ import card.hexes.cardeffects.FairyRingHexEffect;
 import card.hexes.cardeffects.InheritanceOfWillHexEffect;
 import card.hexes.cardeffects.LivingWallsHexEffect;
 import card.hexes.cardeffects.PillarTransfigurationHexEffect;
+import card.hexes.cardeffects.PrismaticPromotionHexEffect;
 import card.hexes.cardeffects.ReappropriationHexEffect;
+import card.hexes.cardeffects.TitheOfProtectionHexEffect;
 import card.hexes.cardeffects.debug.ExcessOfHarvestHexEffect;
 import card.hexes.cardeffects.debug.FireOfHeliosHexEffect;
 import card.hexes.cardeffects.debug.RallyHexEffect;
@@ -33,6 +35,10 @@ public class HexCardBase extends CardBase {
 			return new InheritanceOfWillHexEffect();
 		case FairyRingHexEffect.ID:
 			return new FairyRingHexEffect();
+		case PrismaticPromotionHexEffect.ID:
+			return new PrismaticPromotionHexEffect();
+		case TitheOfProtectionHexEffect.ID:
+			return new TitheOfProtectionHexEffect();
 		}
 		// Debug cards
 		switch (id) {

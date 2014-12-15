@@ -40,7 +40,8 @@ public class Game {
 			for (Piece piece : board.getAllPiecesInPlayerOrder(turnPlayer())) {
 				if (!piece.equals(p)
 						&& piece.getCardBase().getEffect().hasOnPiecePlayed()
-						&& piece.getCardBase().getEffect().conditionOnPiecePlayed(game, p, piece)) {
+						&& piece.getCardBase().getEffect()
+								.conditionOnPiecePlayed(game, p, piece)) {
 					piece.getCardBase().getEffect().effectOnPiecePlayed(game, p, piece);
 				}
 			}
@@ -338,6 +339,13 @@ public class Game {
 
 	public void simulateShift(Piece target, int newX, int newY) {
 		board.movePiece(target, newX, newY);
+	}
+
+	public void simulatePlayFromDeck(Player p, Card c, int x, int y) {
+		turnPlayer().playFromDeckToField(c);
+		Piece newPiece = new Piece(c, this);
+		board.playNewPiece(newPiece, x, y);
+		board.calculateAllAllowedActions(turnPlayer());
 	}
 
 	public void simulateEffectDraw(Player p) {

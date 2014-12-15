@@ -22,7 +22,7 @@ public class BrillianceFairyPieceEffect extends EmptyPieceEffect {
 
 	public void effectOnSelfDestroyed(Game g, Piece p) {
 		g.simulateEffectDamage(p.getOwner(), BURN_DAMAGE);
-		ArrayList<Integer> fairyIds = p.getOwner().getCardsInDeckOfClass(
+		ArrayList<Integer> fairyIds = p.getOwner().getCardsIdsInDeckOfClass(
 				CardClass.FAIRY);
 		if (fairyIds.size() > 0) {
 			int chosenId = fairyIds.get((int) (Math.random() * fairyIds.size()));
