@@ -14,6 +14,8 @@ import card.pieces.pieceeffects.BrillianceFairyPieceEffect;
 import card.pieces.pieceeffects.CelebrationalPillarPieceEffect;
 import card.pieces.pieceeffects.ChampionGerynPieceEffect;
 import card.pieces.pieceeffects.CorruptPillarPieceEffect;
+import card.pieces.pieceeffects.CrimsonPhoenixPieceEffect;
+import card.pieces.pieceeffects.EmeraldSerpentPieceEffect;
 import card.pieces.pieceeffects.GreenWolfPieceEffect;
 import card.pieces.pieceeffects.IdolOfRenewalPieceEffect;
 import card.pieces.pieceeffects.OberonPieceEffect;
@@ -147,6 +149,10 @@ public class PieceCardBase extends CardBase {
 			return new GreenWolfPieceEffect();
 		case BlueHeronPieceEffect.ID:
 			return new BlueHeronPieceEffect();
+		case CrimsonPhoenixPieceEffect.ID:
+			return new CrimsonPhoenixPieceEffect();
+		case EmeraldSerpentPieceEffect.ID:
+			return new EmeraldSerpentPieceEffect();
 		default:
 			return new EmptyPieceEffect();
 		}

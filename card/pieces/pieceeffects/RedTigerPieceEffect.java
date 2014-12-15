@@ -32,7 +32,8 @@ public class RedTigerPieceEffect extends EmptyPieceEffect {
 
 		public boolean shouldApplyAura(Game g, Piece p) {
 			return p.getCardBase().getCardClass().equals(CardClass.SPIRIT)
-					&& !p.equals(source) && Math.abs(p.getX() - source.getX()) <= 1
+					&& !p.equals(source) && p.getOwner().equals(source.getOwner())
+					&& Math.abs(p.getX() - source.getX()) <= 1
 					&& Math.abs(p.getY() - source.getY()) <= 1;
 		}
 
