@@ -13,6 +13,7 @@ public class EmptyPieceEffect extends PieceEffect {
 		this.hasAfterMainDraw = false;
 		this.hasOnSelfDestroyed = false;
 		this.hasOnPiecePlayed = false;
+		this.isPreventOverturn = false;
 	}
 
 	public boolean conditionActive(Game g, Piece p) {

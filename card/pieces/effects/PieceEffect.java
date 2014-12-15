@@ -81,7 +81,15 @@ public abstract class PieceEffect {
 		return hasOnPiecePlayed;
 	}
 
-	public abstract boolean conditionOnPiecePlayed(Game g, Piece played, Piece source);
+	public abstract boolean conditionOnPiecePlayed(Game g, Piece played,
+			Piece source);
 
 	public abstract void effectOnPiecePlayed(Game g, Piece played, Piece source);
+
+	// Prevents Overturn
+	protected boolean isPreventOverturn;
+
+	public boolean isPreventOverturn() {
+		return isPreventOverturn;
+	}
 }

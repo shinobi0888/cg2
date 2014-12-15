@@ -31,6 +31,7 @@ Prismatic Promotion::27::Play only when you control at least 1 [Spirit]. Select 
 Tithe of Protection::28::Deal 8 damage to the player's health. Then send 2 random cards from the enemy’s hand to the top of the deck, if possible.::Hex
 Forceful Exchange::29::The enemy draws 2 cards. Until the end of the enemy's next turn: the enemy cannot play pieces from the hand, regardless of play count.::Hex
 Plague of the Piper::30::At the start of the enemy's next turn: Increase the enemy's play count by 2. At the end of the enemy's next turn: discard all cards in the enemy's hand and deal 2 damage to the enemy's health for each card discarded.::Hex
+Moksha Priest::31::While this piece is on the board: Neither player can Overturn.::Piece||1::7::2::::1::1::1::1
 // TODO: write cards 1-90
 Rogue Knight::89::::Piece||4::4::0::::1::1::1::1
 Obsidian Golem::90::::Piece||3::5::0::::1::1::1::1

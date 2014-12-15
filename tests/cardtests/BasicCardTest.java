@@ -145,7 +145,11 @@ public abstract class BasicCardTest {
 		}
 
 		public void onMillFromHand(Card card) {
-			
+
+		}
+
+		public void onOverturnPrevented(Card reason) {
+
 		}
 
 	}

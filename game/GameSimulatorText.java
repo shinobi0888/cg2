@@ -233,6 +233,12 @@ class PlayerReporter implements Player.PlayerListener {
 		System.out.println(player.getName() + "'s " + card.getCardBase().getName()
 				+ " was sent to the grave.");
 	}
+
+	public void onOverturnPrevented(Card reason) {
+		System.out.println(player.getName()
+				+ "'s attempt to overturn was prevented by "
+				+ reason.getCardBase().getName() + ".");
+	}
 }
 
 class GameReporter implements Game.GameInterface {

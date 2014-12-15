@@ -19,6 +19,7 @@ import card.pieces.pieceeffects.EmeraldSerpentPieceEffect;
 import card.pieces.pieceeffects.GreenWolfPieceEffect;
 import card.pieces.pieceeffects.GreyKirinPieceEffect;
 import card.pieces.pieceeffects.IdolOfRenewalPieceEffect;
+import card.pieces.pieceeffects.MokshaPriestPieceEffect;
 import card.pieces.pieceeffects.OberonPieceEffect;
 import card.pieces.pieceeffects.RedTigerPieceEffect;
 import card.pieces.pieceeffects.SoulstealerPieceEffect;
@@ -159,6 +160,8 @@ public class PieceCardBase extends CardBase {
 			return new GreyKirinPieceEffect();
 		case WhiteChimaeraPieceEffect.ID:
 			return new WhiteChimaeraPieceEffect();
+		case MokshaPriestPieceEffect.ID:
+			return new MokshaPriestPieceEffect();
 		default:
 			return new EmptyPieceEffect();
 		}

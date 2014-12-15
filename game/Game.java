@@ -120,7 +120,7 @@ public class Game {
 		simulateOnTurnStartEffects();
 		board.initNewTurnMovesAndAttacks(turnPlayer());
 		board.calculateAllAllowedActions(turnPlayer());
-		Card c = turnPlayer().drawCard();
+		Card c = turnPlayer().drawCard(this);
 		if (c != null) {
 			simulateAfterDrawEffects(c);
 		}
@@ -353,7 +353,7 @@ public class Game {
 	}
 
 	public void simulateEffectDraw(Player p) {
-		p.drawCard();
+		p.drawCard(this);
 	}
 
 	public void simulateGivePlayerBuff(Player p, PlayerBuff b) {
@@ -489,7 +489,7 @@ public class Game {
 
 	private void drawHand(Player p) {
 		for (int i = 0; i < 6; i++) {
-			p.drawCard();
+			p.drawCard(this);
 		}
 	}
 

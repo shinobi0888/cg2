@@ -12,6 +12,7 @@ import buffs.PieceBuff;
 import card.Card;
 import card.PieceCardBase;
 import card.hexes.cardeffects.ReappropriationHexEffect;
+import card.pieces.effects.PieceEffect;
 
 public class Piece extends GridMapEntity {
 	private PieceCardBase source;
@@ -82,6 +83,10 @@ public class Piece extends GridMapEntity {
 
 	public boolean canAscend() {
 		return ascendable;
+	}
+	
+	public PieceEffect getEffect() {
+		return source.getEffect();
 	}
 
 	public Piece(Card sourceCard, Game g) {

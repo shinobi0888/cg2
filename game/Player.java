@@ -3,6 +3,7 @@ package game;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import board.Piece;
 import buffs.PlayerBuff;
 import card.Card;
 import card.CardBase;
@@ -205,11 +206,11 @@ public class Player {
 		}
 	}
 
-	public Card drawCard() {
+	public Card drawCard(Game g) {
 		// TODO: handle things like draw card locks
 		// Logic for overturning
 		if (deck.size() == 0) {
-			overturn();
+			tryOverturn(g);
 		}
 		if (deck.size() == 0) {
 			damageOnNoDraw();
@@ -230,7 +231,15 @@ public class Player {
 		lowerHealth(DRAW_BURN);
 	}
 
-	public void overturn() {
+	public void tryOverturn(Game g) {
+		for (Piece p : g.getAllPieces()) {
+			if (p.getEffect().isPreventOverturn()) {
+				for (PlayerListener listener : listeners) {
+					listener.onOverturnPrevented(p.getSourceCard());
+				}
+				return;
+			}
+		}
 		int cardsAdded = grave.size();
 		for (Card c : grave) {
 			deck.add(c);
@@ -368,7 +377,7 @@ public class Player {
 		public void onHeal(int amount);
 
 		public void cardRemovedFromPlayed(Card card);
-		
+
 		public void onMillFromHand(Card card);
 
 		public void overturned(int numCards);
@@ -382,6 +391,8 @@ public class Player {
 		public void onShuffle();
 
 		public void onCardReturnedToDeckFromHand(Card card);
+
+		public void onOverturnPrevented(Card reason);
 
 		// For hexes and stuff
 		public void cardSentToGrave(Card card);
