@@ -9,7 +9,7 @@ import card.hexes.cardeffects.LivingWallsHexEffect;
 import card.hexes.cardeffects.PillarTransfigurationHexEffect;
 import card.hexes.cardeffects.PlagueOfThePiperHexEffect;
 import card.hexes.cardeffects.PrismaticPromotionHexEffect;
-import card.hexes.cardeffects.ReappropriationHexEffect;
+import card.hexes.cardeffects.StrangePotionHexEffect;
 import card.hexes.cardeffects.TitheOfProtectionHexEffect;
 import card.hexes.cardeffects.debug.ExcessOfHarvestHexEffect;
 import card.hexes.cardeffects.debug.FireOfHeliosHexEffect;
@@ -27,8 +27,8 @@ public class HexCardBase extends CardBase {
 
 	private static HexEffect getEffectById(int id) {
 		switch (id) {
-		case ReappropriationHexEffect.ID:
-			return new ReappropriationHexEffect();
+		case StrangePotionHexEffect.ID:
+			return new StrangePotionHexEffect();
 		case PillarTransfigurationHexEffect.ID:
 			return new PillarTransfigurationHexEffect();
 		case LivingWallsHexEffect.ID:

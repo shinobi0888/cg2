@@ -25,8 +25,8 @@ public class MokshaPriestCardTest extends BasicCardTest {
 		actionPlay(1, 5, 0);
 		actionCycleTurn();
 		// Mill some cards
-		game.simulateMillPlayerHand(game.turnPlayer(), 0);
-		game.simulateMillPlayerHand(game.turnPlayer(), 0);
+		game.simulateDiscardFromHand(game.turnPlayer(), 0);
+		game.simulateDiscardFromHand(game.turnPlayer(), 0);
 		actionCycleTurn();
 		game.movePiece(4, 0, 4, 1);
 		game.movePiece(5, 0, 5, 1);

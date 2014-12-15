@@ -8,15 +8,15 @@ import org.junit.Test;
 import tests.cardtests.BasicCardTest;
 import card.CardBase;
 import card.PieceCardBase;
-import card.hexes.cardeffects.ReappropriationHexEffect;
+import card.hexes.cardeffects.StrangePotionHexEffect;
 import card.pieces.pieceeffects.AncientPillarPieceEffect;
 
-public class ReappropriationCardTest extends BasicCardTest {
+public class StrangePotionCardTest extends BasicCardTest {
 
 	public void setPlayers(Player[] players) {
-		setDeck(players[0], new int[] { ReappropriationHexEffect.ID, 3,
+		setDeck(players[0], new int[] { StrangePotionHexEffect.ID, 3,
 				AncientPillarPieceEffect.ID, 21 });
-		setDeck(players[1], new int[] { ReappropriationHexEffect.ID, 3,
+		setDeck(players[1], new int[] { StrangePotionHexEffect.ID, 3,
 				AncientPillarPieceEffect.ID, 21 });
 	}
 
@@ -46,7 +46,7 @@ public class ReappropriationCardTest extends BasicCardTest {
 		assertEquals(game.getBoard().getPiece(4, 8).getDefense(),
 				b.getDefense() - 2);
 		actionCycleTurn();
-		// Ensure Reappropriation was undone
+		// Ensure Strange Potion was undone
 		assertEquals(game.getBoard().getPiece(4, 0).getDefense(),
 				b.getDefense() + 4);
 		assertEquals(game.getBoard().getPiece(5, 0).getDefense(),

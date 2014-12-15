@@ -382,8 +382,12 @@ public class Game {
 		}
 	}
 
-	public void simulateMillPlayerHand(Player p, int index) {
-		p.millCardFromHand(index);
+	public void simulateDiscardFromHand(Player p, int index) {
+		p.discardFromHand(index);
+	}
+
+	public void simulateMillFromDeck(Player p, int index) {
+		p.millFromDeck(index);
 	}
 
 	// Applies auras globally, removing unfit auras

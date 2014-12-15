@@ -190,12 +190,21 @@ public class Player {
 		}
 	}
 
-	public void millCardFromHand(int index) {
+	public void discardFromHand(int index) {
 		Card c = hand.get(index);
 		hand.remove(index);
 		grave.add(c);
 		for (PlayerListener listener : listeners) {
-			listener.onMillFromHand(c);
+			listener.onDiscardFromHand(c);
+		}
+	}
+
+	public void millFromDeck(int index) {
+		Card c = deck.get(index);
+		deck.remove(index);
+		grave.add(c);
+		for (PlayerListener listener : listeners) {
+			listener.onMillFromDeck(c);
 		}
 	}
 
@@ -378,7 +387,9 @@ public class Player {
 
 		public void cardRemovedFromPlayed(Card card);
 
-		public void onMillFromHand(Card card);
+		public void onDiscardFromHand(Card card);
+
+		public void onMillFromDeck(Card card);
 
 		public void overturned(int numCards);
 

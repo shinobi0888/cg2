@@ -11,7 +11,7 @@ import buffs.Aura;
 import buffs.PieceBuff;
 import card.Card;
 import card.PieceCardBase;
-import card.hexes.cardeffects.ReappropriationHexEffect;
+import card.hexes.cardeffects.StrangePotionHexEffect;
 import card.pieces.effects.PieceEffect;
 
 public class Piece extends GridMapEntity {
@@ -178,15 +178,15 @@ public class Piece extends GridMapEntity {
 		for (PieceBuff b : buffs) {
 			additionalAttack += b.getAttackBuff(g);
 		}
-		// Effect of Reappropriate
-		boolean hasReappropriation = false;
+		// Effect of Strange Potion
+		boolean hasStrangePotion = false;
 		for (PieceBuff b : buffs) {
-			if (b instanceof ReappropriationHexEffect.ReappropriationBuff) {
-				hasReappropriation = true;
+			if (b instanceof StrangePotionHexEffect.StrangePotionBuff) {
+				hasStrangePotion = true;
 				break;
 			}
 		}
-		if (hasReappropriation) {
+		if (hasStrangePotion) {
 			attack -= additionalAttack;
 		} else {
 			attack += additionalAttack;
@@ -202,14 +202,14 @@ public class Piece extends GridMapEntity {
 			additionalDefense += b.getDefenseBuff(g);
 		}
 		// Effect of Reappropriate
-		boolean hasReappropriation = false;
+		boolean hasStrangePotion = false;
 		for (PieceBuff b : buffs) {
-			if (b instanceof ReappropriationHexEffect.ReappropriationBuff) {
-				hasReappropriation = true;
+			if (b instanceof StrangePotionHexEffect.StrangePotionBuff) {
+				hasStrangePotion = true;
 				break;
 			}
 		}
-		if (hasReappropriation) {
+		if (hasStrangePotion) {
 			defense -= additionalDefense;
 		} else {
 			defense += additionalDefense;

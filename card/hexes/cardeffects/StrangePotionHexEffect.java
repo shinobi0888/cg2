@@ -7,12 +7,12 @@ import buffs.PieceBuff;
 import card.Card;
 import card.hexes.effects.HexEffect;
 
-public class ReappropriationHexEffect implements HexEffect {
+public class StrangePotionHexEffect implements HexEffect {
 	public static final int ID = 2;
 
 	public void simulateEffect(Game g, Player owningPlayer, Card source) {
 		for (Piece p : g.getBoard().getAllPieces()) {
-			g.simulateGivePieceBuff(p, new ReappropriationBuff(source, p));
+			g.simulateGivePieceBuff(p, new StrangePotionBuff(source, p));
 		}
 	}
 
@@ -20,8 +20,8 @@ public class ReappropriationHexEffect implements HexEffect {
 		return true;
 	}
 
-	public class ReappropriationBuff extends PieceBuff {
-		public ReappropriationBuff(Card source, Piece target) {
+	public class StrangePotionBuff extends PieceBuff {
+		public StrangePotionBuff(Card source, Piece target) {
 			this.source = source;
 			this.target = target;
 			this.isRemoveAtEndOfTurn = true;

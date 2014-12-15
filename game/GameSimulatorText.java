@@ -229,7 +229,7 @@ class PlayerReporter implements Player.PlayerListener {
 				+ " was added back to the deck.");
 	}
 
-	public void onMillFromHand(Card card) {
+	public void onDiscardFromHand(Card card) {
 		System.out.println(player.getName() + "'s " + card.getCardBase().getName()
 				+ " was sent to the grave.");
 	}
@@ -238,6 +238,11 @@ class PlayerReporter implements Player.PlayerListener {
 		System.out.println(player.getName()
 				+ "'s attempt to overturn was prevented by "
 				+ reason.getCardBase().getName() + ".");
+	}
+
+	public void onMillFromDeck(Card card) {
+		System.out.println(player.getName() + "'s " + card.getCardBase().getName()
+				+ " was sent from the deck to the grave.");
 	}
 }
 

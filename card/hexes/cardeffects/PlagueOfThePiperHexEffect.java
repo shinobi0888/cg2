@@ -43,7 +43,7 @@ public class PlagueOfThePiperHexEffect implements HexEffect {
 		public void effectOnTurnEnd(Game g, Player player) {
 			int totalHand = player.getHandCount();
 			for (int i = 0; i < totalHand; i++) {
-				g.simulateMillPlayerHand(player, 0);
+				g.simulateDiscardFromHand(player, 0);
 				g.simulateHexDamage(player, BURN_DAMAGE);
 			}
 		}
