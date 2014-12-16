@@ -61,7 +61,7 @@ public class PlayerBuff {
 	protected boolean hasOnTurnEnd = false;
 
 	public boolean hasOnTurnEnd() {
-		return hasOnTurnStart;
+		return hasOnTurnEnd;
 	}
 	
 	public boolean conditionOnTurnEnd(Game g, Player player) {
