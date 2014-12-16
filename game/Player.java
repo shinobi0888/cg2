@@ -85,6 +85,14 @@ public class Player {
 		}
 	}
 
+	public void setHealth(int amount) {
+		int oldHealth = health;
+		health = amount;
+		for (PlayerListener listener : listeners) {
+			listener.health(oldHealth, health);
+		}
+	}
+
 	public void raiseHealth(int amount) {
 		int oldHealth = health;
 		amount = Math.min(amount, MAX_HEALTH - health);
@@ -327,7 +335,7 @@ public class Player {
 			listener.onCardReturnedToDeckFromHand(c);
 		}
 	}
-	
+
 	public void sendFromHandToBottomOfDeck(int index) {
 		Card c = hand.get(index);
 		hand.remove(index);

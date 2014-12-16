@@ -13,7 +13,7 @@ public abstract class HexDrawEffect implements HexEffect {
 
 	public void simulateEffect(Game g, Player owningPlayer, Card source) {
 		for(int i = 0; i < drawCount; i++) {
-			owningPlayer.drawCard(g);
+			g.simulateEffectDraw(owningPlayer);
 		}
 	}
 

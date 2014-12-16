@@ -46,7 +46,7 @@ public class OverweightToadPieceEffect extends EmptyPieceEffect {
 
 		public void effectOnTurnEnd(Game g, Player player) {
 			for (int i = 0; i < DRAW_COUNT; i++) {
-				player.drawCard(g);
+				g.simulateEffectDraw(player);
 			}
 		}
 

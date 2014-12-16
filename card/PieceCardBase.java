@@ -11,6 +11,7 @@ import card.pieces.pieceeffects.AgileFairyPieceEffect;
 import card.pieces.pieceeffects.AncientArchitectPieceEffect;
 import card.pieces.pieceeffects.AncientPillarPieceEffect;
 import card.pieces.pieceeffects.BlueHeronPieceEffect;
+import card.pieces.pieceeffects.BoreasPieceEffect;
 import card.pieces.pieceeffects.BrillianceFairyPieceEffect;
 import card.pieces.pieceeffects.CelebrationalPillarPieceEffect;
 import card.pieces.pieceeffects.ChampionGerynPieceEffect;
@@ -177,13 +178,16 @@ public class PieceCardBase extends CardBase {
 			return new OverweightToadPieceEffect();
 		case SealOfEqualityPieceEffect.ID:
 			return new SealOfEqualityPieceEffect();
+		case BoreasPieceEffect.ID:
+			return new BoreasPieceEffect();
 		default:
 			return new EmptyPieceEffect();
 		}
 	}
 
 	public enum CardClass {
-		NONE("None"), PILLAR("Pillar"), FAIRY("Fairy"), SPIRIT("Spirit");
+		NONE("None"), PILLAR("Pillar"), FAIRY("Fairy"), SPIRIT("Spirit"), ANEMOI(
+				"Anemoi");
 
 		private final String name;
 

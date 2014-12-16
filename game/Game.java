@@ -301,6 +301,10 @@ public class Game {
 	public void simulateEffectDamage(Player p, int amount) {
 		simulateAnyDamage(p, amount);
 	}
+	
+	public void simulateSetHealth(Player p, int amount){
+		p.setHealth(amount);
+	}
 
 	// Simulates any damage, regardless of attacks or effects, etc
 	private void simulateAnyDamage(Player p, int amount) {

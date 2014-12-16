@@ -37,6 +37,10 @@ Parasitic Swarm::33::On play: Both players send cards from the top of the deck t
 Overweight Toad::34::On play: The enemy sends 2 cards from the hand to the bottom of the deck randomly, if possible. At the end of the enemy's turn: The enemy draws 4 cards.::Piece||1::5::0::::1::1::1::1
 Seal of Equality::35::While this piece is on the board, when a player draws at the beginning of the turn: If the player has more pieces on the board than their enemy, they cannot draw.::Piece||0::2::3::::1::1::1::1
 Strange Potion::36::Until the end of your turn: Reverse all relative changes (increases or decreases) to stats of all pieces on the board when this card is played.::Hex
+Boreas the Devourer::37::Active: If "Boreas the Devourer", "Eurus the Accursed", "Zephyrus the Messenger" and "Notus the Destroyer" all occupy corner locations, change the enemy's health to 0.::Piece||6::6::3::Anemoi::1::1::1::1
+Eurus the Accursed::38::::Piece||8::6::3::Anemoi::1::1::1::1
+Zephyrus the Messenger::39::::Piece||2::12::3::Anemoi::1::1::1::1
+Notus the Destroyer::40::::Piece||10::6::3::Anemoi::1::1::1::1
 // TODO: write cards 1-90
 Rogue Knight::89::::Piece||4::4::0::::1::1::1::1
 Obsidian Golem::90::::Piece||3::5::0::::1::1::1::1
