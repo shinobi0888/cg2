@@ -23,6 +23,14 @@ public class OverweightToadCardTest extends BasicCardTest {
 		actionCycleTurn();
 		actionCycleTurn();
 		assertEquals(game.offTurnPlayer().getHandCount(), 9);
+		// Play another one, destroying it to see if the effect stays
+		actionPlay(0, 4, 0);
+		assertEquals(game.offTurnPlayer().getHandCount(), 7);
+		game.simulateDestroy(game.getBoard().getPiece(4, 0));
+		actionCycleTurn();
+		assertEquals(game.turnPlayer().getHandCount(), 8);
+		actionCycleTurn();
+		assertEquals(game.offTurnPlayer().getHandCount(), 12);
 	}
 
 }

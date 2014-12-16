@@ -1,6 +1,7 @@
 package card;
 
 import release.Release;
+import release.ReleaseAdjacent;
 import release.ReleaseDiagonalLine;
 import release.ReleaseSingleCenter;
 import card.pieces.effects.EmptyPieceEffect;
@@ -117,6 +118,8 @@ public class PieceCardBase extends CardBase {
 			return new ReleaseSingleCenter();
 		case ReleaseDiagonalLine.ID:
 			return new ReleaseDiagonalLine();
+		case ReleaseAdjacent.ID:
+			return new ReleaseAdjacent();
 		default:
 			return null;
 		}
