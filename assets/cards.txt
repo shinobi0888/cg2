@@ -41,6 +41,7 @@ Boreas the Devourer::37::Active: If "Boreas the Devourer", "Eurus the Accursed",
 Eurus the Accursed::38::::Piece||8::6::3::Anemoi::1::1::1::1
 Zephyrus the Messenger::39::::Piece||2::12::3::Anemoi::1::1::1::1
 Notus the Destroyer::40::::Piece||10::6::3::Anemoi::1::1::1::1
+The Divine Winds::41::Play only when there is at least 1 piece on the board. Return 1 piece on the board to the hand, if any. If you control "Boreas the Devourer", "Eurus the Accursed", "Zephyrus the Messenger", and "Notus the Destroyer": Return all enemy pieces to the hand instead.::Hex
 // TODO: write cards 1-90
 Rogue Knight::89::::Piece||4::4::0::::1::1::1::1
 Obsidian Golem::90::::Piece||3::5::0::::1::1::1::1

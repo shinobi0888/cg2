@@ -11,6 +11,7 @@ import card.hexes.cardeffects.PlagueOfThePiperHexEffect;
 import card.hexes.cardeffects.PrismaticPromotionHexEffect;
 import card.hexes.cardeffects.ReappropriationHexEffect;
 import card.hexes.cardeffects.StrangePotionHexEffect;
+import card.hexes.cardeffects.TheDivineWindsHexEffect;
 import card.hexes.cardeffects.TitheOfProtectionHexEffect;
 import card.hexes.cardeffects.debug.ExcessOfHarvestHexEffect;
 import card.hexes.cardeffects.debug.FireOfHeliosHexEffect;
@@ -48,6 +49,8 @@ public class HexCardBase extends CardBase {
 			return new PlagueOfThePiperHexEffect();
 		case StrangePotionHexEffect.ID:
 			return new StrangePotionHexEffect();
+		case TheDivineWindsHexEffect.ID:
+			return new TheDivineWindsHexEffect();
 		}
 		// Debug cards
 		switch (id) {

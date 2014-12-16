@@ -156,6 +156,10 @@ public abstract class BasicCardTest {
 
 		}
 
+		public void cardReturnedFromPlayedToHand(Card card) {
+
+		}
+
 	}
 
 	protected class CardTestGameInterface implements Game.GameInterface {

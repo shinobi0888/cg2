@@ -301,8 +301,8 @@ public class Game {
 	public void simulateEffectDamage(Player p, int amount) {
 		simulateAnyDamage(p, amount);
 	}
-	
-	public void simulateSetHealth(Player p, int amount){
+
+	public void simulateSetHealth(Player p, int amount) {
 		p.setHealth(amount);
 	}
 
@@ -356,6 +356,11 @@ public class Game {
 	public void simulateRemove(Piece target) {
 		board.removePiece(target.getX(), target.getY());
 		target.getOwner().removePlayedCard(target.getSourceCard());
+	}
+
+	public void simulateSendFromBoardToHand(Piece target) {
+		board.removePiece(target.getX(), target.getY());
+		target.getOwner().returnFromPlayedToHand(target.getSourceCard());
 	}
 
 	public void simulateShift(Piece target, int newX, int newY) {

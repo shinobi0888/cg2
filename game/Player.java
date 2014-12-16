@@ -278,6 +278,16 @@ public class Player {
 			}
 		}
 	}
+	
+	public void returnFromPlayedToHand(Card c){
+		if(played.contains(c)) {
+			played.remove(c);
+			hand.add(c);
+			for (PlayerListener listener : listeners) {
+				listener.cardReturnedFromPlayedToHand(c);
+			}
+		}
+	}
 
 	public int getDeckCount() {
 		return deck.size();
@@ -403,6 +413,8 @@ public class Player {
 		public void onHeal(int amount);
 
 		public void cardRemovedFromPlayed(Card card);
+		
+		public void cardReturnedFromPlayedToHand(Card card);
 
 		public void onDiscardFromHand(Card card);
 

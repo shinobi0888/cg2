@@ -244,6 +244,11 @@ class PlayerReporter implements Player.PlayerListener {
 		System.out.println(player.getName() + "'s " + card.getCardBase().getName()
 				+ " was sent from the deck to the grave.");
 	}
+
+	public void cardReturnedFromPlayedToHand(Card card) {
+		System.out.println(player.getName() + "'s " + card.getCardBase().getName()
+				+ " was sent from the board to the hand.");
+	}
 }
 
 class GameReporter implements Game.GameInterface {
