@@ -19,6 +19,10 @@ public class HeartlessSentryPieceEffect extends EmptyPieceEffect {
 	}
 
 	public boolean conditionOnTurnEnd(Game g, Piece p) {
+		// Only on players turn
+		if(!g.turnPlayer().equals(p.getOwner())) {
+			return false;
+		}
 		for (Point pt : g.getBoard().getSquaresInPattern(p.getX(), p.getY(),
 				Board.REG_PATTERN)) {
 			if (!g.getBoard().getPiece(pt.x, pt.y).getOwner().equals(p.getOwner())) {

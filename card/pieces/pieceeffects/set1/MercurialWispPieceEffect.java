@@ -18,6 +18,9 @@ public class MercurialWispPieceEffect extends EmptyPieceEffect {
 	}
 
 	public boolean conditionOnTurnEnd(Game g, Piece p) {
+		if (!g.turnPlayer().equals(p.getOwner())) {
+			return false;
+		}
 		for (Point pt : g.getBoard().getSquaresInPattern(p.getX(), p.getY(),
 				Board.REG_PATTERN)) {
 			if (g.getBoard().getPiece(pt.x, pt.y) == null) {
