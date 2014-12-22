@@ -60,7 +60,7 @@ Firespring Keeper::56::Active: destroy this piece and add 1 "Firespring Well" to
 Thunderspring Keeper::57::Active: destroy this piece and add 1 "Thunderspring Well" to the hand. When the effect of an ally "Thunderspring Well" activates: prevent damage done to the owner’s health.::Piece||4::0::0::::1::1::1::1
 Frostspring Keeper::58::Active: destroy this piece and add 1 "Frostspring Well to the hand". When the effect of an ally "Frostspring Well" activates: prevent discards from the owner’s hand.::Piece||4::0::0::::1::1::1::1
 Stray Bolt::59::Deal 4 damage to the enemy’s health.::Hex
-Shattered Bolt::60::Deal 4 damage to both player’s health.::Hex
+Shattered Bolt::60::Deal 4 damage to the enemy's health, then the player's health.::Hex
 Lightning Channeler::61::On play: add 1 "Stray Bolt" from the deck to the hand, if any.::Piece||2::4::0::::1::1::1::1
 Lightning Conjurer::62::On play: add 1 "Stray Bolt" from the grave to the deck and shuffle, if any. If "Stray Bolt" was added: Deal 4 damage to the enemy’s health.::Piece||2::4::0::::1::1::1::1
 Lightning Deity::63::At the end of the owner's turn: add 1 "Stray Bolt" from the grave to the hand, if any. If "Stray Bolt" was added: Send the top card of the deck to the grave.::Piece||6::4::3::::1::1::1::1

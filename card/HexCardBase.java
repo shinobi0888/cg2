@@ -2,22 +2,22 @@ package card;
 
 import game.Game;
 import game.Player;
-import card.hexes.cardeffects.debug.ExcessOfHarvestHexEffect;
-import card.hexes.cardeffects.debug.FireOfHeliosHexEffect;
-import card.hexes.cardeffects.debug.RallyHexEffect;
-import card.hexes.cardeffects.debug.SmiteHexEffect;
-import card.hexes.cardeffects.set1.FairyRingHexEffect;
-import card.hexes.cardeffects.set1.ForcefulExchangeHexEffect;
-import card.hexes.cardeffects.set1.InheritanceOfWillHexEffect;
-import card.hexes.cardeffects.set1.LivingWallsHexEffect;
-import card.hexes.cardeffects.set1.PillarTransfigurationHexEffect;
-import card.hexes.cardeffects.set1.PlagueOfThePiperHexEffect;
-import card.hexes.cardeffects.set1.PrismaticPromotionHexEffect;
-import card.hexes.cardeffects.set1.ReappropriationHexEffect;
-import card.hexes.cardeffects.set1.StrangePotionHexEffect;
-import card.hexes.cardeffects.set1.TheDivineWindsHexEffect;
-import card.hexes.cardeffects.set1.TitheOfProtectionHexEffect;
 import card.hexes.effects.HexEffect;
+import card.hexes.hexeffects.debug.ExcessOfHarvestHexEffect;
+import card.hexes.hexeffects.debug.FireOfHeliosHexEffect;
+import card.hexes.hexeffects.debug.RallyHexEffect;
+import card.hexes.hexeffects.debug.SmiteHexEffect;
+import card.hexes.hexeffects.set1.FairyRingHexEffect;
+import card.hexes.hexeffects.set1.ForcefulExchangeHexEffect;
+import card.hexes.hexeffects.set1.InheritanceOfWillHexEffect;
+import card.hexes.hexeffects.set1.LivingWallsHexEffect;
+import card.hexes.hexeffects.set1.PillarTransfigurationHexEffect;
+import card.hexes.hexeffects.set1.PlagueOfThePiperHexEffect;
+import card.hexes.hexeffects.set1.PrismaticPromotionHexEffect;
+import card.hexes.hexeffects.set1.ReappropriationHexEffect;
+import card.hexes.hexeffects.set1.StrangePotionHexEffect;
+import card.hexes.hexeffects.set1.TheDivineWindsHexEffect;
+import card.hexes.hexeffects.set1.TitheOfProtectionHexEffect;
 
 public class HexCardBase extends CardBase {
 	public static HexCardBase parseCard(CardBase base) {
