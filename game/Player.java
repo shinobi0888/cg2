@@ -278,9 +278,9 @@ public class Player {
 			}
 		}
 	}
-	
-	public void returnFromPlayedToHand(Card c){
-		if(played.contains(c)) {
+
+	public void returnFromPlayedToHand(Card c) {
+		if (played.contains(c)) {
 			played.remove(c);
 			hand.add(c);
 			for (PlayerListener listener : listeners) {
@@ -354,6 +354,30 @@ public class Player {
 			listener.onCardReturnedToDeckFromHand(c);
 		}
 	}
+	
+	public void returnFromPlayedToBottomOfDeck(Card c) {
+		if (played.contains(c)) {
+			played.remove(c);
+			deck.add(c);
+			for (PlayerListener listener : listeners) {
+				listener.cardReturnedFromPlayedToDeck(c);
+			}
+		}
+	}
+
+	public void moveToTopOfDeck(int cardId) {
+		for (int i = 0; i < deck.size(); i++) {
+			Card c = deck.get(i);
+			if (c.getCardBase().getId() == cardId) {
+				deck.remove(i);
+				deck.add(0, c);
+				for (PlayerListener listener : listeners) {
+					listener.onCardToTopOfDeck(c);
+				}
+				break;
+			}
+		}
+	}
 
 	public void addBuff(PlayerBuff b) {
 		buffs.add(b);
@@ -413,8 +437,10 @@ public class Player {
 		public void onHeal(int amount);
 
 		public void cardRemovedFromPlayed(Card card);
-		
+
 		public void cardReturnedFromPlayedToHand(Card card);
+		
+		public void cardReturnedFromPlayedToDeck(Card card);
 
 		public void onDiscardFromHand(Card card);
 
@@ -433,6 +459,8 @@ public class Player {
 		public void onCardReturnedToDeckFromHand(Card card);
 
 		public void onOverturnPrevented(Card reason);
+		
+		public void onCardToTopOfDeck(Card c);
 
 		// For hexes and stuff
 		public void cardSentToGrave(Card card);

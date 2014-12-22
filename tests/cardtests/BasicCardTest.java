@@ -160,6 +160,14 @@ public abstract class BasicCardTest {
 
 		}
 
+		public void cardReturnedFromPlayedToDeck(Card card) {
+			
+		}
+
+		public void onCardToTopOfDeck(Card c) {
+			
+		}
+
 	}
 
 	protected class CardTestGameInterface implements Game.GameInterface {

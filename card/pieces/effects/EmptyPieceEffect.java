@@ -11,6 +11,7 @@ public class EmptyPieceEffect extends PieceEffect {
 		this.hasOnKill = false;
 		this.hasOnPlay = false;
 		this.hasOnTurnStart = false;
+		this.hasOnTurnEnd = false;
 		this.hasAfterMainDraw = false;
 		this.hasOnSelfDestroyed = false;
 		this.hasOnPiecePlayed = false;
@@ -76,5 +77,13 @@ public class EmptyPieceEffect extends PieceEffect {
 
 	public boolean conditionPreventStartOfTurnDraw(Game g, Player drawing) {
 		return false;
+	}
+
+	public boolean conditionOnTurnEnd(Game g, Piece p) {
+		return false;
+	}
+
+	public void effectOnTurnEnd(Game g, Piece p) {
+
 	}
 }

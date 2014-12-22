@@ -363,6 +363,11 @@ public class Game {
 		target.getOwner().returnFromPlayedToHand(target.getSourceCard());
 	}
 
+	public void simulateSendFromBoardToBottomOfDeck(Piece target) {
+		board.removePiece(target.getX(), target.getY());
+		target.getOwner().returnFromPlayedToBottomOfDeck(target.getSourceCard());
+	}
+
 	public void simulateShift(Piece target, int newX, int newY) {
 		board.movePiece(target, newX, newY);
 	}
@@ -402,6 +407,10 @@ public class Game {
 		for (int i = 0; i < count; i++) {
 			p.incrPiecePlays();
 		}
+	}
+
+	public void simulateMoveToTopOfDeck(Player p, int cardId) {
+		p.moveToTopOfDeck(cardId);
 	}
 
 	public void simulateSendFromHandToTopOfDeck(Player p, int index) {
@@ -472,6 +481,13 @@ public class Game {
 		for (PlayerBuff b : offTurnPlayer().getBuffs()) {
 			if (b.hasOnTurnEnd() && b.conditionOnTurnEnd(this, offTurnPlayer())) {
 				b.effectOnTurnEnd(this, offTurnPlayer());
+			}
+		}
+		// Then piece effects
+		for (Piece p : board.getAllPiecesInPlayerOrder(turnPlayer())) {
+			if (p.getEffect().hasOnTurnEnd()
+					&& p.getEffect().conditionOnTurnEnd(this, p)) {
+				p.getEffect().effectOnTurnEnd(this, p);
 			}
 		}
 	}

@@ -18,7 +18,7 @@ public class PieceBuff {
 	public int getDefenseBuff(Game g) {
 		return 0;
 	}
-	
+
 	public boolean canBeAttacked(Game g) {
 		return true;
 	}
@@ -54,9 +54,23 @@ public class PieceBuff {
 	public void decrStacks(int amount) {
 		stacks -= amount;
 	}
-	
+
 	protected boolean isSwapStats;
+
 	public boolean isSwapStats() {
 		return isSwapStats;
+	}
+
+	protected boolean hasOnTurnEnd;
+
+	public boolean hasOnTurnEnd() {
+		return hasOnTurnEnd;
+	}
+
+	public boolean conditionOnTurnEnd(Game g) {
+		return false;
+	}
+
+	public void effectOnTurnEnd(Game g) {
 	}
 }

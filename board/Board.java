@@ -14,6 +14,9 @@ public class Board {
 	public static final int REG_PATTERN = 1;
 	public static final int ADJACENT_2_PATTERN = 2;
 	public static final int RADIUS_1_PATTERN = 3;
+	public static final int ADJACENT_HOP_2 = 4;
+	public static final int LEFT_RIGHT_1 = 5;
+	public static final int RADIUS_8_PATTERN = 6;
 
 	public static final int WIDTH = 9;
 	public static final int HEIGHT = 9;
@@ -120,14 +123,34 @@ public class Board {
 				tryAddSquareToPattern(x, y + 2, result);
 				break;
 			case RADIUS_1_PATTERN:
-				tryAddSquareToPattern(x-1, y-1, result);
-				tryAddSquareToPattern(x-1, y, result);
-				tryAddSquareToPattern(x-1, y+1, result);
-				tryAddSquareToPattern(x, y-1, result);
-				tryAddSquareToPattern(x, y+1, result);
-				tryAddSquareToPattern(x+1, y-1, result);
-				tryAddSquareToPattern(x+1, y, result);
-				tryAddSquareToPattern(x+1, y+1, result);
+				tryAddSquareToPattern(x - 1, y - 1, result);
+				tryAddSquareToPattern(x - 1, y, result);
+				tryAddSquareToPattern(x - 1, y + 1, result);
+				tryAddSquareToPattern(x, y - 1, result);
+				tryAddSquareToPattern(x, y + 1, result);
+				tryAddSquareToPattern(x + 1, y - 1, result);
+				tryAddSquareToPattern(x + 1, y, result);
+				tryAddSquareToPattern(x + 1, y + 1, result);
+				break;
+			case ADJACENT_HOP_2:
+				tryAddSquareToPattern(x - 2, y, result);
+				tryAddSquareToPattern(x + 2, y, result);
+				tryAddSquareToPattern(x, y - 2, result);
+				tryAddSquareToPattern(x, y + 2, result);
+				break;
+			case LEFT_RIGHT_1:
+				tryAddSquareToPattern(x - 1, y, result);
+				tryAddSquareToPattern(x + 1, y, result);
+				break;
+			case RADIUS_8_PATTERN:
+				for (int i = -8; i < 9; i++) {
+					for (int j = -8; j < 9; j++) {
+						if (!(i == 0 && j == 0)) {
+							tryAddSquareToPattern(x + i, y + j, result);
+						}
+					}
+				}
+				break;
 			}
 		}
 		return result;

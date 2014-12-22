@@ -50,6 +50,17 @@ public abstract class PieceEffect {
 
 	public abstract void effectOnTurnStart(Game g, Piece p);
 
+	// On Turn End (Either player turn end)
+	protected boolean hasOnTurnEnd;
+
+	public boolean hasOnTurnEnd() {
+		return hasOnTurnEnd;
+	}
+	
+	public abstract boolean conditionOnTurnEnd(Game g, Piece p);
+
+	public abstract void effectOnTurnEnd(Game g, Piece p);
+
 	// After Main Draw (Either player draw)
 
 	protected boolean hasAfterMainDraw;
