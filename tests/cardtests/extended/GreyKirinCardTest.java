@@ -8,7 +8,7 @@ import org.junit.Test;
 import tests.cardtests.BasicCardTest;
 import card.CardBase;
 import card.PieceCardBase;
-import card.pieces.pieceeffects.GreyKirinPieceEffect;
+import card.pieces.pieceeffects.set1.GreyKirinPieceEffect;
 
 public class GreyKirinCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

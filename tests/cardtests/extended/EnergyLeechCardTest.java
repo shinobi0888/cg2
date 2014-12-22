@@ -8,7 +8,7 @@ import org.junit.Test;
 import tests.cardtests.BasicCardTest;
 import card.CardBase;
 import card.PieceCardBase;
-import card.pieces.pieceeffects.EnergyLeechPieceEffect;
+import card.pieces.pieceeffects.set1.EnergyLeechPieceEffect;
 
 public class EnergyLeechCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

@@ -6,7 +6,7 @@ import game.Player;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.pieces.pieceeffects.ParasiticSwarmPieceEffect;
+import card.pieces.pieceeffects.set1.ParasiticSwarmPieceEffect;
 
 public class ParasiticSwarmCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

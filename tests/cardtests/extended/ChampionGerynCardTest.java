@@ -6,8 +6,8 @@ import game.Player;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.pieces.pieceeffects.AgileFairyPieceEffect;
-import card.pieces.pieceeffects.ChampionGerynPieceEffect;
+import card.pieces.pieceeffects.set1.AgileFairyPieceEffect;
+import card.pieces.pieceeffects.set1.ChampionGerynPieceEffect;
 
 public class ChampionGerynCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

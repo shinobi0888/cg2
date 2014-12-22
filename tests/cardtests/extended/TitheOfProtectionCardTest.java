@@ -6,7 +6,7 @@ import game.Player;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.hexes.cardeffects.TitheOfProtectionHexEffect;
+import card.hexes.cardeffects.set1.TitheOfProtectionHexEffect;
 
 public class TitheOfProtectionCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

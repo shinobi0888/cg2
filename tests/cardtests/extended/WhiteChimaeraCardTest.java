@@ -6,7 +6,7 @@ import game.Player;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.pieces.pieceeffects.WhiteChimaeraPieceEffect;
+import card.pieces.pieceeffects.set1.WhiteChimaeraPieceEffect;
 
 public class WhiteChimaeraCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

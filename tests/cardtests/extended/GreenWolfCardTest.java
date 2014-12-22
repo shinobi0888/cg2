@@ -8,7 +8,7 @@ import org.junit.Test;
 import tests.cardtests.BasicCardTest;
 import card.CardBase;
 import card.PieceCardBase;
-import card.pieces.pieceeffects.GreenWolfPieceEffect;
+import card.pieces.pieceeffects.set1.GreenWolfPieceEffect;
 
 public class GreenWolfCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

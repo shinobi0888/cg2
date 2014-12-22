@@ -7,9 +7,9 @@ import game.Player;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.hexes.cardeffects.TheDivineWindsHexEffect;
-import card.pieces.pieceeffects.AgileFairyPieceEffect;
-import card.pieces.pieceeffects.BoreasPieceEffect;
+import card.hexes.cardeffects.set1.TheDivineWindsHexEffect;
+import card.pieces.pieceeffects.set1.AgileFairyPieceEffect;
+import card.pieces.pieceeffects.set1.BoreasPieceEffect;
 
 public class TheDivineWindsCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

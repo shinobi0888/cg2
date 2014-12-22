@@ -7,8 +7,8 @@ import game.Player;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.pieces.pieceeffects.AgileFairyPieceEffect;
-import card.pieces.pieceeffects.BoreasPieceEffect;
+import card.pieces.pieceeffects.set1.AgileFairyPieceEffect;
+import card.pieces.pieceeffects.set1.BoreasPieceEffect;
 
 public class BoreasCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

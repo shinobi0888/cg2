@@ -8,8 +8,8 @@ import game.Player;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.pieces.pieceeffects.AncientArchitectPieceEffect;
-import card.pieces.pieceeffects.AncientPillarPieceEffect;
+import card.pieces.pieceeffects.set1.AncientArchitectPieceEffect;
+import card.pieces.pieceeffects.set1.AncientPillarPieceEffect;
 
 public class AncientArchitectCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

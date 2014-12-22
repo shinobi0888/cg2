@@ -6,8 +6,8 @@ import game.Player;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.hexes.cardeffects.PrismaticPromotionHexEffect;
-import card.pieces.pieceeffects.RedTigerPieceEffect;
+import card.hexes.cardeffects.set1.PrismaticPromotionHexEffect;
+import card.pieces.pieceeffects.set1.RedTigerPieceEffect;
 
 public class PrismaticPromotionCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

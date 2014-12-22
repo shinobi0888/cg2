@@ -5,8 +5,8 @@ import game.Player;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.hexes.cardeffects.InheritanceOfWillHexEffect;
 import card.hexes.cardeffects.debug.SmiteHexEffect;
+import card.hexes.cardeffects.set1.InheritanceOfWillHexEffect;
 
 public class InheritanceOfWillCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

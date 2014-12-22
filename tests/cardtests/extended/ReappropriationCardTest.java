@@ -8,9 +8,9 @@ import org.junit.Test;
 import tests.cardtests.BasicCardTest;
 import card.CardBase;
 import card.PieceCardBase;
-import card.hexes.cardeffects.ReappropriationHexEffect;
-import card.hexes.cardeffects.StrangePotionHexEffect;
-import card.pieces.pieceeffects.AncientPillarPieceEffect;
+import card.hexes.cardeffects.set1.ReappropriationHexEffect;
+import card.hexes.cardeffects.set1.StrangePotionHexEffect;
+import card.pieces.pieceeffects.set1.AncientPillarPieceEffect;
 
 public class ReappropriationCardTest extends BasicCardTest {
 

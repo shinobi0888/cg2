@@ -8,7 +8,7 @@ import java.awt.Point;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.pieces.pieceeffects.BlueHeronPieceEffect;
+import card.pieces.pieceeffects.set1.BlueHeronPieceEffect;
 
 public class BlueHeronCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

@@ -6,7 +6,7 @@ import game.Player;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.pieces.pieceeffects.AccursedPillarPieceEffect;
+import card.pieces.pieceeffects.set1.AccursedPillarPieceEffect;
 
 public class AccursedPillarCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

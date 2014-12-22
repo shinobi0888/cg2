@@ -6,7 +6,7 @@ import game.Player;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.hexes.cardeffects.PlagueOfThePiperHexEffect;
+import card.hexes.cardeffects.set1.PlagueOfThePiperHexEffect;
 
 public class PlagueOfThePiperCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

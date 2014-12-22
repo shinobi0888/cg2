@@ -9,8 +9,8 @@ import tests.cardtests.BasicCardTest;
 import card.CardBase;
 import card.PieceCardBase;
 import card.hexes.cardeffects.debug.SmiteHexEffect;
-import card.pieces.pieceeffects.AncientPillarPieceEffect;
-import card.pieces.pieceeffects.CorruptPillarPieceEffect;
+import card.pieces.pieceeffects.set1.AncientPillarPieceEffect;
+import card.pieces.pieceeffects.set1.CorruptPillarPieceEffect;
 
 public class CorruptPillarCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

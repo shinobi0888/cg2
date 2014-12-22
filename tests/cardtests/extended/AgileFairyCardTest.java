@@ -6,7 +6,7 @@ import game.Player;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.pieces.pieceeffects.AgileFairyPieceEffect;
+import card.pieces.pieceeffects.set1.AgileFairyPieceEffect;
 
 public class AgileFairyCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

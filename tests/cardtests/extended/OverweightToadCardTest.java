@@ -6,7 +6,7 @@ import game.Player;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.pieces.pieceeffects.OverweightToadPieceEffect;
+import card.pieces.pieceeffects.set1.OverweightToadPieceEffect;
 
 public class OverweightToadCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

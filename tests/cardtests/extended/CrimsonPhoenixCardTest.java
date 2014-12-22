@@ -8,8 +8,8 @@ import org.junit.Test;
 import tests.cardtests.BasicCardTest;
 import card.CardBase;
 import card.PieceCardBase;
-import card.pieces.pieceeffects.AgileFairyPieceEffect;
-import card.pieces.pieceeffects.CrimsonPhoenixPieceEffect;
+import card.pieces.pieceeffects.set1.AgileFairyPieceEffect;
+import card.pieces.pieceeffects.set1.CrimsonPhoenixPieceEffect;
 
 public class CrimsonPhoenixCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

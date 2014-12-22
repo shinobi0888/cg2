@@ -8,7 +8,7 @@ import game.Player;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.hexes.cardeffects.ForcefulExchangeHexEffect;
+import card.hexes.cardeffects.set1.ForcefulExchangeHexEffect;
 
 public class ForcefulExchangeCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

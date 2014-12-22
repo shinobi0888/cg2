@@ -6,8 +6,8 @@ import game.Player;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.pieces.pieceeffects.OberonPieceEffect;
-import card.pieces.pieceeffects.TitaniaPieceEffect;
+import card.pieces.pieceeffects.set1.OberonPieceEffect;
+import card.pieces.pieceeffects.set1.TitaniaPieceEffect;
 
 public class OberonCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

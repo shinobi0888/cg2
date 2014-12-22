@@ -7,8 +7,8 @@ import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
 import card.hexes.cardeffects.debug.SmiteHexEffect;
-import card.pieces.pieceeffects.BrillianceFairyPieceEffect;
-import card.pieces.pieceeffects.OberonPieceEffect;
+import card.pieces.pieceeffects.set1.BrillianceFairyPieceEffect;
+import card.pieces.pieceeffects.set1.OberonPieceEffect;
 
 public class BrillianceFairyCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

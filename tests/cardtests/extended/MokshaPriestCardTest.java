@@ -6,8 +6,8 @@ import game.Player;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.pieces.pieceeffects.AgileFairyPieceEffect;
-import card.pieces.pieceeffects.MokshaPriestPieceEffect;
+import card.pieces.pieceeffects.set1.AgileFairyPieceEffect;
+import card.pieces.pieceeffects.set1.MokshaPriestPieceEffect;
 
 public class MokshaPriestCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

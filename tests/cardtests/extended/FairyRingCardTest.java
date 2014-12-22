@@ -6,8 +6,8 @@ import game.Player;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.hexes.cardeffects.FairyRingHexEffect;
-import card.pieces.pieceeffects.OberonPieceEffect;
+import card.hexes.cardeffects.set1.FairyRingHexEffect;
+import card.pieces.pieceeffects.set1.OberonPieceEffect;
 
 public class FairyRingCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

@@ -9,7 +9,7 @@ import tests.cardtests.BasicCardTest;
 import card.CardBase;
 import card.PieceCardBase;
 import card.hexes.cardeffects.debug.SmiteHexEffect;
-import card.pieces.pieceeffects.CelebrationalPillarPieceEffect;
+import card.pieces.pieceeffects.set1.CelebrationalPillarPieceEffect;
 
 public class CelebrationalPillarCardTest extends BasicCardTest {
 

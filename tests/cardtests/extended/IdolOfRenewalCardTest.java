@@ -6,7 +6,7 @@ import game.Player;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.pieces.pieceeffects.IdolOfRenewalPieceEffect;
+import card.pieces.pieceeffects.set1.IdolOfRenewalPieceEffect;
 
 public class IdolOfRenewalCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

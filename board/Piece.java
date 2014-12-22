@@ -11,7 +11,7 @@ import buffs.Aura;
 import buffs.PieceBuff;
 import card.Card;
 import card.PieceCardBase;
-import card.hexes.cardeffects.StrangePotionHexEffect;
+import card.hexes.cardeffects.set1.StrangePotionHexEffect;
 import card.pieces.effects.PieceEffect;
 
 public class Piece extends GridMapEntity {

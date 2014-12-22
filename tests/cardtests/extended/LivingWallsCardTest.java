@@ -6,8 +6,8 @@ import game.Player;
 import org.junit.Test;
 
 import tests.cardtests.BasicCardTest;
-import card.hexes.cardeffects.LivingWallsHexEffect;
-import card.pieces.pieceeffects.AncientPillarPieceEffect;
+import card.hexes.cardeffects.set1.LivingWallsHexEffect;
+import card.pieces.pieceeffects.set1.AncientPillarPieceEffect;
 
 public class LivingWallsCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {

@@ -8,7 +8,7 @@ import org.junit.Test;
 import tests.cardtests.BasicCardTest;
 import card.CardBase;
 import card.PieceCardBase;
-import card.pieces.pieceeffects.RedTigerPieceEffect;
+import card.pieces.pieceeffects.set1.RedTigerPieceEffect;
 
 public class RedTigerCardTest extends BasicCardTest {
 	public void setPlayers(Player[] players) {
