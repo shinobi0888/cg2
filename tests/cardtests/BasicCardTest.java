@@ -313,6 +313,29 @@ public abstract class BasicCardTest {
 
 		}
 
+		public Card requestHandCard(String prompt, Player p) {
+			String top = test.instructionQueue.get(test.instructionQueue.size() - 1)
+					.trim();
+			test.instructionQueue.remove(test.instructionQueue.size() - 1);
+			try {
+				return p.getHandCard(Integer.parseInt(top));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+
+		public Card requestCard(String prompt, ArrayList<Card> options) {
+			String top = test.instructionQueue.get(test.instructionQueue.size() - 1)
+					.trim();
+			test.instructionQueue.remove(test.instructionQueue.size() - 1);
+			try {
+				return options.get(Integer.parseInt(top));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
 	}
 
 }

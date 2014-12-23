@@ -581,6 +581,10 @@ public class Game {
 
 		public boolean requestYesNo(String prompt, boolean defaultAnswer);
 
+		public Card requestHandCard(String prompt, Player p);
+
+		public Card requestCard(String prompt, ArrayList<Card> options);
+
 		public void revealCard(Player p, Card c);
 
 		// Event driven

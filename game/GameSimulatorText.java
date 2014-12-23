@@ -446,4 +446,49 @@ class GameReporter implements Game.GameInterface {
 				+ " was prevented from drawing due to the effect of "
 				+ source.getCardBase().getName() + ".");
 	}
+
+	public Card requestHandCard(String prompt, Player p) {
+		try {
+			System.out.println(prompt);
+			System.out.println("Options:");
+			int numCards = p.getHandCount();
+			for (int i = 0; i < numCards; i++) {
+				System.out.println((i + 1) + ": " + p.getHandCard(i).getCardBase());
+			}
+			String response = in.readLine();
+			int answer = Integer.parseInt(response);
+			while (answer < 1 || answer > numCards) {
+				System.out.println("Invalid input.");
+				System.out.println(prompt);
+				response = in.readLine();
+				answer = Integer.parseInt(response);
+			}
+			return p.getHandCard(answer - 1);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public Card requestCard(String prompt, ArrayList<Card> options) {
+		try {
+			System.out.println(prompt);
+			System.out.println("Options:");
+			for (int i = 0; i < options.size(); i++) {
+				System.out.println((i + 1) + ": " + options.get(i).getCardBase());
+			}
+			String response = in.readLine();
+			int answer = Integer.parseInt(response);
+			while (answer < 1 || answer > options.size()) {
+				System.out.println("Invalid input.");
+				System.out.println(prompt);
+				response = in.readLine();
+				answer = Integer.parseInt(response);
+			}
+			return options.get(answer - 1);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
