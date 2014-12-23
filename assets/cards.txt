@@ -74,7 +74,7 @@ Passage to the Other Worlds::70::Shuffle the deck. Draw 2 cards and send the bot
 Replacement of the Dead::71::Return all cards in the grave to the deck and shuffle it. Then, destroy all ally pieces on the board.::Hex
 Foolish Jester::72::On play: Draw 1 card.::Piece||0::0::0::::1::1::1::1
 Foolish Buffoon::73::On play: You may add 1 Foolish Buffoon to the hand, if possible. Active: Destroy this piece and draw 1 card.::Piece||0::0::0::::1::1::1::1
-Foolish Joker::74::When playing this piece, instead of tributing your own pieces, all three release pieces must belong to the enemy. On play: Draw 1 card.::Piece||0::0::4::::1::1::1::1
+Foolish Joker::74::When playing this piece, instead of tributing your own pieces, all four release pieces must belong to the enemy. On play: Draw 1 card.::Piece||0::0::4::::1::1::1::1
 Wandering Spirit::75::When this piece is destroyed: select 1 random piece in the grave, if any, and send it to the hand.::Piece||1::1::0::::1::1::1::1
 Wish::76::Add a random Hex from the deck to the hand, if any.::Hex
 Shadow of Ragnarok::77::Send all cards in the deck to the grave. Then, destroy all pieces on the board and immediately end the turn.::Hex

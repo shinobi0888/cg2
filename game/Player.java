@@ -7,6 +7,7 @@ import board.Piece;
 import buffs.PlayerBuff;
 import card.Card;
 import card.CardBase;
+import card.HexCardBase;
 import card.PieceCardBase;
 import card.PieceCardBase.CardClass;
 
@@ -183,6 +184,44 @@ public class Player {
 		return result;
 	}
 
+	public ArrayList<Card> getHexesInDeck() {
+		ArrayList<Card> result = new ArrayList<Card>();
+		for (Card c : deck) {
+			if (c.getCardBase() instanceof HexCardBase) {
+				result.add(c);
+			}
+		}
+		return result;
+	}
+
+	public Card findInGrave(int id) {
+		for (Card c : grave) {
+			if (c.getCardBase().getId() == id) {
+				return c;
+			}
+		}
+		return null;
+	}
+
+	public void sendFromGraveToDeck(Card c) {
+		if (grave.remove(c)) {
+			deck.add(c);
+			for (PlayerListener listener : listeners) {
+				listener.onAddFromGraveToDeck(c);
+			}
+			shuffleDeck();
+		}
+	}
+
+	public void sendFromGraveToHand(Card c) {
+		if (grave.remove(c)) {
+			hand.add(c);
+			for (PlayerListener listener : listeners) {
+				listener.onAddFromGraveToHand(c);
+			}
+		}
+	}
+
 	public void addFromDeckToHand(int id) {
 		for (int i = 0; i < deck.size(); i++) {
 			Card c = deck.get(i);
@@ -354,11 +393,11 @@ public class Player {
 			listener.onCardReturnedToDeckFromHand(c);
 		}
 	}
-	
-	public void returnFromPlayedToBottomOfDeck(Card c) {
+
+	public void returnFromPlayedToDeck(Card c, int pos) {
 		if (played.contains(c)) {
 			played.remove(c);
-			deck.add(c);
+			deck.add(pos, c);
 			for (PlayerListener listener : listeners) {
 				listener.cardReturnedFromPlayedToDeck(c);
 			}
@@ -439,7 +478,7 @@ public class Player {
 		public void cardRemovedFromPlayed(Card card);
 
 		public void cardReturnedFromPlayedToHand(Card card);
-		
+
 		public void cardReturnedFromPlayedToDeck(Card card);
 
 		public void onDiscardFromHand(Card card);
@@ -454,12 +493,16 @@ public class Player {
 
 		public void onAddFromDeckToHand(Card card);
 
+		public void onAddFromGraveToHand(Card card);
+
+		public void onAddFromGraveToDeck(Card card);
+
 		public void onShuffle();
 
 		public void onCardReturnedToDeckFromHand(Card card);
 
 		public void onOverturnPrevented(Card reason);
-		
+
 		public void onCardToTopOfDeck(Card c);
 
 		// For hexes and stuff

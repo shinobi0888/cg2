@@ -26,7 +26,7 @@ public class BrillianceFairyPieceEffect extends EmptyPieceEffect {
 				CardClass.FAIRY);
 		if (fairyIds.size() > 0) {
 			int chosenId = fairyIds.get((int) (Math.random() * fairyIds.size()));
-			p.getOwner().addFromDeckToHand(chosenId);
+			g.simulateAddFromDeckToHand(p.getOwner(), chosenId);
 		}
 	}
 

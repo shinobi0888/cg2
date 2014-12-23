@@ -1,5 +1,7 @@
 package card.pieces.effects;
 
+import java.awt.Point;
+
 import card.Card;
 import game.Game;
 import game.Player;
@@ -85,5 +87,9 @@ public class EmptyPieceEffect extends PieceEffect {
 
 	public void effectOnTurnEnd(Game g, Piece p) {
 
+	}
+
+	public boolean conditionCanMove(Game g, Piece p, Point targetLocation) {
+		return true;
 	}
 }

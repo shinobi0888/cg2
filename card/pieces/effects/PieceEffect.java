@@ -2,6 +2,9 @@ package card.pieces.effects;
 
 import game.Game;
 import game.Player;
+
+import java.awt.Point;
+
 import board.Piece;
 import card.Card;
 
@@ -56,7 +59,7 @@ public abstract class PieceEffect {
 	public boolean hasOnTurnEnd() {
 		return hasOnTurnEnd;
 	}
-	
+
 	public abstract boolean conditionOnTurnEnd(Game g, Piece p);
 
 	public abstract void effectOnTurnEnd(Game g, Piece p);
@@ -113,4 +116,7 @@ public abstract class PieceEffect {
 	}
 
 	public abstract boolean conditionPreventStartOfTurnDraw(Game g, Player drawing);
+
+	// Condition for piece being able to move
+	public abstract boolean conditionCanMove(Game g, Piece p, Point targetLocation);
 }

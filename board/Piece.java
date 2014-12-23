@@ -23,6 +23,7 @@ public class Piece extends GridMapEntity {
 	private int moves;
 	private ArrayList<PieceBuff> buffs;
 	private Aura aura;
+	private boolean activeUsedThisTurn;
 
 	// Each piece should calculate its own attackable targets and moveable
 	// targets after each turn event. It should also check for ascension status
@@ -54,7 +55,8 @@ public class Piece extends GridMapEntity {
 		moveable.clear();
 		if (this.getMoves() > 0) {
 			for (Point p : b.getSquaresInPattern(x, y, source.getMovePattern())) {
-				if (b.getPiece(p.x, p.y) == null) {
+				if (b.getPiece(p.x, p.y) == null
+						&& (getEffect() == null || getEffect().conditionCanMove(g, this, p))) {
 					moveable.add(p);
 				}
 			}
@@ -87,6 +89,18 @@ public class Piece extends GridMapEntity {
 
 	public PieceEffect getEffect() {
 		return source.getEffect();
+	}
+
+	public boolean activeUsedThisTurn() {
+		return activeUsedThisTurn;
+	}
+
+	public void resetActive() {
+		activeUsedThisTurn = false;
+	}
+
+	public void recordActiveUsed() {
+		activeUsedThisTurn = true;
 	}
 
 	public Piece(Card sourceCard, Game g) {
@@ -270,6 +284,10 @@ public class Piece extends GridMapEntity {
 
 	public void decrAttacks() {
 		attacks--;
+	}
+
+	public void incrAttacks() {
+		attacks++;
 	}
 
 	public void decrMoves() {

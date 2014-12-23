@@ -161,11 +161,19 @@ public abstract class BasicCardTest {
 		}
 
 		public void cardReturnedFromPlayedToDeck(Card card) {
-			
+
 		}
 
 		public void onCardToTopOfDeck(Card c) {
-			
+
+		}
+
+		public void onAddFromGraveToHand(Card card) {
+
+		}
+
+		public void onAddFromGraveToDeck(Card card) {
+
 		}
 
 	}

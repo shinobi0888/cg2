@@ -252,7 +252,7 @@ public class Game {
 
 	public boolean activatePiece(int pieceX, int pieceY) {
 		Piece p = board.getPiece(pieceX, pieceY);
-		if (p != null) {
+		if (p != null && p.getOwner().equals(turnPlayer())) {
 			PieceEffect e = p.getCardBase().getEffect();
 			if (e.hasActive() && e.conditionActive(this, p)) {
 				e.effectActive(this, p);
@@ -365,7 +365,13 @@ public class Game {
 
 	public void simulateSendFromBoardToBottomOfDeck(Piece target) {
 		board.removePiece(target.getX(), target.getY());
-		target.getOwner().returnFromPlayedToBottomOfDeck(target.getSourceCard());
+		target.getOwner().returnFromPlayedToDeck(target.getSourceCard(),
+				target.getOwner().getDeckCount());
+	}
+
+	public void simulateSendFromBoardToTopOfDeck(Piece target) {
+		board.removePiece(target.getX(), target.getY());
+		target.getOwner().returnFromPlayedToDeck(target.getSourceCard(), 0);
 	}
 
 	public void simulateShift(Piece target, int newX, int newY) {
@@ -380,6 +386,10 @@ public class Game {
 	}
 
 	public void simulateEffectDraw(Player p) {
+		p.drawCard(this);
+	}
+
+	public void simulateHexDraw(Player p) {
 		p.drawCard(this);
 	}
 
@@ -413,6 +423,10 @@ public class Game {
 		p.moveToTopOfDeck(cardId);
 	}
 
+	public void simulateAddFromDeckToHand(Player p, int cardId) {
+		p.addFromDeckToHand(cardId);
+	}
+
 	public void simulateSendFromHandToTopOfDeck(Player p, int index) {
 		p.sendFromHandToTopOfDeck(index);
 	}
@@ -427,6 +441,22 @@ public class Game {
 
 	public void simulateMillFromDeck(Player p, int index) {
 		p.millFromDeck(index);
+	}
+
+	public void simulateSendFromGraveToDeck(Player p, int id) {
+		Card c = p.findInGrave(id);
+		p.sendFromGraveToDeck(c);
+	}
+
+	public void simulateSendAllGraveToDeck(Player p) {
+		while (p.getGraveCount() > 0) {
+			p.sendFromGraveToDeck(p.getGraveCard(0));
+		}
+	}
+
+	public void simulateSendFromGraveToHand(Player p, int id) {
+		Card c = p.findInGrave(id);
+		p.sendFromGraveToHand(c);
 	}
 
 	// Applies auras globally, removing unfit auras

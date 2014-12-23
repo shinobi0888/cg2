@@ -259,6 +259,16 @@ class PlayerReporter implements Player.PlayerListener {
 		System.out.println(player.getName() + "'s " + card.getCardBase().getName()
 				+ " was sent to the bottom of the deck.");
 	}
+
+	public void onAddFromGraveToHand(Card card) {
+		System.out.println(player.getName() + "'s " + card.getCardBase().getName()
+				+ " was added from the grave to the hand.");
+	}
+
+	public void onAddFromGraveToDeck(Card card) {
+		System.out.println(player.getName() + "'s " + card.getCardBase().getName()
+				+ " was added from the grave to the deck.");
+	}
 }
 
 class GameReporter implements Game.GameInterface {

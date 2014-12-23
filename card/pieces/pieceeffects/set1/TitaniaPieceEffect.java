@@ -20,7 +20,7 @@ public class TitaniaPieceEffect extends EmptyPieceEffect {
 		if (g.getIface().requestYesNo(
 				"Would you like to add 1 \"Oberon, King of Fairies\" to the hand?",
 				false)) {
-			playedPiece.getOwner().addFromDeckToHand(OberonPieceEffect.ID);
+			g.simulateAddFromDeckToHand(playedPiece.getOwner(), OberonPieceEffect.ID);
 			g.simulateEffectDamage(playedPiece.getOwner(), BURN_DAMAGE);
 		}
 	}

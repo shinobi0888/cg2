@@ -71,6 +71,10 @@ public class Board {
 		return p.getY() == (p.getOwner() == players[1] ? 0 : HEIGHT - 1);
 	}
 
+	public boolean pieceInOwnEndZone(Piece p) {
+		return p.getY() == (p.getOwner() == players[0] ? 0 : HEIGHT - 1);
+	}
+
 	public void playNewPiece(Piece p, int x, int y) {
 		board.put(x, y, p);
 		p.setAttacks(((PieceCardBase) p.getSourceCard().getCardBase())
@@ -95,6 +99,8 @@ public class Board {
 									.getNumAttacks());
 					piece.setMoves(((PieceCardBase) piece.getSourceCard().getCardBase())
 							.getNumMoves());
+					// Reset active here too
+					piece.resetActive();
 				}
 			}
 		}
