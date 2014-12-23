@@ -264,7 +264,7 @@ public class Game {
 
 	public boolean ascendPiece(int pieceX, int pieceY) {
 		Piece p = board.getPiece(pieceX, pieceY);
-		if (p != null && p.canAscend()) {
+		if (p != null && p.canAscend() && p.getOwner().canAscendPieces()) {
 			simulateAscend(p);
 			board.calculateAllAllowedActions(turnPlayer());
 			return true;

@@ -50,24 +50,24 @@ public class PlayerBuff {
 	public boolean hasOnTurnStart() {
 		return hasOnTurnStart;
 	}
-	
+
 	public boolean conditionOnTurnStart(Game g, Player player) {
 		return false;
 	}
-	
+
 	public void effectOnTurnStart(Game g, Player player) {
 	}
-	
+
 	protected boolean hasOnTurnEnd = false;
 
 	public boolean hasOnTurnEnd() {
 		return hasOnTurnEnd;
 	}
-	
+
 	public boolean conditionOnTurnEnd(Game g, Player player) {
 		return false;
 	}
-	
+
 	public void effectOnTurnEnd(Game g, Player player) {
 	}
 
@@ -76,5 +76,12 @@ public class PlayerBuff {
 
 	public boolean isPreventFromPlayingPieces() {
 		return isPreventFromPlayingPieces;
+	}
+
+	// Prevent ascension
+	protected boolean isPreventAscends = false;
+
+	public boolean isPreventAscends() {
+		return isPreventAscends;
 	}
 }

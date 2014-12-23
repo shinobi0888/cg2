@@ -75,6 +75,18 @@ public class Board {
 		return p.getY() == (p.getOwner() == players[0] ? 0 : HEIGHT - 1);
 	}
 
+	public ArrayList<Piece> getPiecesInEndZone(Player p) {
+		ArrayList<Piece> result = new ArrayList<Piece>();
+		for (int x = 0; x < WIDTH; x++) {
+			int y = (p == players[0] ? 0 : HEIGHT - 1);
+			Piece endZonePiece = getPiece(x, y);
+			if (endZonePiece != null) {
+				result.add(endZonePiece);
+			}
+		}
+		return result;
+	}
+
 	public void playNewPiece(Piece p, int x, int y) {
 		board.put(x, y, p);
 		p.setAttacks(((PieceCardBase) p.getSourceCard().getCardBase())

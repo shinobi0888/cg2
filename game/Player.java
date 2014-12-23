@@ -108,6 +108,15 @@ public class Player {
 		return health;
 	}
 
+	public boolean canAscendPieces() {
+		for (PlayerBuff b : buffs) {
+			if (b.isPreventAscends()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public void loadDeck(String deckList) {
 		deck = new ArrayList<Card>();
 		for (String cardNum : deckList.split(",")) {
