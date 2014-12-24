@@ -159,4 +159,17 @@ public abstract class PieceEffect {
 			PieceSnapshot attacked);
 
 	public abstract void effectOnAttack(Game g, Piece p, PieceSnapshot attacked);
+
+	// On Piece received Attack
+	protected boolean hasOnReceiveAttack;
+
+	public boolean hasOnReceiveAttack() {
+		return hasOnReceiveAttack;
+	}
+
+	public abstract boolean conditionOnReceiveAttack(Game g, Piece p,
+			PieceSnapshot attacker);
+
+	public abstract void effectOnReceiveAttack(Game g, Piece p,
+			PieceSnapshot attacker);
 }

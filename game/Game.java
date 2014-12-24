@@ -251,17 +251,24 @@ public class Game {
 		if (p != null && p.canAttack(new Point(targetX, targetY))) {
 			Piece target = board.getPiece(targetX, targetY);
 			Piece destroyed = simulateAttack(p, target);
-			PieceSnapshot snap = new PieceSnapshot(target);
-			if (destroyed != null && destroyed.equals(target)
+			PieceSnapshot s1 = new PieceSnapshot(p);
+			PieceSnapshot s2 = new PieceSnapshot(target);
+			if (!destroyed.equals(p) && p.getEffect() != null
 					&& p.getEffect().hasOnAttack()
-					&& p.getEffect().conditionOnAttack(this, p, snap)) {
+					&& p.getEffect().conditionOnAttack(this, p, s2)) {
 				// Attacked effect
-				p.getEffect().effectOnAttack(this, p, snap);
-				if (p.getEffect() != null && p.getEffect().hasOnKill()
-						&& p.getEffect().conditionOnKill(this, p, snap)) {
+				p.getEffect().effectOnAttack(this, p, s2);
+				if (destroyed.equals(target) && p.getEffect().hasOnKill()
+						&& p.getEffect().conditionOnKill(this, p, s2)) {
 					// On kill effect
-					p.getEffect().effectOnKill(this, p, snap);
+					p.getEffect().effectOnKill(this, p, s2);
 				}
+			}
+			// Receive attack effect
+			if (!destroyed.equals(target) && target.getEffect() != null
+					&& target.getEffect().hasOnReceiveAttack()
+					&& p.getEffect().conditionOnReceiveAttack(this, p, s1)) {
+				target.getEffect().effectOnReceiveAttack(this, target, s1);
 			}
 			board.calculateAllAllowedActions(turnPlayer());
 			return true;

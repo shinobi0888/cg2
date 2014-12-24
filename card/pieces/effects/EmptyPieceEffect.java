@@ -24,6 +24,7 @@ public class EmptyPieceEffect extends PieceEffect {
 		this.hasPreventStartOfTurnDraw = false;
 		this.hasOnManuallyMoved = false;
 		this.hasOnAttack = false;
+		this.hasOnReceiveAttack = false;
 		this.hasOnReleasePlay = false;
 	}
 
@@ -123,6 +124,15 @@ public class EmptyPieceEffect extends PieceEffect {
 
 	public void effectOnReleasePlay(Game g, Piece playedPiece,
 			ArrayList<PieceSnapshot> released) {
+
+	}
+
+	public boolean conditionOnReceiveAttack(Game g, Piece p,
+			PieceSnapshot attacker) {
+		return false;
+	}
+
+	public void effectOnReceiveAttack(Game g, Piece p, PieceSnapshot attacker) {
 
 	}
 }
