@@ -176,6 +176,10 @@ public abstract class BasicCardTest {
 
 		}
 
+		public void onCardToBottomOfDeck(Card c) {
+
+		}
+
 	}
 
 	protected class CardTestGameInterface implements Game.GameInterface {
@@ -335,6 +339,10 @@ public abstract class BasicCardTest {
 				e.printStackTrace();
 			}
 			return null;
+		}
+
+		public void piecesSwapped(Piece p1, Piece p2) {
+
 		}
 	}
 

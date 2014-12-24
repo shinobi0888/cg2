@@ -1,11 +1,14 @@
 package card.pieces.effects;
 
-import java.awt.Point;
-
-import card.Card;
 import game.Game;
 import game.Player;
+
+import java.awt.Point;
+import java.util.ArrayList;
+
 import board.Piece;
+import board.PieceSnapshot;
+import card.Card;
 
 public class EmptyPieceEffect extends PieceEffect {
 	public EmptyPieceEffect() {
@@ -19,6 +22,9 @@ public class EmptyPieceEffect extends PieceEffect {
 		this.hasOnPiecePlayed = false;
 		this.isPreventOverturn = false;
 		this.hasPreventStartOfTurnDraw = false;
+		this.hasOnManuallyMoved = false;
+		this.hasOnAttack = false;
+		this.hasOnReleasePlay = false;
 	}
 
 	public boolean conditionActive(Game g, Piece p) {
@@ -37,11 +43,11 @@ public class EmptyPieceEffect extends PieceEffect {
 
 	}
 
-	public boolean conditionOnKill(Game g, Piece p) {
+	public boolean conditionOnKill(Game g, Piece p, PieceSnapshot killed) {
 		return false;
 	}
 
-	public void effectOnKill(Game g, Piece p) {
+	public void effectOnKill(Game g, Piece p, PieceSnapshot killed) {
 
 	}
 
@@ -91,5 +97,32 @@ public class EmptyPieceEffect extends PieceEffect {
 
 	public boolean conditionCanMove(Game g, Piece p, Point targetLocation) {
 		return true;
+	}
+
+	public boolean conditionOnManuallyMoved(Game g, Piece p, Point old,
+			Point target) {
+		return false;
+	}
+
+	public void effectOnManuallyMoved(Game g, Piece p, Point old, Point target) {
+
+	}
+
+	public boolean conditionOnAttack(Game g, Piece p, PieceSnapshot attacked) {
+		return false;
+	}
+
+	public void effectOnAttack(Game g, Piece p, PieceSnapshot attacked) {
+
+	}
+
+	public boolean conditionOnReleasePlay(Game g, Piece playedPiece,
+			ArrayList<PieceSnapshot> released) {
+		return false;
+	}
+
+	public void effectOnReleasePlay(Game g, Piece playedPiece,
+			ArrayList<PieceSnapshot> released) {
+
 	}
 }

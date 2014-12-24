@@ -95,12 +95,6 @@ public class Board {
 		listener.piecePlayed(p, x, y);
 	}
 
-	// Adding pieces is NOT playing pieces.
-	// Playing pieces implies playing from hand.
-	public void addNewPiece(Piece p, int x, int y) {
-		// TODO: implement
-	}
-
 	public void initNewTurnMovesAndAttacks(Player p) {
 		for (int x = 0; x < WIDTH; x++) {
 			for (int y = 0; y < HEIGHT; y++) {
@@ -223,6 +217,10 @@ public class Board {
 		int oldY = p.getY();
 		board.move(p, tX, tY);
 		listener.pieceMoved(p, oldX, oldY, tX, tY);
+	}
+	
+	public void swapPiece(Piece p1, Piece p2) {
+		board.swap(p1, p2);
 	}
 
 	public void removePiece(int x, int y) {

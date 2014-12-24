@@ -91,4 +91,14 @@ public class GridMap<T extends GridMapEntity> {
 		put(target.x, target.y, null);
 		put(destX, destY, target);
 	}
+
+	public void swap(T target1, T target2) {
+		int targetIndex1 = elementArray.indexOf(target1);
+		int targetIndex2 = elementArray.indexOf(target2);
+		if (targetIndex1 == -1 || targetIndex2 == -1) {
+			throw new IndexOutOfBoundsException();
+		}
+		put(target1.x, target1.y, target2);
+		put(target2.x, target2.y, target1);
+	}
 }

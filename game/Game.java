@@ -97,6 +97,10 @@ public class Game {
 		return null;
 	}
 
+	public int playerBoardDirection(Player p) {
+		return players[0].equals(p) ? 1 : -1;
+	}
+
 	public Player turnPlayer() {
 		return players[turn % 2];
 	}
@@ -192,10 +196,17 @@ public class Game {
 			if (location == null) {
 				return false;
 			}
+			// For release snapshots
+			ArrayList<PieceSnapshot> released = new ArrayList<PieceSnapshot>();
 			if (cardBase.getRelease() != null) {
 				ArrayList<Point> releaseTargets = cardBase.getRelease()
 						.getReleaseTargets(this, turnPlayer(), location, iface);
 				if (releaseTargets.size() != 0) {
+					// Create snapshots for a release effect
+					for (Point releaseTarget : releaseTargets) {
+						released.add(new PieceSnapshot(board.getPiece(releaseTarget.x,
+								releaseTarget.y)));
+					}
 					for (Point releaseTarget : releaseTargets) {
 						releasePiece(releaseTarget.x, releaseTarget.y);
 					}
@@ -207,6 +218,13 @@ public class Game {
 			turnPlayer().playFromHandToField(index);
 			Piece newPiece = new Piece(c, this);
 			board.playNewPiece(newPiece, location.x, location.y);
+			// Check for effects of release
+			if (newPiece.getEffect() != null
+					&& newPiece.getEffect().hasOnReleasePlay()
+					&& newPiece.getEffect().conditionOnReleasePlay(this, newPiece,
+							released)) {
+				newPiece.getEffect().effectOnReleasePlay(this, newPiece, released);
+			}
 			turnPlayer().decrPiecePlays();
 			board.calculateAllAllowedActions(turnPlayer());
 			return true;
@@ -232,7 +250,19 @@ public class Game {
 		Piece p = board.getPiece(pieceX, pieceY);
 		if (p != null && p.canAttack(new Point(targetX, targetY))) {
 			Piece target = board.getPiece(targetX, targetY);
-			simulateAttack(p, target);
+			Piece destroyed = simulateAttack(p, target);
+			PieceSnapshot snap = new PieceSnapshot(target);
+			if (destroyed != null && destroyed.equals(target)
+					&& p.getEffect().hasOnAttack()
+					&& p.getEffect().conditionOnAttack(this, p, snap)) {
+				// Attacked effect
+				p.getEffect().effectOnAttack(this, p, snap);
+				if (p.getEffect() != null && p.getEffect().hasOnKill()
+						&& p.getEffect().conditionOnKill(this, p, snap)) {
+					// On kill effect
+					p.getEffect().effectOnKill(this, p, snap);
+				}
+			}
 			board.calculateAllAllowedActions(turnPlayer());
 			return true;
 		}
@@ -241,9 +271,16 @@ public class Game {
 
 	public boolean movePiece(int pieceX, int pieceY, int targetX, int targetY) {
 		Piece p = board.getPiece(pieceX, pieceY);
-		if (p != null && p.canMove(new Point(targetX, targetY))) {
+		Point oldPoint = new Point(pieceX, pieceY);
+		Point targetPoint = new Point(targetX, targetY);
+		if (p != null && p.canMove(targetPoint)) {
 			board.movePiece(p, targetX, targetY);
 			p.decrMoves();
+			PieceEffect effect = p.getEffect();
+			if (effect != null && effect.hasOnManuallyMoved()
+					&& effect.conditionOnManuallyMoved(this, p, oldPoint, targetPoint)) {
+				effect.effectOnManuallyMoved(this, p, oldPoint, targetPoint);
+			}
 			board.calculateAllAllowedActions(turnPlayer());
 			return true;
 		}
@@ -331,14 +368,17 @@ public class Game {
 		}
 	}
 
-	public void simulateAttack(Piece attacker, Piece target) {
+	public Piece simulateAttack(Piece attacker, Piece target) {
 		iface.pieceAttacked(attacker, target);
 		if (attacker.getAttack() >= target.getDefense()) {
 			simulateDestroyByBattle(target);
+			return target;
 		} else if (target.getAttack() >= attacker.getDefense()) {
 			simulateDestroyByBattle(attacker);
+			return attacker;
 		} else {
 			iface.attackNothingHappened();
+			return null;
 		}
 	}
 
@@ -387,6 +427,13 @@ public class Game {
 
 	public void simulateEffectDraw(Player p) {
 		p.drawCard(this);
+	}
+
+	public void simulateEffectDrawAndReveal(Player p) {
+		Card c = p.drawCard(this);
+		if (c != null) {
+			iface.revealCard(p, c);
+		}
 	}
 
 	public void simulateHexDraw(Player p) {
@@ -448,6 +495,11 @@ public class Game {
 		p.sendFromGraveToDeck(c);
 	}
 
+	public void simulateSendFromGraveToDeck(Player p, int id, int positionInDeck) {
+		Card c = p.findInGrave(id);
+		p.sendFromGraveToDeck(c, positionInDeck);
+	}
+
 	public void simulateSendAllGraveToDeck(Player p) {
 		while (p.getGraveCount() > 0) {
 			p.sendFromGraveToDeck(p.getGraveCard(0));
@@ -457,6 +509,14 @@ public class Game {
 	public void simulateSendFromGraveToHand(Player p, int id) {
 		Card c = p.findInGrave(id);
 		p.sendFromGraveToHand(c);
+	}
+
+	public void simulateSendFromDeckToBottom(Player p, Card c) {
+		p.moveToBottomOfDeck(c);
+	}
+
+	public void simulateSwapPieces(Piece p1, Piece p2) {
+		board.swapPiece(p1, p2);
 	}
 
 	// Applies auras globally, removing unfit auras
@@ -617,6 +677,8 @@ public class Game {
 		public void pieceGainedBuff(Piece p, PieceBuff b);
 
 		public void pieceLostBuff(Piece p, PieceBuff b);
+
+		public void piecesSwapped(Piece p1, Piece p2);
 
 		public void playerPreventedFromDrawing(Player p, Card source);
 	}

@@ -269,6 +269,11 @@ class PlayerReporter implements Player.PlayerListener {
 		System.out.println(player.getName() + "'s " + card.getCardBase().getName()
 				+ " was added from the grave to the deck.");
 	}
+
+	public void onCardToBottomOfDeck(Card c) {
+		System.out.println(player.getName() + "'s " + c.getCardBase().getName()
+				+ " was moved to the bottom of the deck.");
+	}
 }
 
 class GameReporter implements Game.GameInterface {
@@ -490,5 +495,10 @@ class GameReporter implements Game.GameInterface {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public void piecesSwapped(Piece p1, Piece p2) {
+		System.out.println(p1.getOwner().getName() + "'s " + p1.getName() + " and "
+				+ p2.getOwner().getName() + "'s " + p2.getName() + " were swapped.");
 	}
 }

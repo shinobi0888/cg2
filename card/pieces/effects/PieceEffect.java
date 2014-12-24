@@ -4,8 +4,10 @@ import game.Game;
 import game.Player;
 
 import java.awt.Point;
+import java.util.ArrayList;
 
 import board.Piece;
+import board.PieceSnapshot;
 import card.Card;
 
 public abstract class PieceEffect {
@@ -31,6 +33,19 @@ public abstract class PieceEffect {
 
 	public abstract void effectOnPlay(Game g, Piece playedPiece);
 
+	// On Release Play
+	protected boolean hasOnReleasePlay;
+
+	public boolean hasOnReleasePlay() {
+		return hasOnReleasePlay;
+	}
+
+	public abstract boolean conditionOnReleasePlay(Game g, Piece playedPiece,
+			ArrayList<PieceSnapshot> released);
+
+	public abstract void effectOnReleasePlay(Game g, Piece playedPiece,
+			ArrayList<PieceSnapshot> released);
+
 	// On Kill
 	protected boolean hasOnKill;
 
@@ -38,9 +53,9 @@ public abstract class PieceEffect {
 		return hasOnKill;
 	}
 
-	public abstract boolean conditionOnKill(Game g, Piece p);
+	public abstract boolean conditionOnKill(Game g, Piece p, PieceSnapshot killed);
 
-	public abstract void effectOnKill(Game g, Piece p);
+	public abstract void effectOnKill(Game g, Piece p, PieceSnapshot killed);
 
 	// On Turn Start (Either player turn start)
 	protected boolean hasOnTurnStart;
@@ -119,4 +134,29 @@ public abstract class PieceEffect {
 
 	// Condition for piece being able to move
 	public abstract boolean conditionCanMove(Game g, Piece p, Point targetLocation);
+
+	// On Piece Manually Moved
+	protected boolean hasOnManuallyMoved;
+
+	public boolean hasOnManuallyMoved() {
+		return hasOnManuallyMoved;
+	}
+
+	public abstract boolean conditionOnManuallyMoved(Game g, Piece p, Point old,
+			Point target);
+
+	public abstract void effectOnManuallyMoved(Game g, Piece p, Point old,
+			Point target);
+
+	// On Piece attack
+	protected boolean hasOnAttack;
+
+	public boolean hasOnAttack() {
+		return hasOnAttack;
+	}
+
+	public abstract boolean conditionOnAttack(Game g, Piece p,
+			PieceSnapshot attacked);
+
+	public abstract void effectOnAttack(Game g, Piece p, PieceSnapshot attacked);
 }

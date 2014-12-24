@@ -222,6 +222,15 @@ public class Player {
 		}
 	}
 
+	public void sendFromGraveToDeck(Card c, int positionInDeck) {
+		if (grave.remove(c)) {
+			deck.add(positionInDeck, c);
+			for (PlayerListener listener : listeners) {
+				listener.onAddFromGraveToDeck(c);
+			}
+		}
+	}
+
 	public void sendFromGraveToHand(Card c) {
 		if (grave.remove(c)) {
 			hand.add(c);
@@ -339,6 +348,18 @@ public class Player {
 
 	public int getDeckCount() {
 		return deck.size();
+	}
+
+	public Card getDeckCard(int index) {
+		return deck.get(index);
+	}
+
+	public void moveToBottomOfDeck(Card c) {
+		deck.remove(c);
+		deck.add(c);
+		for (PlayerListener listener : listeners) {
+			listener.onCardToBottomOfDeck(c);
+		}
 	}
 
 	public void turnGrave() {
@@ -513,6 +534,8 @@ public class Player {
 		public void onOverturnPrevented(Card reason);
 
 		public void onCardToTopOfDeck(Card c);
+
+		public void onCardToBottomOfDeck(Card c);
 
 		// For hexes and stuff
 		public void cardSentToGrave(Card card);
