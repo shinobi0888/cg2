@@ -10,14 +10,14 @@ public class TitheOfProtectionHexEffect implements HexEffect {
 	private static final int BURN_DAMAGE = 8;
 
 	public void simulateEffect(Game g, Player owningPlayer, Card source) {
-		g.simulateHexDamage(owningPlayer, BURN_DAMAGE);
+		g.getHexEffector().damage(owningPlayer, BURN_DAMAGE);
 		for (int i = 0; i < 2; i++) {
 			int enemyHandCount = g.getEnemy(owningPlayer).getHandCount();
 			if (enemyHandCount == 0) {
 				break;
 			}
-			int randomIndex = (int) (Math.random() * enemyHandCount);
-			g.simulateSendFromHandToTopOfDeck(g.getEnemy(owningPlayer), randomIndex);
+			g.getHexEffector().sendFromHandToDeck(g.getEnemy(owningPlayer),
+					g.getEnemy(owningPlayer).getRandomInHand(), 0);
 		}
 	}
 

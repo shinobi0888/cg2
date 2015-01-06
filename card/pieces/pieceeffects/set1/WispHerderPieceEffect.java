@@ -23,9 +23,9 @@ public class WispHerderPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectActive(Game g, Piece p) {
-		g.simulateDestroy(p);
+		g.getPieceEffector().destroy(p);
 		Piece target = g.getIface().requestBoardPiece("Select a piece to move:",
 				g.getBoard().getPlayersPieces(p.getOwner()));
-		g.simulateShift(target, p.getX(), p.getY());
+		g.getPieceEffector().shiftPiece(target, p.getX(), p.getY());
 	}
 }

@@ -20,7 +20,7 @@ public class FlamewingPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnPlay(Game g, Piece playedPiece) {
-		g.simulateGivePieceBuff(playedPiece, new FlamewingBuff(playedPiece,
+		g.getPieceEffector().givePieceBuff(playedPiece, new FlamewingBuff(playedPiece,
 				playedPiece.getSourceCard()));
 	}
 
@@ -34,7 +34,7 @@ public class FlamewingPieceEffect extends EmptyPieceEffect {
 		if (buff != null) {
 			buff.incrStacks(attacker.getAttack());
 			if (p.getDefense() == 0) {
-				g.simulateDestroy(p);
+				g.getPieceEffector().destroy(p);
 			}
 		}
 	}

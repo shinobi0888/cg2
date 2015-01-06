@@ -12,7 +12,7 @@ public class RallyHexEffect implements HexEffect {
 
 	public void simulateEffect(Game g, Player owningPlayer, Card source) {
 		for (Piece p : g.getBoard().getAllPieces()) {
-			g.simulateGivePieceBuff(p, new RallyBuff(source, p));
+			g.getHexEffector().givePieceBuff(p, new RallyBuff(source, p));
 		}
 	}
 

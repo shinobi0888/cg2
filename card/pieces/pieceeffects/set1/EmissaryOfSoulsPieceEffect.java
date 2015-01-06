@@ -19,8 +19,8 @@ public class EmissaryOfSoulsPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnPlay(Game g, Piece playedPiece) {
-		g.simulateGivePieceBuff(playedPiece, new EmissaryBuff(playedPiece,
-				playedPiece.getSourceCard()));
+		g.getPieceEffector().givePieceBuff(playedPiece,
+				new EmissaryBuff(playedPiece, playedPiece.getSourceCard()));
 	}
 
 	public boolean conditionOnKill(Game g, Piece p, Piece killed) {

@@ -17,8 +17,8 @@ public class WanderingSpiritPieceEffect extends EmptyPieceEffect {
 
 	public void effectOnSelfDestroyed(Game g, Piece p) {
 		int randomIndex = (int) (Math.random() * p.getOwner().getGraveCount());
-		g.simulateSendFromGraveToHand(p.getOwner(),
-				p.getOwner().getGraveCard(randomIndex).getCardBase().getId());
+		g.getPieceEffector().sendFromGraveToHand(p.getOwner(),
+				p.getOwner().getGraveCard(randomIndex));
 	}
 
 }

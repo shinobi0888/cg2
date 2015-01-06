@@ -18,6 +18,8 @@ public class Game {
 	private Board board;
 	private int turn;
 	private GameInterface iface;
+	private HexEffector hexE;
+	private PieceEffector pieceE;
 
 	public class GameBoardListener implements Board.BoardListener {
 		private GameInterface iface;
@@ -68,6 +70,8 @@ public class Game {
 		players[0] = p1;
 		players[1] = p2;
 		this.iface = iface;
+		hexE = new HexEffector(this);
+		pieceE = new PieceEffector(this);
 	}
 
 	public void startNewGame() {
@@ -338,20 +342,8 @@ public class Game {
 		simulateAnyDamage(p, amount);
 	}
 
-	public void simulateHexDamage(Player p, int amount) {
-		simulateAnyDamage(p, amount);
-	}
-
-	public void simulateEffectDamage(Player p, int amount) {
-		simulateAnyDamage(p, amount);
-	}
-
-	public void simulateSetHealth(Player p, int amount) {
-		p.setHealth(amount);
-	}
-
 	// Simulates any damage, regardless of attacks or effects, etc
-	private void simulateAnyDamage(Player p, int amount) {
+	public void simulateAnyDamage(Player p, int amount) {
 		p.lowerHealth(amount);
 		// Check loss condition
 		if (p.lost()) {
@@ -359,15 +351,7 @@ public class Game {
 		}
 	}
 
-	public void simulateHexHeal(Player p, int amount) {
-		simulateAnyHeal(p, amount);
-	}
-
-	public void simulateEffectHeal(Player p, int amount) {
-		simulateAnyHeal(p, amount);
-	}
-
-	private void simulateAnyHeal(Player p, int amount) {
+	public void simulateAnyHeal(Player p, int amount) {
 		p.raiseHealth(amount);
 		// Check loss condition
 		if (p.lost()) {
@@ -403,127 +387,6 @@ public class Game {
 	public void simulateRemove(Piece target) {
 		board.removePiece(target.getX(), target.getY());
 		target.getOwner().removePlayedCard(target.getSourceCard());
-	}
-
-	public void simulateSendFromBoardToHand(Piece target) {
-		board.removePiece(target.getX(), target.getY());
-		target.getOwner().returnFromPlayedToHand(target.getSourceCard());
-	}
-
-	public void simulateSendFromBoardToBottomOfDeck(Piece target) {
-		board.removePiece(target.getX(), target.getY());
-		target.getOwner().returnFromPlayedToDeck(target.getSourceCard(),
-				target.getOwner().getDeckCount());
-	}
-
-	public void simulateSendFromBoardToTopOfDeck(Piece target) {
-		board.removePiece(target.getX(), target.getY());
-		target.getOwner().returnFromPlayedToDeck(target.getSourceCard(), 0);
-	}
-
-	public void simulateShift(Piece target, int newX, int newY) {
-		board.movePiece(target, newX, newY);
-	}
-
-	public void simulatePlayFromDeck(Player p, Card c, int x, int y) {
-		turnPlayer().playFromDeckToField(c);
-		Piece newPiece = new Piece(c, this);
-		board.playNewPiece(newPiece, x, y);
-		board.calculateAllAllowedActions(turnPlayer());
-	}
-
-	public void simulateEffectDraw(Player p) {
-		p.drawCard(this);
-	}
-
-	public void simulateEffectDrawAndReveal(Player p) {
-		Card c = p.drawCard(this);
-		if (c != null) {
-			iface.revealCard(p, c);
-		}
-	}
-
-	public void simulateHexDraw(Player p) {
-		p.drawCard(this);
-	}
-
-	public void simulateGivePlayerBuff(Player p, PlayerBuff b) {
-		p.addBuff(b);
-		iface.playerGainedBuff(p, b);
-	}
-
-	public void simulateRemovePlayerBuff(Player p, PlayerBuff b) {
-		p.removeBuff(b);
-		iface.playerLostBuff(p, b);
-	}
-
-	public void simulateGivePieceBuff(Piece p, PieceBuff b) {
-		p.addBuff(b);
-		iface.pieceGainedBuff(p, b);
-	}
-
-	public void simulateRemovePieceBuff(Piece p, PieceBuff b) {
-		p.removeBuff(b);
-		iface.pieceLostBuff(p, b);
-	}
-
-	public void simulateGivePlayerPiecePlays(Player p, int count) {
-		for (int i = 0; i < count; i++) {
-			p.incrPiecePlays();
-		}
-	}
-
-	public void simulateMoveToTopOfDeck(Player p, int cardId) {
-		p.moveToTopOfDeck(cardId);
-	}
-
-	public void simulateAddFromDeckToHand(Player p, int cardId) {
-		p.addFromDeckToHand(cardId);
-	}
-
-	public void simulateSendFromHandToTopOfDeck(Player p, int index) {
-		p.sendFromHandToTopOfDeck(index);
-	}
-
-	public void simulateSendFromHandToBottomOfDeck(Player p, int index) {
-		p.sendFromHandToBottomOfDeck(index);
-	}
-
-	public void simulateDiscardFromHand(Player p, int index) {
-		p.discardFromHand(index);
-	}
-
-	public void simulateMillFromDeck(Player p, int index) {
-		p.millFromDeck(index);
-	}
-
-	public void simulateSendFromGraveToDeck(Player p, int id) {
-		Card c = p.findInGrave(id);
-		p.sendFromGraveToDeck(c);
-	}
-
-	public void simulateSendFromGraveToDeck(Player p, int id, int positionInDeck) {
-		Card c = p.findInGrave(id);
-		p.sendFromGraveToDeck(c, positionInDeck);
-	}
-
-	public void simulateSendAllGraveToDeck(Player p) {
-		while (p.getGraveCount() > 0) {
-			p.sendFromGraveToDeck(p.getGraveCard(0));
-		}
-	}
-
-	public void simulateSendFromGraveToHand(Player p, int id) {
-		Card c = p.findInGrave(id);
-		p.sendFromGraveToHand(c);
-	}
-
-	public void simulateSendFromDeckToBottom(Player p, Card c) {
-		p.moveToBottomOfDeck(c);
-	}
-
-	public void simulateSwapPieces(Piece p1, Piece p2) {
-		board.swapPiece(p1, p2);
 	}
 
 	// Applies auras globally, removing unfit auras
@@ -632,6 +495,14 @@ public class Game {
 
 	public GameInterface getIface() {
 		return iface;
+	}
+
+	public HexEffector getHexEffector() {
+		return hexE;
+	}
+
+	public PieceEffector getPieceEffector() {
+		return pieceE;
 	}
 
 	private void drawHand(Player p) {

@@ -12,7 +12,7 @@ public class StrangePotionHexEffect implements HexEffect {
 
 	public void simulateEffect(Game g, Player owningPlayer, Card source) {
 		for (Piece p : g.getBoard().getAllPieces()) {
-			g.simulateGivePieceBuff(p, new StrangePotionBuff(source, p));
+			g.getHexEffector().givePieceBuff(p, new StrangePotionBuff(source, p));
 		}
 	}
 

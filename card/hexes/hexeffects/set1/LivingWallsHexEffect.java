@@ -29,7 +29,7 @@ public class LivingWallsHexEffect implements HexEffect {
 			if (positions.size() > 0) {
 				Point chosenPosition = g.getIface().requestBoardPos(
 						"Select a new position for " + p + ": ", positions);
-				g.simulateShift(p, chosenPosition.x, chosenPosition.y);
+				g.getHexEffector().shiftPiece(p, chosenPosition.x, chosenPosition.y);
 			}
 		}
 	}

@@ -21,8 +21,9 @@ public class WedjatFalconPieceEffect extends EmptyPieceEffect {
 		Player enemy = g.getEnemy(playedPiece.getOwner());
 		int handCount = enemy.getHandCount();
 		for (int i = 0; i < handCount; i++) {
-			g.getIface().revealCard(enemy, enemy.getHandCard(i));
+			g.getPieceEffector().revealCard(enemy, enemy.getHandCard(i));
 		}
-		g.simulateEffectDamage(playedPiece.getOwner(), BURN_DAMAGE * handCount);
+		g.getPieceEffector()
+				.damage(playedPiece.getOwner(), BURN_DAMAGE * handCount);
 	}
 }

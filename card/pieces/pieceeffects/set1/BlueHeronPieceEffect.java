@@ -22,7 +22,8 @@ public class BlueHeronPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnPlay(Game g, Piece p) {
-		g.simulateGivePieceBuff(p, new BlueHeronBuff(p, p.getSourceCard()));
+		g.getPieceEffector().givePieceBuff(p,
+				new BlueHeronBuff(p, p.getSourceCard()));
 	}
 
 	public class BlueHeronBuff extends PieceBuff {

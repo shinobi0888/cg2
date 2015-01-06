@@ -23,8 +23,10 @@ public class SoulstealerPieceEffect extends EmptyPieceEffect {
 		ArrayList<Piece> allyPieces = g.getBoard().getPlayersPieces(
 				playedPiece.getOwner());
 		allyPieces.remove(playedPiece);
-		g.simulateGivePieceBuff(playedPiece, new SoulstealerBuff(playedPiece,
-				playedPiece.getSourceCard(), allyPieces.size()));
+		g.getPieceEffector().givePieceBuff(
+				playedPiece,
+				new SoulstealerBuff(playedPiece, playedPiece.getSourceCard(),
+						allyPieces.size()));
 	}
 
 	public class SoulstealerBuff extends PieceBuff {

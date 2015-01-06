@@ -16,7 +16,8 @@ public class ShrineOfNotusPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnSelfDestroyed(Game g, Piece p) {
-		g.simulateMoveToTopOfDeck(p.getOwner(), BoreasPieceEffect.NOTUS_ID);
+		g.getPieceEffector().reorderDeck(p.getOwner(),
+				p.getOwner().findInDeck(BoreasPieceEffect.NOTUS_ID), 0);
 	}
 
 }

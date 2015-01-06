@@ -212,14 +212,13 @@ public class Player {
 		return null;
 	}
 
-	public void sendFromGraveToDeck(Card c) {
-		if (grave.remove(c)) {
-			deck.add(c);
-			for (PlayerListener listener : listeners) {
-				listener.onAddFromGraveToDeck(c);
+	public Card findInDeck(int id) {
+		for (Card c : deck) {
+			if (c.getCardBase().getId() == id) {
+				return c;
 			}
-			shuffleDeck();
 		}
+		return null;
 	}
 
 	public void sendFromGraveToDeck(Card c, int positionInDeck) {
@@ -240,33 +239,24 @@ public class Player {
 		}
 	}
 
-	public void addFromDeckToHand(int id) {
-		for (int i = 0; i < deck.size(); i++) {
-			Card c = deck.get(i);
-			if (c.getCardBase().getId() == id) {
-				deck.remove(c);
-				hand.add(c);
-				for (PlayerListener listener : listeners) {
-					listener.onAddFromDeckToHand(c);
-				}
-				shuffleDeck();
-				return;
-			}
+	public void addFromDeckToHand(Card c) {
+		deck.remove(c);
+		hand.add(c);
+		for (PlayerListener listener : listeners) {
+			listener.onAddFromDeckToHand(c);
 		}
 	}
 
-	public void discardFromHand(int index) {
-		Card c = hand.get(index);
-		hand.remove(index);
+	public void discardFromHand(Card c) {
+		hand.remove(c);
 		grave.add(c);
 		for (PlayerListener listener : listeners) {
 			listener.onDiscardFromHand(c);
 		}
 	}
 
-	public void millFromDeck(int index) {
-		Card c = deck.get(index);
-		deck.remove(index);
+	public void millFromDeck(Card c) {
+		deck.remove(c);
 		grave.add(c);
 		for (PlayerListener listener : listeners) {
 			listener.onMillFromDeck(c);
@@ -354,11 +344,11 @@ public class Player {
 		return deck.get(index);
 	}
 
-	public void moveToBottomOfDeck(Card c) {
+	public void reorderDeck(Card c, int index) {
 		deck.remove(c);
-		deck.add(c);
+		deck.add(index, c);
 		for (PlayerListener listener : listeners) {
-			listener.onCardToBottomOfDeck(c);
+			listener.onCardRepositionedInDeck(c);
 		}
 	}
 
@@ -406,19 +396,9 @@ public class Player {
 		}
 	}
 
-	public void sendFromHandToTopOfDeck(int index) {
-		Card c = hand.get(index);
-		hand.remove(index);
-		deck.add(0, c);
-		for (PlayerListener listener : listeners) {
-			listener.onCardReturnedToDeckFromHand(c);
-		}
-	}
-
-	public void sendFromHandToBottomOfDeck(int index) {
-		Card c = hand.get(index);
-		hand.remove(index);
-		deck.add(c);
+	public void sendFromHandToDeck(Card c, int index) {
+		hand.remove(c);
+		deck.add(index, c);
 		for (PlayerListener listener : listeners) {
 			listener.onCardReturnedToDeckFromHand(c);
 		}
@@ -434,17 +414,11 @@ public class Player {
 		}
 	}
 
-	public void moveToTopOfDeck(int cardId) {
-		for (int i = 0; i < deck.size(); i++) {
-			Card c = deck.get(i);
-			if (c.getCardBase().getId() == cardId) {
-				deck.remove(i);
-				deck.add(0, c);
-				for (PlayerListener listener : listeners) {
-					listener.onCardToTopOfDeck(c);
-				}
-				break;
-			}
+	public void moveToTopOfDeck(Card c) {
+		deck.remove(c);
+		deck.add(0, c);
+		for (PlayerListener listener : listeners) {
+			listener.onCardToTopOfDeck(c);
 		}
 	}
 
@@ -496,6 +470,22 @@ public class Player {
 		return false;
 	}
 
+	/* Random Card */
+	public Card getRandomInHand() {
+		return hand.size() == 0 ? null : hand.get((int) (Math.random() * hand
+				.size()));
+	}
+
+	public Card getRandomInDeck() {
+		return deck.size() == 0 ? null : deck.get((int) (Math.random() * deck
+				.size()));
+	}
+
+	public Card getRandomInGrave() {
+		return grave.size() == 0 ? null : grave.get((int) (Math.random() * grave
+				.size()));
+	}
+
 	public interface PlayerListener {
 		public void cardDrawn(Card card);
 
@@ -535,7 +525,7 @@ public class Player {
 
 		public void onCardToTopOfDeck(Card c);
 
-		public void onCardToBottomOfDeck(Card c);
+		public void onCardRepositionedInDeck(Card c);
 
 		// For hexes and stuff
 		public void cardSentToGrave(Card card);

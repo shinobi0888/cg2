@@ -20,7 +20,7 @@ public class LordOfThunderPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnPlay(Game g, Piece playedPiece) {
-		g.simulateGivePlayerBuff(g.getEnemy(playedPiece.getOwner()),
+		g.getPieceEffector().givePlayerBuff(g.getEnemy(playedPiece.getOwner()),
 				new LordOfThunderBuff(playedPiece.getSourceCard()));
 	}
 
@@ -38,7 +38,7 @@ public class LordOfThunderPieceEffect extends EmptyPieceEffect {
 		public void effectOnTurnEnd(Game g, Player player) {
 			stacks++;
 			if (stacks == HEALTH_LIMIT) {
-				g.simulateSetHealth(player, 0);
+				g.getPieceEffector().setHealth(player, 0);
 			}
 		}
 	}

@@ -19,13 +19,13 @@ public class UnityHexEffect implements HexEffect {
 				g.getBoard().getPlayersPieces(owningPlayer));
 		int attack = destroy.getAttack();
 		int defense = destroy.getDefense();
-		g.simulateDestroy(destroy);
+		g.getHexEffector().destroy(destroy);
 		ArrayList<Piece> remainingPieces = g.getBoard().getPlayersPieces(
 				owningPlayer);
 		if (remainingPieces.size() > 0) {
 			Piece target = g.getIface().requestBoardPiece(
 					"Select a piece to give buff:", remainingPieces);
-			g.simulateGivePieceBuff(target, new UnityBuff(source, target, attack,
+			g.getHexEffector().givePieceBuff(target, new UnityBuff(source, target, attack,
 					defense));
 		}
 	}

@@ -19,6 +19,6 @@ public class AccursedPillarPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnTurnStart(Game g, Piece p) {
-		g.simulateEffectDamage(g.turnPlayer(), 1);
+		g.getPieceEffector().damage(g.turnPlayer(), 1);
 	}
 }

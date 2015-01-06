@@ -23,7 +23,7 @@ public class GreyKirinPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnPlay(Game g, Piece p) {
-		g.simulateGivePieceBuff(p, new GreyKirinBuff(p, p.getSourceCard()));
+		g.getPieceEffector().givePieceBuff(p, new GreyKirinBuff(p, p.getSourceCard()));
 	}
 
 	public class GreyKirinBuff extends PieceBuff {

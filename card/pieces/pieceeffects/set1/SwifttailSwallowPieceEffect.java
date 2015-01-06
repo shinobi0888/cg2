@@ -56,6 +56,6 @@ public class SwifttailSwallowPieceEffect extends EmptyPieceEffect {
 		}
 		Point target = g.getIface().requestBoardPos(
 				"Select a location to move piece to:", moveable);
-		g.simulateShift(p, target.x, target.y);
+		g.getPieceEffector().shiftPiece(p, target.x, target.y);
 	}
 }

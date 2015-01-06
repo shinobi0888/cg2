@@ -17,7 +17,7 @@ public class ChampionGerynPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnPlay(Game g, Piece playedPiece) {
-		g.simulateEffectHeal(playedPiece.getOwner(),
+		g.getPieceEffector().heal(playedPiece.getOwner(),
 				g.getBoard().find(playedPiece.getOwner(), CardClass.FAIRY).size() * 2);
 	}
 }

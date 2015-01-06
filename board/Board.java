@@ -179,6 +179,10 @@ public class Board {
 		return board.getAll();
 	}
 
+	public boolean isPieceOnBoard(Piece p) {
+		return board.get(p.getX(), p.getY()).equals(p);
+	}
+
 	public ArrayList<Piece> find(Player owner, PieceCardBase.CardClass cardClass) {
 		ArrayList<Piece> result = new ArrayList<Piece>();
 		for (Piece piece : board.getAll()) {
@@ -212,13 +216,19 @@ public class Board {
 		return result;
 	}
 
+	public Piece getPlayersRandomPiece(Player p) {
+		ArrayList<Piece> pieces = getPlayersPieces(p);
+		return pieces.size() == 0 ? null : pieces.get((int) (Math.random() * pieces
+				.size()));
+	}
+
 	public void movePiece(Piece p, int tX, int tY) {
 		int oldX = p.getX();
 		int oldY = p.getY();
 		board.move(p, tX, tY);
 		listener.pieceMoved(p, oldX, oldY, tX, tY);
 	}
-	
+
 	public void swapPiece(Piece p1, Piece p2) {
 		board.swap(p1, p2);
 	}

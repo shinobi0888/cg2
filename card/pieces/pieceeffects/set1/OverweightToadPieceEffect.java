@@ -26,10 +26,10 @@ public class OverweightToadPieceEffect extends EmptyPieceEffect {
 			if (enemy.getHandCount() == 0) {
 				break;
 			}
-			int randomIndex = (int) (Math.random() * enemy.getHandCount());
-			g.simulateSendFromHandToBottomOfDeck(enemy, randomIndex);
+			g.getPieceEffector().sendFromHandToBottomOfDeck(enemy,
+					enemy.getRandomInHand());
 		}
-		g.simulateGivePlayerBuff(enemy,
+		g.getPieceEffector().givePlayerBuff(enemy,
 				new OverweightToadBuff(playedPiece.getSourceCard()));
 	}
 
@@ -46,7 +46,7 @@ public class OverweightToadPieceEffect extends EmptyPieceEffect {
 
 		public void effectOnTurnEnd(Game g, Player player) {
 			for (int i = 0; i < DRAW_COUNT; i++) {
-				g.simulateEffectDraw(player);
+				g.getPieceEffector().draw(player);
 			}
 		}
 

@@ -12,7 +12,7 @@ public class ReappropriationHexEffect implements HexEffect {
 
 	public void simulateEffect(Game g, Player owningPlayer, Card source) {
 		for (Piece p : g.getAllPieces()) {
-			g.simulateGivePieceBuff(p, new ReappropriationBuff(source, p));
+			g.getHexEffector().givePieceBuff(p, new ReappropriationBuff(source, p));
 		}
 	}
 

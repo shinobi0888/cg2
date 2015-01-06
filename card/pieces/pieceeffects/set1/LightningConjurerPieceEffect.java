@@ -18,7 +18,10 @@ public class LightningConjurerPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnPlay(Game g, Piece playedPiece) {
-		g.simulateSendFromGraveToDeck(playedPiece.getOwner(), StrayBoltHexEffect.ID);
-		g.simulateHexDamage(g.getEnemy(playedPiece.getOwner()), BURN_DAMAGE);
+		g.getPieceEffector().sendFromGraveToDeck(playedPiece.getOwner(),
+				playedPiece.getOwner().findInGrave(StrayBoltHexEffect.ID), 0);
+		g.getPieceEffector().shuffle(playedPiece.getOwner());
+		g.getPieceEffector()
+				.damage(g.getEnemy(playedPiece.getOwner()), BURN_DAMAGE);
 	}
 }

@@ -17,13 +17,12 @@ public class GraverobberPieceEffect extends EmptyPieceEffect {
 
 	public void effectOnPlay(Game g, Piece p) {
 		if (p.getOwner().getHandCount() != 0) {
-			int randomIndex = (int) (Math.random() * p.getOwner().getHandCount());
-			g.simulateDiscardFromHand(p.getOwner(), randomIndex);
+			g.getPieceEffector()
+					.discard(p.getOwner(), p.getOwner().getRandomInHand());
 		}
 		if (g.getEnemy(p.getOwner()).getHandCount() != 0) {
-			int randomIndex = (int) (Math.random() * g.getEnemy(p.getOwner())
-					.getHandCount());
-			g.simulateDiscardFromHand(g.getEnemy(p.getOwner()), randomIndex);
+			g.getPieceEffector().discard(g.getEnemy(p.getOwner()),
+					g.getEnemy(p.getOwner()).getRandomInHand());
 		}
 	}
 }

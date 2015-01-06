@@ -24,7 +24,8 @@ public class HeroOfLightPieceEffect extends EmptyPieceEffect {
 
 	public void effectOnReleasePlay(Game g, Piece playedPiece,
 			ArrayList<PieceSnapshot> released) {
-		g.simulateGivePieceBuff(playedPiece,
+		g.getPieceEffector().givePieceBuff(
+				playedPiece,
 				new HeroOfLightBuff(playedPiece, playedPiece.getSourceCard(), released
 						.get(0).getAttack(), released.get(0).getDefense()));
 	}

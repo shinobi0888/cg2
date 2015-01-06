@@ -13,11 +13,11 @@ public class StrayBoltHexEffect implements HexEffect {
 	private static final int MONUMENT_BURN_DAMAGE = 4;
 
 	public void simulateEffect(Game g, Player owningPlayer, Card source) {
-		g.simulateHexDamage(g.getEnemy(owningPlayer), BURN_DAMAGE);
+		g.getHexEffector().damage(g.getEnemy(owningPlayer), BURN_DAMAGE);
 		// Check for lightning monuments
 		for (Piece p : g.getBoard().find(owningPlayer, MONUMENT_ID)) {
-			g.simulateHexDamage(g.getEnemy(owningPlayer), MONUMENT_BURN_DAMAGE);
-			g.simulateSendFromBoardToTopOfDeck(p);
+			g.getHexEffector().damage(g.getEnemy(owningPlayer), MONUMENT_BURN_DAMAGE);
+			g.getHexEffector().sendFromBoardToTopOfDeck(owningPlayer, p);
 		}
 	}
 

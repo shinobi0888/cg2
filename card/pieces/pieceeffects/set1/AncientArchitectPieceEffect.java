@@ -38,8 +38,8 @@ public class AncientArchitectPieceEffect extends EmptyPieceEffect {
 		}
 		int x = p.getX();
 		int y = p.getY();
-		g.simulateDestroy(p);
-		g.simulateShift(
+		g.getPieceEffector().destroy(p);
+		g.getPieceEffector().shiftPiece(
 				playerPillars.get((int) (Math.random() * playerPillars.size())), x, y);
 	}
 }

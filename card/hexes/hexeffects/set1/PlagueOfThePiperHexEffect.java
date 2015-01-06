@@ -13,7 +13,7 @@ public class PlagueOfThePiperHexEffect implements HexEffect {
 
 	public void simulateEffect(Game g, Player owningPlayer, Card source) {
 		Player enemy = g.getEnemy(owningPlayer);
-		g.simulateGivePlayerBuff(enemy, new PlagueOfThePiperBuff(source));
+		g.getHexEffector().givePlayerBuff(enemy, new PlagueOfThePiperBuff(source));
 	}
 
 	public boolean canActivateEffect(Game g, Player owningPlayer, Card source) {
@@ -33,7 +33,7 @@ public class PlagueOfThePiperHexEffect implements HexEffect {
 		}
 
 		public void effectOnTurnStart(Game g, Player player) {
-			g.simulateGivePlayerPiecePlays(player, PLAYS);
+			g.getHexEffector().givePlays(player, PLAYS);
 		}
 
 		public boolean conditionOnTurnEnd(Game g, Player player) {
@@ -43,8 +43,8 @@ public class PlagueOfThePiperHexEffect implements HexEffect {
 		public void effectOnTurnEnd(Game g, Player player) {
 			int totalHand = player.getHandCount();
 			for (int i = 0; i < totalHand; i++) {
-				g.simulateDiscardFromHand(player, 0);
-				g.simulateHexDamage(player, BURN_DAMAGE);
+				g.getHexEffector().discard(player, player.getHandCard(0));
+				g.getHexEffector().damage(player, BURN_DAMAGE);
 			}
 		}
 

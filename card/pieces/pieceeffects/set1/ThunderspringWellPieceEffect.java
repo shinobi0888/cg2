@@ -19,10 +19,10 @@ public class ThunderspringWellPieceEffect extends EmptyPieceEffect {
 
 	public void effectOnTurnEnd(Game g, Piece p) {
 		int randomDamage = (int) (Math.random() * BURN_CAP) + 1;
-		g.simulateEffectDamage(g.getEnemy(p.getOwner()), randomDamage);
+		g.getPieceEffector().damage(g.getEnemy(p.getOwner()), randomDamage);
 		// Check for thunderspring keeper
 		if (g.getBoard().find(p.getOwner(), THUNDERSPRING_KEEPER_ID).size() == 0) {
-			g.simulateEffectDamage(p.getOwner(), randomDamage);
+			g.getPieceEffector().damage(p.getOwner(), randomDamage);
 		}
 	}
 }

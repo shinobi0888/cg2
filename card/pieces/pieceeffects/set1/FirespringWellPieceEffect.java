@@ -25,7 +25,7 @@ public class FirespringWellPieceEffect extends EmptyPieceEffect {
 		Piece randomPiece = allPieces.get(randomIndex);
 		boolean activateKeeper = randomPiece.getCardBase().getId() == FIRESPRING_KEEPER_ID
 				&& randomPiece.getOwner().equals(p.getOwner());
-		g.simulateDestroy(allPieces.get(randomIndex));
+		g.getPieceEffector().destroy(allPieces.get(randomIndex));
 		// Effect of keeper implemented in here as well
 		if (activateKeeper) {
 			ArrayList<Piece> enemyPieces = g.getBoard().getPlayersPieces(
@@ -33,7 +33,7 @@ public class FirespringWellPieceEffect extends EmptyPieceEffect {
 			for (int i = 0; i < 2 && enemyPieces.size() > 0; i++) {
 				randomIndex = (int) (Math.random() * enemyPieces.size());
 				randomPiece = enemyPieces.get(randomIndex);
-				g.simulateDestroy(randomPiece);
+				g.getPieceEffector().destroy(randomPiece);
 				enemyPieces.remove(randomIndex);
 			}
 		}

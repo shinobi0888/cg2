@@ -11,7 +11,8 @@ public class InheritanceOfWillHexEffect implements HexEffect {
 	public static final int ID = 11;
 
 	public void simulateEffect(Game g, Player owningPlayer, Card source) {
-		g.simulateGivePlayerBuff(owningPlayer, new InheritanceOfWillBuff(source));
+		g.getHexEffector().givePlayerBuff(owningPlayer,
+				new InheritanceOfWillBuff(source));
 	}
 
 	public boolean canActivateEffect(Game g, Player owningPlayer, Card source) {
@@ -31,7 +32,7 @@ public class InheritanceOfWillHexEffect implements HexEffect {
 		}
 
 		public void effectOnPieceDestroyed(Game g, Player player, PieceSnapshot p) {
-			g.simulateGivePlayerPiecePlays(player, 1);
+			g.getHexEffector().givePlays(player, 1);
 		}
 	}
 }

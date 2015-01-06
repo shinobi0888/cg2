@@ -18,7 +18,8 @@ public class LightningDeityPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnTurnEnd(Game g, Piece p) {
-		g.simulateSendFromGraveToHand(p.getOwner(), StrayBoltHexEffect.ID);
-		g.simulateMillFromDeck(p.getOwner(), 0);
+		g.getPieceEffector().sendFromGraveToHand(p.getOwner(),
+				StrayBoltHexEffect.ID);
+		g.getPieceEffector().mill(p.getOwner(), 0);
 	}
 }

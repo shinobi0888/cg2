@@ -14,7 +14,7 @@ public class LifeshearHexEffect implements HexEffect {
 	public void simulateEffect(Game g, Player owningPlayer, Card source) {
 		Piece target = g.getIface().requestBoardPiece(
 				"Select a piece to give buff to:", g.getAllPieces());
-		g.simulateGivePieceBuff(target, new LifeshearBuff(source, target));
+		g.getHexEffector().givePieceBuff(target, new LifeshearBuff(source, target));
 	}
 
 	public boolean canActivateEffect(Game g, Player owningPlayer, Card source) {

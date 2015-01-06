@@ -18,12 +18,12 @@ public class WinglessFairyPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnPlay(Game g, Piece playedPiece) {
-		g.simulateEffectDamage(playedPiece.getOwner(), BURN_DAMAGE);
+		g.getPieceEffector().damage(playedPiece.getOwner(), BURN_DAMAGE);
 		if (g.getBoard().find(playedPiece.getOwner(), OberonPieceEffect.ID).size() > 0
 				|| g.getBoard().find(playedPiece.getOwner(), TitaniaPieceEffect.ID)
 						.size() > 0) {
-			g.simulateEffectDraw(playedPiece.getOwner());
-			g.simulateGivePlayerPiecePlays(playedPiece.getOwner(), EXTRA_PLAYS);
+			g.getPieceEffector().draw(playedPiece.getOwner());
+			g.getPieceEffector().givePlays(playedPiece.getOwner(), EXTRA_PLAYS);
 		}
 	}
 }

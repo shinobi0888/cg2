@@ -21,7 +21,7 @@ public class IdolOfRenewalPieceEffect extends EmptyPieceEffect {
 		g.getIface().revealCard(p.getOwner(), drawn);
 		if (drawn.getCardBase() instanceof PieceCardBase
 				&& ((PieceCardBase) (drawn.getCardBase())).getAttack() < 4) {
-			g.simulateEffectDraw(p.getOwner());
+			g.getPieceEffector().draw(p.getOwner());
 		}
 	}
 }

@@ -35,7 +35,7 @@ public class ChampionGerynCardTest extends BasicCardTest {
 		actionCycleTurn();
 		game.movePiece(5, 1, 5, 2);
 		// Do some damage and allow geryn to heal
-		game.simulateEffectDamage(game.turnPlayer(), 25);
+		game.getPieceEffector().damage(game.turnPlayer(), 25);
 		assertEquals(game.turnPlayer().getHealth(), Player.MAX_HEALTH - 25);
 		actionPlay(0, 4, 1);
 		assertEquals(game.getBoard().getPiece(4, 1).getCardBase().getId(),

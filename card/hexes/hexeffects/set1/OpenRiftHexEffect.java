@@ -11,10 +11,10 @@ public class OpenRiftHexEffect implements HexEffect {
 
 	public void simulateEffect(Game g, Player owningPlayer, Card source) {
 		owningPlayer.shuffleDeck();
-		g.simulateHexDraw(owningPlayer);
-		g.simulateHexDraw(owningPlayer);
+		g.getHexEffector().draw(owningPlayer);
+		g.getHexEffector().draw(owningPlayer);
 		for (int i = 0; i < MILL_COUNT && owningPlayer.getDeckCount() > 0; i++) {
-			g.simulateMillFromDeck(owningPlayer, owningPlayer.getDeckCount());
+			g.getHexEffector().mill(owningPlayer, owningPlayer.getDeckCount() - 1);
 		}
 	}
 

@@ -11,9 +11,9 @@ public class ForcefulExchangeHexEffect implements HexEffect {
 
 	public void simulateEffect(Game g, Player owningPlayer, Card source) {
 		Player enemy = g.getEnemy(owningPlayer);
-		g.simulateEffectDraw(enemy);
-		g.simulateEffectDraw(enemy);
-		g.simulateGivePlayerBuff(enemy, new ForcefulExchangeBuff(source));
+		g.getHexEffector().draw(enemy);
+		g.getHexEffector().draw(enemy);
+		g.getHexEffector().givePlayerBuff(enemy, new ForcefulExchangeBuff(source));
 	}
 
 	public boolean canActivateEffect(Game g, Player owningPlayer, Card source) {

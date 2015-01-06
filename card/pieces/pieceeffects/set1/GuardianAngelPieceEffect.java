@@ -26,10 +26,10 @@ public class GuardianAngelPieceEffect extends EmptyPieceEffect {
 	public void effectOnTurnStart(Game g, Piece p) {
 		PieceBuff buff = p.findBuff(p.getSourceCard());
 		if (buff != null) {
-			g.simulateEffectHeal(p.getOwner(), HEAL_AMOUNT);
+			g.getPieceEffector().heal(p.getOwner(), HEAL_AMOUNT);
 			buff.incrStacks(1);
 			if (p.getDefense() == 0) {
-				g.simulateDestroy(p);
+				g.getPieceEffector().destroy(p);
 			}
 		}
 	}
@@ -39,7 +39,8 @@ public class GuardianAngelPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnPlay(Game g, Piece p) {
-		g.simulateGivePieceBuff(p, new GuardianAngelBuff(p, p.getSourceCard()));
+		g.getPieceEffector().givePieceBuff(p,
+				new GuardianAngelBuff(p, p.getSourceCard()));
 	}
 
 	public boolean conditionActive(Game g, Piece p) {
@@ -49,8 +50,8 @@ public class GuardianAngelPieceEffect extends EmptyPieceEffect {
 	public void effectActive(Game g, Piece p) {
 		int defense = p.getDefense();
 		Player owner = p.getOwner();
-		g.simulateDestroy(p);
-		g.simulateEffectHeal(owner, defense);
+		g.getPieceEffector().destroy(p);
+		g.getPieceEffector().heal(owner, defense);
 	}
 
 	public class GuardianAngelBuff extends PieceBuff {

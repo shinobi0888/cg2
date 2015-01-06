@@ -28,7 +28,7 @@ public class IgnobleSacrificeHexEffect implements HexEffect {
 		otherPieces.remove(target1);
 		target2 = otherPieces.size() != 1 ? g.getIface().requestBoardPiece(
 				"Select another ally piece:", otherPieces) : otherPieces.get(0);
-		g.simulateSwapPieces(target1, target2);
+		g.getHexEffector().swapPieces(target1, target2);
 	}
 
 	public boolean canActivateEffect(Game g, Player owningPlayer, Card source) {

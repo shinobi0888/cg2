@@ -10,8 +10,8 @@ public class ShatteredBoltHexEffect implements HexEffect {
 	public static final int BURN_DAMAGE = 4;
 
 	public void simulateEffect(Game g, Player owningPlayer, Card source) {
-		g.simulateHexDamage(g.getEnemy(owningPlayer), BURN_DAMAGE);
-		g.simulateHexDamage(owningPlayer, BURN_DAMAGE);
+		g.getHexEffector().damage(g.getEnemy(owningPlayer), BURN_DAMAGE);
+		g.getHexEffector().damage(owningPlayer, BURN_DAMAGE);
 	}
 
 	public boolean canActivateEffect(Game g, Player owningPlayer, Card source) {

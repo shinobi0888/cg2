@@ -20,7 +20,7 @@ public class FoolishBuffoonPieceEffect extends EmptyPieceEffect {
 	public void effectOnPlay(Game g, Piece playedPiece) {
 		if (g.getIface().requestYesNo(
 				"Would you like to add \"Foolish Jester\" to the hand?", false)) {
-			g.simulateAddFromDeckToHand(playedPiece.getOwner(),
+			g.getPieceEffector().addFromDeckToHand(playedPiece.getOwner(),
 					FoolishJesterPieceEffect.ID);
 		}
 	}
@@ -30,7 +30,7 @@ public class FoolishBuffoonPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectActive(Game g, Piece p) {
-		g.simulateDestroy(p);
-		g.simulateEffectDraw(p.getOwner());
+		g.getPieceEffector().destroy(p);
+		g.getPieceEffector().draw(p.getOwner());
 	}
 }

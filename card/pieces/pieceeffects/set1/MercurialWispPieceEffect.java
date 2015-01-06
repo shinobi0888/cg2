@@ -41,7 +41,7 @@ public class MercurialWispPieceEffect extends EmptyPieceEffect {
 		}
 		int randomIndex = (int) (Math.random() * emptyAdjacents.size());
 		Point moveTarget = emptyAdjacents.get(randomIndex);
-		g.getBoard().movePiece(p, moveTarget.x, moveTarget.y);
+		g.getPieceEffector().shiftPiece(p, moveTarget.x, moveTarget.y);
 		// Then detonate
 		boolean hasAdjacentEnemy = false;
 		ArrayList<Piece> detonateTargets = new ArrayList<Piece>();
@@ -57,9 +57,9 @@ public class MercurialWispPieceEffect extends EmptyPieceEffect {
 			}
 		}
 		if (hasAdjacentEnemy) {
-			g.simulateDestroy(p);
+			g.getPieceEffector().destroy(p);
 			for (Piece target : detonateTargets) {
-				g.simulateDestroy(target);
+				g.getPieceEffector().destroy(target);
 			}
 		}
 	}

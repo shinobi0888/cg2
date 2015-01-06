@@ -26,12 +26,12 @@ public class ParasiticSwarmPieceEffect extends EmptyPieceEffect {
 		int deck1 = g.turnPlayer().getDeckCount();
 		int deck2 = g.offTurnPlayer().getDeckCount();
 		while (discardRequirement1 > 0 && deck1 > 0) {
-			g.simulateMillFromDeck(g.turnPlayer(), 0);
+			g.getPieceEffector().mill(g.turnPlayer(), 0);
 			discardRequirement1--;
 			deck1 = g.turnPlayer().getDeckCount();
 		}
 		while (discardRequirement2 > 0 && deck2 > 0) {
-			g.simulateMillFromDeck(g.offTurnPlayer(), 0);
+			g.getPieceEffector().mill(g.offTurnPlayer(), 0);
 			discardRequirement2--;
 			deck2 = g.offTurnPlayer().getDeckCount();
 		}

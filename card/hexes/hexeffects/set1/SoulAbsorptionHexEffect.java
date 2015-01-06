@@ -21,8 +21,8 @@ public class SoulAbsorptionHexEffect implements HexEffect {
 				maxAttack = attack;
 			}
 		}
-		g.simulateDestroy(strongest);
-		g.simulateHexDamage(owningPlayer, maxAttack);
+		g.getHexEffector().destroy(strongest);
+		g.getHexEffector().damage(owningPlayer, maxAttack);
 	}
 
 	public boolean canActivateEffect(Game g, Player owningPlayer, Card source) {

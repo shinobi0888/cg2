@@ -16,6 +16,6 @@ public class AgileFairyPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnPlay(Game g, Piece playedPiece) {
-		g.simulateGivePlayerPiecePlays(playedPiece.getOwner(), 1);
+		g.getPieceEffector().givePlays(playedPiece.getOwner(), 1);
 	}
 }

@@ -19,7 +19,7 @@ public class AccursedArmorPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnPlay(Game g, Piece playedPiece) {
-		g.simulateGivePieceBuff(playedPiece, new AccursedArmorBuff(playedPiece,
+		g.getPieceEffector().givePieceBuff(playedPiece, new AccursedArmorBuff(playedPiece,
 				playedPiece.getSourceCard()));
 	}
 

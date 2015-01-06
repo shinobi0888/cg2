@@ -44,6 +44,6 @@ public class BoreasPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectActive(Game g, Piece p) {
-		g.simulateSetHealth(g.getEnemy(p.getOwner()), 0);
+		g.getPieceEffector().setHealth(g.getEnemy(p.getOwner()), 0);
 	}
 }

@@ -11,8 +11,9 @@ public class AntiCombatZoneHexEffect implements HexEffect {
 
 	public void simulateEffect(Game g, Player owningPlayer, Card source) {
 		Player enemy = g.getEnemy(owningPlayer);
-		g.simulateGivePlayerBuff(owningPlayer, new AntiCombatZoneBuff(source));
-		g.simulateGivePlayerBuff(enemy, new AntiCombatZoneBuff(source));
+		g.getHexEffector().givePlayerBuff(owningPlayer,
+				new AntiCombatZoneBuff(source));
+		g.getHexEffector().givePlayerBuff(enemy, new AntiCombatZoneBuff(source));
 	}
 
 	public boolean canActivateEffect(Game g, Player owningPlayer, Card source) {

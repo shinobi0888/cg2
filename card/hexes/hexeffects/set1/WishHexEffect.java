@@ -15,8 +15,8 @@ public class WishHexEffect implements HexEffect {
 		ArrayList<Card> hexes = owningPlayer.getHexesInDeck();
 		if (hexes.size() > 0) {
 			int randomIndex = (int) (Math.random() * hexes.size());
-			g.simulateAddFromDeckToHand(owningPlayer, hexes.get(randomIndex)
-					.getCardBase().getId());
+			g.getHexEffector().addFromDeckToHand(owningPlayer,
+					hexes.get(randomIndex).getCardBase().getId());
 		}
 	}
 

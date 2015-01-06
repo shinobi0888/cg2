@@ -21,8 +21,8 @@ public class CelebrationalPillarPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnPlay(Game g, Piece playedPiece) {
-		g.simulateGivePieceBuff(playedPiece, new CelebrationalPillarBuff(
-				playedPiece, playedPiece.getSourceCard()));
+		g.getPieceEffector().givePieceBuff(playedPiece,
+				new CelebrationalPillarBuff(playedPiece, playedPiece.getSourceCard()));
 	}
 
 	public class CelebrationalPillarBuff extends PieceBuff {

@@ -21,7 +21,7 @@ public class ManiacalConsciencePieceEffect extends EmptyPieceEffect {
 		Piece target = g.getIface().requestBoardPiece(
 				"Select a piece to apply buff to:",
 				g.getBoard().getPlayersPieces(p.getOwner()));
-		g.simulateGivePieceBuff(target,
+		g.getPieceEffector().givePieceBuff(target,
 				new ManiacalConscienceBuff(target, p.getSourceCard()));
 	}
 

@@ -14,10 +14,10 @@ public class PainfulJestHexEffect implements HexEffect {
 		for (Piece p : g.getBoard().getPiecesInEndZone(owningPlayer)) {
 			if (!p.getOwner().equals(owningPlayer)) {
 				totalAttack += p.getAttack();
-				g.simulateSendFromBoardToHand(p);
+				g.getHexEffector().returnToHand(owningPlayer, p);
 			}
 		}
-		g.simulateHexDamage(owningPlayer, totalAttack);
+		g.getHexEffector().damage(owningPlayer, totalAttack);
 	}
 
 	public boolean canActivateEffect(Game g, Player owningPlayer, Card source) {

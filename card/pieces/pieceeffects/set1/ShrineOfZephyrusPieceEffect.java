@@ -16,7 +16,8 @@ public class ShrineOfZephyrusPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnSelfDestroyed(Game g, Piece p) {
-		g.simulateMoveToTopOfDeck(p.getOwner(), BoreasPieceEffect.ZEPHYRUS_ID);
+		g.getPieceEffector().reorderDeck(p.getOwner(),
+				p.getOwner().findInDeck(BoreasPieceEffect.ZEPHYRUS_ID), 0);
 	}
 
 }

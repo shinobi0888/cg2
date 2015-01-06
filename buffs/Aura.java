@@ -10,7 +10,7 @@ public abstract class Aura {
 	 */
 	protected Piece source;
 	protected boolean removeOnLeaveField = true;
-	
+
 	public boolean isRemoveOnLeaveField() {
 		return removeOnLeaveField;
 	}
@@ -27,9 +27,9 @@ public abstract class Aura {
 		for (Piece p : g.getAllPieces()) {
 			PieceBuff foundBuff = p.findBuff(this);
 			if (foundBuff == null && shouldApplyAura(g, p)) {
-				g.simulateGivePieceBuff(p, getNewBuff(g, p));
+				g.getPieceEffector().givePieceBuff(p, getNewBuff(g, p));
 			} else if (foundBuff != null && !shouldApplyAura(g, p)) {
-				g.simulateRemovePieceBuff(p, foundBuff);
+				g.getPieceEffector().removePieceBuff(p, foundBuff);
 			}
 		}
 	}

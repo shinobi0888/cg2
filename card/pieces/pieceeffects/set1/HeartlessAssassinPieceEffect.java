@@ -19,6 +19,6 @@ public class HeartlessAssassinPieceEffect extends EmptyPieceEffect {
 	public void effectOnPlay(Game g, Piece playedPiece) {
 		Piece p = g.getIface().requestBoardPiece("Select a piece to destroy:",
 				g.getAllPieces());
-		g.simulateDestroy(p);
+		g.getPieceEffector().destroy(p);
 	}
 }

@@ -22,6 +22,6 @@ public class WanderingHealerPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnManuallyMoved(Game g, Piece p, Point old, Point target) {
-		g.simulateEffectHeal(p.getOwner(), HEAL_AMOUNT);
+		g.getPieceEffector().heal(p.getOwner(), HEAL_AMOUNT);
 	}
 }

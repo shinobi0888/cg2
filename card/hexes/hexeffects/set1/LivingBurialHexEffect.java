@@ -11,8 +11,8 @@ public class LivingBurialHexEffect implements HexEffect {
 	public void simulateEffect(Game g, Player owningPlayer, Card source) {
 		Player enemy = g.getEnemy(owningPlayer);
 		Card c = enemy.getDeckCard(0);
-		g.getIface().revealCard(enemy, c);
-		g.simulateSendFromDeckToBottom(owningPlayer, c);
+		g.getHexEffector().revealCard(enemy, c);
+		g.getHexEffector().reorderDeck(enemy, c, enemy.getDeckCount());
 	}
 
 	public boolean canActivateEffect(Game g, Player owningPlayer, Card source) {

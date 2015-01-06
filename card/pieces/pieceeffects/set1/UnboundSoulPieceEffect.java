@@ -16,6 +16,6 @@ public class UnboundSoulPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnAttack(Game g, Piece p, Piece attacked) {
-		g.simulateDestroy(p);
+		g.getPieceEffector().destroy(p);
 	}
 }

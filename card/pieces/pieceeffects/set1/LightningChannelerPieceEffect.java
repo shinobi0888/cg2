@@ -17,6 +17,7 @@ public class LightningChannelerPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnPlay(Game g, Piece playedPiece) {
-		g.simulateAddFromDeckToHand(playedPiece.getOwner(), StrayBoltHexEffect.ID);
+		g.getPieceEffector().addFromDeckToHand(playedPiece.getOwner(),
+				StrayBoltHexEffect.ID);
 	}
 }

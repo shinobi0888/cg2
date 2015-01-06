@@ -10,9 +10,9 @@ public class ReplacementOfTheDeadHexEffect implements HexEffect {
 	public static final int ID = 71;
 
 	public void simulateEffect(Game g, Player owningPlayer, Card source) {
-		g.simulateSendAllGraveToDeck(owningPlayer);
+		g.getHexEffector().sendGraveToDeck(owningPlayer);
 		for (Piece p : g.getBoard().getPlayersPieces(owningPlayer)) {
-			g.simulateDestroy(p);
+			g.getHexEffector().destroy(p);
 		}
 	}
 

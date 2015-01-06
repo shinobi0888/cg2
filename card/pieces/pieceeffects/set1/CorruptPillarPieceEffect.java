@@ -23,7 +23,7 @@ public class CorruptPillarPieceEffect extends EmptyPieceEffect {
 	public void effectOnTurnStart(Game g, Piece p) {
 		p.findBuff(p.getSourceCard()).incrStacks(1);
 		if (p.getDefense() < 2) {
-			g.simulateDestroy(p);
+			g.getPieceEffector().destroy(p);
 		}
 	}
 
@@ -32,7 +32,8 @@ public class CorruptPillarPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnPlay(Game g, Piece p) {
-		g.simulateGivePieceBuff(p, new CorruptPillarBuff(p, p.getSourceCard()));
+		g.getPieceEffector().givePieceBuff(p,
+				new CorruptPillarBuff(p, p.getSourceCard()));
 	}
 
 	public class CorruptPillarBuff extends PieceBuff {

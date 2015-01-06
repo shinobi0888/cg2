@@ -17,16 +17,15 @@ public class FrostspringWellPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnTurnEnd(Game g, Piece p) {
-		p.getOwner().drawCard(g);
-		g.getEnemy(p.getOwner()).drawCard(g);
+		g.getPieceEffector().draw(p.getOwner());
+		g.getPieceEffector().draw(g.getEnemy(p.getOwner()));
 		// Effect of frostspring here as well
 		if (g.getBoard().find(p.getOwner(), FROSTSPRING_KEEPER_ID).size() == 0) {
-			int randomIndex = (int) (Math.random() * p.getOwner().getHandCount());
-			g.simulateDiscardFromHand(p.getOwner(), randomIndex);
+			g.getPieceEffector()
+					.discard(p.getOwner(), p.getOwner().getRandomInHand());
 		}
-		int randomIndex = (int) (Math.random() * g.getEnemy(p.getOwner())
-				.getHandCount());
-		g.simulateDiscardFromHand(g.getEnemy(p.getOwner()), randomIndex);
+		g.getPieceEffector().discard(g.getEnemy(p.getOwner()),
+				g.getEnemy(p.getOwner()).getRandomInHand());
 	}
 
 }

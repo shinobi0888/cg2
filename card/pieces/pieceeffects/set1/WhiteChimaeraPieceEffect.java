@@ -25,7 +25,7 @@ public class WhiteChimaeraPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnPiecePlayed(Game g, Piece p, Piece source) {
-		g.simulateGivePlayerPiecePlays(source.getOwner(), 1);
+		g.getPieceEffector().givePlays(source.getOwner(), 1);
 	}
 
 }

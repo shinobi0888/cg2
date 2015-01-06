@@ -17,12 +17,12 @@ public class TheDivineWindsHexEffect implements HexEffect {
 				&& g.getBoard().find(owningPlayer, BoreasPieceEffect.ZEPHYRUS_ID)
 						.size() > 0) {
 			for (Piece p : g.getBoard().find(g.getEnemy(owningPlayer), null)) {
-				g.simulateSendFromBoardToHand(p);
+				g.getHexEffector().returnToHand(g.getEnemy(owningPlayer), p);
 			}
 		} else {
 			Piece p = g.getIface().requestBoardPiece(
 					"Select a piece to return to the hand:", g.getAllPieces());
-			g.simulateSendFromBoardToHand(p);
+			g.getHexEffector().returnToHand(g.getEnemy(owningPlayer), p);
 		}
 	}
 

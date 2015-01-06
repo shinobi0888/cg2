@@ -16,7 +16,7 @@ public class SmiteHexEffect implements HexEffect {
 		ArrayList<Piece> targets = g.getBoard().getAllPieces();
 		Piece target = g.getIface().requestBoardPiece("Select a piece to destroy:",
 				targets);
-		g.simulateDestroy(target);
+		g.getHexEffector().destroy(target);;
 	}
 
 	public boolean canActivateEffect(Game g, Player owningPlayer, Card source) {

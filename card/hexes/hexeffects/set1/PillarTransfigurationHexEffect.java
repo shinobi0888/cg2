@@ -24,13 +24,13 @@ public class PillarTransfigurationHexEffect implements HexEffect {
 				"Select an enemy piece to destroy:", enemyTargets);
 		int x = target.getX();
 		int y = target.getY();
-		g.simulateDestroy(target);
+		g.getHexEffector().destroy(target);
 		ArrayList<Piece> playerPillars = g.getBoard().find(owningPlayer,
 				CardClass.PILLAR);
 		if (playerPillars.size() != 0 && g.getBoard().getPiece(x, y) == null) {
 			Piece targetPillar = g.getIface().requestBoardPiece(
 					"Select an ally [Pillar] to shift:", playerPillars);
-			g.simulateShift(targetPillar, x, y);
+			g.getHexEffector().shiftPiece(targetPillar, x, y);
 		}
 	}
 

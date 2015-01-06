@@ -21,17 +21,17 @@ public class EnergyLeechPieceEffect extends EmptyPieceEffect {
 	public void effectOnPlay(Game g, Piece playedPiece) {
 		int stacks = 0;
 		while (g.turnPlayer().getHandCount() > 3) {
-			int randomIndex = (int) (Math.random() * g.turnPlayer().getHandCount());
-			g.simulateDiscardFromHand(g.turnPlayer(), randomIndex);
+			g.getPieceEffector().discard(g.turnPlayer(),
+					g.turnPlayer().getRandomInHand());
 			stacks++;
 		}
 		while (g.offTurnPlayer().getHandCount() > 3) {
-			int randomIndex = (int) (Math.random() * g.offTurnPlayer().getHandCount());
-			g.simulateDiscardFromHand(g.offTurnPlayer(), randomIndex);
+			g.getPieceEffector().discard(g.offTurnPlayer(),
+					g.offTurnPlayer().getRandomInHand());
 			stacks++;
 		}
-		g.simulateGivePieceBuff(playedPiece, new EnergyLeechBuff(playedPiece,
-				playedPiece.getSourceCard(), stacks));
+		g.getPieceEffector().givePieceBuff(playedPiece,
+				new EnergyLeechBuff(playedPiece, playedPiece.getSourceCard(), stacks));
 	}
 
 	public class EnergyLeechBuff extends PieceBuff {

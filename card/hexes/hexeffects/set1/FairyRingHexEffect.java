@@ -17,7 +17,7 @@ public class FairyRingHexEffect implements HexEffect {
 				.getCardsIdsInDeckOfClass(CardClass.FAIRY);
 		if (fairyIds.size() > 0) {
 			int chosenId = fairyIds.get((int) (Math.random() * fairyIds.size()));
-			g.simulateAddFromDeckToHand(owningPlayer, chosenId);
+			g.getHexEffector().addFromDeckToHand(owningPlayer, chosenId);
 		}
 	}
 

@@ -24,16 +24,11 @@ public class SoulCannonHexEffect implements HexEffect {
 		Card discard = g.getIface().requestCard("Select a piece to discard:",
 				handPieces);
 		int attack = ((PieceCardBase) discard.getCardBase()).getAttack();
-		for (int i = 0; i < handSize; i++) {
-			if (owningPlayer.getHandCard(i).equals(discard)) {
-				g.simulateDiscardFromHand(owningPlayer, i);
-				break;
-			}
-		}
+		g.getHexEffector().discard(owningPlayer, discard);
 		Piece target = g.getIface().requestBoardPiece("Select a piece to target:",
 				g.getAllPieces());
 		if (target.getAttack() < attack || target.getDefense() < attack) {
-			g.simulateDestroy(target);
+			g.getHexEffector().destroy(target);
 		}
 	}
 

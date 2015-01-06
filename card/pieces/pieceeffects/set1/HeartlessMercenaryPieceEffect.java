@@ -21,7 +21,7 @@ public class HeartlessMercenaryPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnPiecePlayed(Game g, Piece p, Piece source) {
-		g.simulateGivePlayerPiecePlays(source.getOwner(), 1);
+		g.getPieceEffector().givePlays(source.getOwner(), 1);
 	}
 
 	public class HeartlessMercenaryBuff extends PieceBuff {
@@ -42,7 +42,7 @@ public class HeartlessMercenaryPieceEffect extends EmptyPieceEffect {
 					source.getOwner());
 			if (enemyPieces.size() > 0) {
 				int randomIndex = (int) (Math.random() * enemyPieces.size());
-				g.simulateDestroy(enemyPieces.get(randomIndex));
+				g.getPieceEffector().destroy(enemyPieces.get(randomIndex));
 			}
 		}
 	}

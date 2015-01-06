@@ -176,7 +176,7 @@ public abstract class BasicCardTest {
 
 		}
 
-		public void onCardToBottomOfDeck(Card c) {
+		public void onCardRepositionedInDeck(Card c) {
 
 		}
 

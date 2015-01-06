@@ -16,6 +16,6 @@ public class FoolishJesterPieceEffect extends EmptyPieceEffect {
 	}
 
 	public void effectOnPlay(Game g, Piece playedPiece) {
-		g.simulateEffectDraw(playedPiece.getOwner());
+		g.getPieceEffector().draw(playedPiece.getOwner());
 	}
 }

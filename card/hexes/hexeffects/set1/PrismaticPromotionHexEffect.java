@@ -19,13 +19,13 @@ public class PrismaticPromotionHexEffect implements HexEffect {
 				g.getBoard().find(owningPlayer, CardClass.SPIRIT));
 		int x = target.getX();
 		int y = target.getY();
-		g.simulateDestroy(target);
+		g.getHexEffector().destroy(target);
 		ArrayList<Card> spirits = owningPlayer
 				.getCardsInDeckOfClass(CardClass.SPIRIT);
 		if (spirits.size() > 0) {
 			Card chosen = spirits.get((int) (Math.random() * spirits.size()));
 			if (g.getBoard().getPiece(x, y) == null) {
-				g.simulatePlayFromDeck(owningPlayer, chosen, x, y);
+				g.getHexEffector().playFromDeck(owningPlayer, chosen, x, y);
 			}
 		}
 	}

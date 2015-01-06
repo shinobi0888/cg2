@@ -20,7 +20,7 @@ public class HeartlessSentryPieceEffect extends EmptyPieceEffect {
 
 	public boolean conditionOnTurnEnd(Game g, Piece p) {
 		// Only on players turn
-		if(!g.turnPlayer().equals(p.getOwner())) {
+		if (!g.turnPlayer().equals(p.getOwner())) {
 			return false;
 		}
 		for (Point pt : g.getBoard().getSquaresInPattern(p.getX(), p.getY(),
@@ -42,10 +42,10 @@ public class HeartlessSentryPieceEffect extends EmptyPieceEffect {
 		}
 		int randomIndex = (int) (Math.random() * pieces.size());
 		Piece target = pieces.get(randomIndex);
-		g.simulateGivePieceBuff(target,
+		g.getPieceEffector().givePieceBuff(target,
 				new HeartlessSentryBuff(target, p.getSourceCard()));
 		if (target.getAttack() == 0 || target.getDefense() == 0) {
-			g.simulateDestroy(target);
+			g.getPieceEffector().destroy(target);
 		}
 	}
 

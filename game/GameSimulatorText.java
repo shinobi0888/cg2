@@ -270,9 +270,9 @@ class PlayerReporter implements Player.PlayerListener {
 				+ " was added from the grave to the deck.");
 	}
 
-	public void onCardToBottomOfDeck(Card c) {
+	public void onCardRepositionedInDeck(Card c) {
 		System.out.println(player.getName() + "'s " + c.getCardBase().getName()
-				+ " was moved to the bottom of the deck.");
+				+ " was repositioned in the deck.");
 	}
 }
 

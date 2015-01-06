@@ -11,12 +11,12 @@ public class ShadowOfRagnarokHexEffect implements HexEffect {
 
 	public void simulateEffect(Game g, Player owningPlayer, Card source) {
 		while (owningPlayer.getDeckCount() > 0) {
-			g.simulateMillFromDeck(owningPlayer, 0);
+			g.getHexEffector().mill(owningPlayer, 0);
 		}
 		for (Piece p : g.getBoard().getAllPiecesInPlayerOrder(g.turnPlayer())) {
-			g.simulateDestroy(p);
+			g.getHexEffector().destroy(p);
 		}
-		g.endTurn();
+		g.getHexEffector().endTurn();
 	}
 
 	public boolean canActivateEffect(Game g, Player owningPlayer, Card source) {

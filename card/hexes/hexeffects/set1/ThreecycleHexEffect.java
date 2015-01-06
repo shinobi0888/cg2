@@ -11,16 +11,15 @@ public class ThreecycleHexEffect implements HexEffect {
 	public void simulateEffect(Game g, Player owningPlayer, Card source) {
 		Player enemy = g.getEnemy(owningPlayer);
 		for (int i = 0; i < 2 && enemy.getHandCount() > 0; i++) {
-			int randomIndex = (int) (Math.random() * enemy.getHandCount());
-			g.simulateDiscardFromHand(enemy, randomIndex);
+			g.getHexEffector().discard(enemy, enemy.getRandomInHand());
 		}
 		for (int i = 0; i < 2 && enemy.getGraveCount() > 0; i++) {
 			int randomIndex = (int) (Math.random() * enemy.getGraveCount());
-			g.simulateSendFromGraveToDeck(enemy, enemy.getGraveCard(randomIndex)
-					.getCardBase().getId(), enemy.getDeckCount());
+			g.getHexEffector().sendFromGraveToDeck(enemy,
+					enemy.getGraveCard(randomIndex), enemy.getDeckCount());
 		}
 		for (int i = 0; i < 2; i++) {
-			g.simulateEffectDrawAndReveal(enemy);
+			g.getHexEffector().drawAndReveal(enemy);
 		}
 	}
 
